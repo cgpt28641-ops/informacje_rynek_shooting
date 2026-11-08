@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atak na Rynku Głównym</title>
+<meta name="description" content="Zweryfikowane informacje o ataku na Rynku Głównym w Krakowie 7 listopada 2026 r. – mapa, chronologia, komunikaty policji i prokuratury.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f5f2; --surface:#ffffff; --ink:#1c1c1e; --muted:#5f5f66; --line:#e2e0da;
+  --accent:#8a1c1c; --official:#1f4e79; --media:#6b5b2e; --denied:#7a3e9d; --ok:#2e6b3a;
+  --chip:#efede7;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141416; --surface:#1d1d20; --ink:#ececee; --muted:#a3a3ab; --line:#2f2f34;
+    --accent:#e06a6a; --official:#7fb2e5; --media:#d1b979; --denied:#c49be0; --ok:#84c493; --chip:#26262a;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141416; --surface:#1d1d20; --ink:#ececee; --muted:#a3a3ab; --line:#2f2f34;
+  --accent:#e06a6a; --official:#7fb2e5; --media:#d1b979; --denied:#c49be0; --ok:#84c493; --chip:#26262a;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif}
+a{color:var(--official)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+header{border-top:6px solid #111;padding:28px 0 18px;border-bottom:1px solid var(--line)}
+.mourning{display:inline-block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-size:clamp(28px,5vw,44px);line-height:1.15;margin:6px 0 10px}
+h2{font-family:"Source Serif 4",Georgia,serif;font-size:26px;margin:40px 0 12px}
+h3{font-size:15px;margin:0 0 6px}
+.lead{color:var(--muted);max-width:760px;margin:0}
+.updated{font-size:13px;color:var(--muted);margin-top:10px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:24px 0 0}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px}
+.stat b{display:block;font-family:"Source Serif 4",serif;font-size:32px;line-height:1.1}
+.stat span{font-size:13px;color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px}
+#map{height:520px;border-radius:12px;border:1px solid var(--line)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--muted);margin-top:10px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:760px){.grid2{grid-template-columns:1fr} #map{height:420px}}
+ul.facts{margin:0;padding-left:18px} ul.facts li{margin:4px 0}
+.tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:999px;background:var(--chip);margin-left:6px;vertical-align:1px}
+.tag.o{color:var(--official)} .tag.m{color:var(--media)} .tag.d{color:var(--denied)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.filters button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.timeline{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.timeline li{position:relative;padding:0 0 18px 20px}
+.timeline li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--muted)}
+.timeline li.o::before{border-color:var(--official)} .timeline li.d::before{border-color:var(--denied)} .timeline li.m::before{border-color:var(--media)}
+.timeline .t{font-weight:600;font-variant-numeric:tabular-nums}
+.timeline .day{font-size:12px;color:var(--muted);margin-left:6px}
+.timeline .src{font-size:13px;color:var(--muted)}
+.denied li{margin:6px 0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.help{border-left:4px solid var(--ok)}
+footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
+.leaflet-popup-content{font:14px/1.45 Inter,system-ui,sans-serif}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <span class="mourning">Żałoba narodowa · 8–9 listopada 2026</span>
+    <h1>Atak na Rynku Głównym w Krakowie — co wiadomo na pewno</h1>
+    <p class="lead">Zebrane i sprawdzone informacje o ataku z soboty 7 listopada 2026 r. Każda informacja ma źródło i oznaczenie, czy pochodzi z oficjalnego komunikatu (policja, prokuratura, wojewoda, MSWiA), czy z ustaleń mediów. Osobno wypisane są informacje zdementowane.</p>
+    <p class="updated">Stan na: niedziela 8 listopada 2026, ok. 16:00</p>
+    <div class="stats">
+      <div class="stat"><b>6</b><span>ofiar śmiertelnych w Krakowie (4 kobiety, 2 mężczyzn)</span></div>
+      <div class="stat"><b>16</b><span>rannych, w tym 2 policjantów i sprawca</span></div>
+      <div class="stat"><b>3</b><span>ciała w mieszkaniu sprawcy w Ostrowcu Św.</span></div>
+      <div class="stat"><b>23 s</b><span>od zgłoszenia do startu pierwszego patrolu</span></div>
+      <div class="stat"><b>1146</b><span>policjantów w akcji (wg wojewody)</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <h2>Mapa zdarzenia</h2>
+  <div id="map" role="region" aria-label="Mapa miejsc zdarzenia"></div>
+  <div class="legend">
+    <span><i style="background:#8a1c1c"></i>miejsce strzałów</span>
+    <span><i style="background:#1f4e79"></i>zatrzymanie sprawcy</span>
+    <span><i style="background:#2e6b3a"></i>szpital / pomoc</span>
+    <span><i style="background:#6b5b2e"></i>inne</span>
+    <span><span style="display:inline-block;width:22px;border-top:3px dashed #8a1c1c;vertical-align:4px;margin-right:6px"></span>trasa przejazdu (przybliżona)</span>
+  </div>
+  <p class="src" style="font-size:13px;color:var(--muted)">Trasa jest odtworzona z opisu policji i prokuratury (wjazd od ul. Sławkowskiej → objazd płyty Rynku → ul. Grodzka → pod Wawelem → ul. Stradomska → skrzyżowanie z ul. Dietla). Dokładny tor jazdy po płycie Rynku nie został podany.</p>
+
+  <h2>Najważniejsze fakty</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>Przebieg</h3>
+      <ul class="facts">
+        <li>Sobota, 7.11, ok. 15:00 — samochód wjechał na Rynek Główny od strony ul. Sławkowskiej; kierowca otworzył ogień do przypadkowych osób z broni długiej. <span class="tag o">policja</span></li>
+        <li>Napastnik objechał płytę Rynku i uciekł w stronę Kazimierza. <span class="tag o">prokuratura</span></li>
+        <li>Został postrzelony i zatrzymany przez policjantów na skrzyżowaniu Stradomskiej i Dietla (ok. 1,5 km od Rynku). Wcześniej doszło do wymiany ognia. <span class="tag o">policja</span></li>
+        <li>Według komendanta głównego policji wymiana ognia nastąpiła ok. 3 minuty po pierwszym zgłoszeniu. <span class="tag o">KGP</span></li>
+        <li>Ostrzelany został też tramwaj linii 1 (rozbita szyba kabiny, bez rannych). <span class="tag m">urząd miasta</span></li>
+        <li>Sprawca był ubrany w strój stylizowany na wojskowy, był zamaskowany. <span class="tag o">policja</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Sprawca</h3>
+      <ul class="facts">
+        <li>24-letni obywatel Polski, mieszkaniec woj. świętokrzyskiego (Ostrowiec Świętokrzyski). <span class="tag o">policja</span></li>
+        <li>Miał pozwolenie na broń; wcześniej niekarany i nienotowany. <span class="tag o">KGP</span></li>
+        <li>Strzelał z cywilnej wersji karabinka AR-15; w aucie było prawdopodobnie 5 jednostek broni i amunicja. <span class="tag o">KGP</span></li>
+        <li>Nigdy nie był żołnierzem WP. <span class="tag o">MON</span></li>
+        <li>W jego mieszkaniu znaleziono ciała ojca (53), matki (52) i siostry (media podają 20 lub 21 lat) z ranami postrzałowymi. <span class="tag o">KGP / prokuratura</span></li>
+        <li>Stan: krytyczny / ciężki, po operacjach; pilnowany w szpitalu. Nie został jeszcze przesłuchany. <span class="tag o">wojewoda / prokuratura</span></li>
+        <li>Szef MSWiA: wiele wskazuje na fascynację ideologiami skrajnie prawicowymi — to będzie weryfikowane. <span class="tag o">MSWiA</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Ofiary i ranni</h3>
+      <ul class="facts">
+        <li>Zginęło 6 osób: Polki w wieku 61, 47 i 53 lat, 32-letni obywatel Wielkiej Brytanii, 51-letnia cudzoziemka oraz ok. 50-letni Polak. <span class="tag o">wojewoda</span></li>
+        <li>16 rannych, w tym 2 policjantów i sprawca; 11 Polaków i 5 cudzoziemców (m.in. z Wielkiej Brytanii, Portugalii, Rosji, Niemiec, Austrii). <span class="tag o">KGP / wojewoda</span></li>
+        <li>Ranni trafili do 6 krakowskich szpitali, m.in. Szpitala Uniwersyteckiego. Wszyscy, którzy trafili do szpitali, przeżyli; 2 osoby już wypisano. <span class="tag o">wojewoda / policja</span></li>
+        <li>Wśród rannych są dorożkarze; 2 konie odniosły lekkie obrażenia. <span class="tag m">Stow. Dorożkarzy</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Policjanci</h3>
+      <ul class="facts">
+        <li>Sprawcę zatrzymali st. post. Jakub Kulik i st. post. Artur Morański — obaj ranni (jeden 1 rana, drugi 3 rany postrzałowe). <span class="tag o">premier / MSWiA</span></li>
+        <li>Niedziela rano: stan jednego stabilny, drugiego ciężki, ale stabilny; jeden został wybudzony ze śpiączki. <span class="tag o">MSWiA / policja</span></li>
+        <li>Apel o krew AB Rh+ dla Jakuba Kulika — można oddać w każdej stacji krwiodawstwa w Polsce, wskazując, dla kogo. <span class="tag o">policja</span></li>
+        <li>RCKiK Kraków: krwi dla poszkodowanych nie brakuje. <span class="tag o">RCKiK</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Śledztwo</h3>
+      <ul class="facts">
+        <li>8.11 Prokuratura Krajowa (Wydział Zamiejscowy Departamentu ds. Przestępczości Zorganizowanej i Korupcji w Krakowie) wszczęła śledztwo. <span class="tag o">PK</span></li>
+        <li>Obejmuje zabójstwo 6 osób i usiłowanie zabójstwa wielu innych w Krakowie — jako przestępstwo o charakterze terrorystycznym — oraz zabójstwo 3 osób w Ostrowcu Św. (art. 148 § 3 kk). Wszystkie czyny według prokuratury popełniła ta sama osoba. <span class="tag o">PK</span></li>
+        <li>Śledczy sprawdzają, czy ktoś pomagał w przygotowaniu ataku. Według MSWiA nie ma podstaw, by mówić o kolejnych sprawcach. <span class="tag o">PK / MSWiA</span></li>
+        <li>Zarzutów jeszcze nie przedstawiono (stan sprawcy na to nie pozwala). <span class="tag o">prokuratura</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Miasto i kraj</h3>
+      <ul class="facts">
+        <li>Żałoba narodowa 8–9 listopada (rozporządzenie prezydenta); żałoba w Krakowie do 11 listopada. <span class="tag o">KPRP / prezydent Krakowa</span></li>
+        <li>Hejnał mariacki przerwany na 12 godzin — pierwszy raz od 1939 r. Wrócił w niedzielę o 9:00. <span class="tag o">PSP</span></li>
+        <li>W niedzielę ponowne oględziny: zamknięte Rynek i przyległe ulice oraz trasa ucieczki (Grodzka, pl. Wszystkich Świętych, Stradomska, Gertrudy, skrzyżowanie Dietla/Stradomska) — na kilka godzin. <span class="tag o">policja</span></li>
+        <li>Bazylika Mariacka zamknięta do południa; msza w intencji ofiar w niedzielę o 16:00. <span class="tag m">parafia / kuria</span></li>
+        <li>Świadkowie mogą zgłaszać się do każdej jednostki policji; zgłosiło się już ponad 100 osób. <span class="tag o">policja</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Zdementowane informacje</h2>
+  <div class="card">
+    <ul class="denied">
+      <li><b>„Było dwóch sprawców”</b> — wstępna informacja KMP Kraków (ok. 17:20) zdementowana przez KWP Kraków: jedyny znany sprawca jest w rękach policji. <span class="tag d">zdementowane</span></li>
+      <li><b>„Zginął policjant”</b> — nieprawda, obaj policjanci żyją. <span class="tag d">zdementowane</span></li>
+      <li><b>„Sprawca był żołnierzem”</b> — MON: nigdy nie był żołnierzem WP i nie miał nic wspólnego z wojskiem. <span class="tag d">zdementowane</span></li>
+      <li><b>„Policja zareagowała późno”</b> — pierwszy patrol ruszył 23 sekundy po zgłoszeniu. <span class="tag d">zdementowane</span></li>
+      <li><b>„Ktoś biega po dachu Kościoła Mariackiego”</b> — nieprawda. <span class="tag d">zdementowane</span></li>
+      <li><b>„Brakuje krwi dla rannych”</b> — RCKiK: zapasy są wystarczające. <span class="tag d">zdementowane</span></li>
+      <li><b>Noc z soboty na niedzielę, ul. Kapelanka</b> — interwencja wobec mężczyzny z nożem (strzały ostrzegawcze) nie miała związku z atakiem. <span class="tag d">brak związku</span></li>
+    </ul>
+    <p style="font-size:14px;color:var(--muted);margin-bottom:0">Ministerstwo Cyfryzacji i MSWiA apelują: przed udostępnieniem sensacyjnej informacji sprawdź, czy potwierdziło ją oficjalne źródło.</p>
+  </div>
+
+  <h2>Chronologia</h2>
+  <div class="filters" role="group" aria-label="Filtr chronologii">
+    <button data-f="all" aria-pressed="true">Wszystko</button>
+    <button data-f="o" aria-pressed="false">Tylko oficjalne</button>
+    <button data-f="d" aria-pressed="false">Dementi</button>
+  </div>
+  <ul class="timeline" id="timeline"></ul>
+
+  <h2>Oficjalne konta do śledzenia</h2>
+  <div class="card">
+    <table>
+      <thead><tr><th>Konto na X</th><th>Kto</th></tr></thead>
+      <tbody>
+        <tr><td><a href="https://x.com/policja_mpl" target="_blank" rel="noopener">@policja_mpl</a></td><td>Małopolska Policja (KWP Kraków)</td></tr>
+        <tr><td><a href="https://x.com/PolskaPolicja" target="_blank" rel="noopener">@PolskaPolicja</a></td><td>Komenda Główna Policji</td></tr>
+        <tr><td><a href="https://x.com/PK_GOV_PL" target="_blank" rel="noopener">@PK_GOV_PL</a></td><td>Prokuratura Krajowa</td></tr>
+        <tr><td><a href="https://x.com/MSWiA_GOV_PL" target="_blank" rel="noopener">@MSWiA_GOV_PL</a></td><td>Ministerstwo Spraw Wewnętrznych i Administracji</td></tr>
+        <tr><td><a href="https://www.krakow.pl/aktualnosci" target="_blank" rel="noopener">krakow.pl</a></td><td>Oficjalny serwis miasta (komunikaty, utrudnienia)</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:var(--muted);margin:10px 0 0">Wpisy z X na tej stronie są przytoczone za relacjami mediów, które je osadzały (X nie udostępnia treści bez logowania). Nazwy kont sprawdź przed obserwowaniem.</p>
+  </div>
+
+  <h2>Pomoc</h2>
+  <div class="card help">
+    <ul class="facts">
+      <li>Ośrodek Interwencji Kryzysowej w Krakowie: <b>12 421 92 82</b></li>
+      <li>Telefon zaufania dla dorosłych: <b>116 123</b> · dla dzieci i młodzieży: <b>116 111</b></li>
+      <li>Krew dla st. post. Jakuba Kulika: grupa <b>AB Rh+</b>, dowolna stacja krwiodawstwa w Polsce</li>
+      <li>Świadkowie: najbliższa jednostka policji</li>
+    </ul>
+  </div>
+
+  <h2>Źródła</h2>
+  <div class="card">
+    <ul class="facts" id="sources"></ul>
+  </div>
+
+</main>
+
+<footer class="wrap">
+  Strona zbiera informacje z oficjalnych komunikatów i relacji mediów. Nie publikuje nazwisk ofiar ani zdjęć z miejsca zdarzenia. W razie rozbieżności decyduje najnowszy oficjalny komunikat.
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+/* ---------- MAPA ---------- */
+const map = L.map('map',{scrollWheelZoom:false}).setView([50.0575,19.9395],15);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  maxZoom:19, attribution:'&copy; OpenStreetMap'
+}).addTo(map);
+
+const C = {shot:'#8a1c1c', arrest:'#1f4e79', help:'#2e6b3a', other:'#6b5b2e'};
+function pin(lat,lng,color,html,r=9){
+  return L.circleMarker([lat,lng],{radius:r,color:'#fff',weight:2,fillColor:color,fillOpacity:.95})
+    .addTo(map).bindPopup(html);
+}
+
+pin(50.0627,19.9373,C.shot,'<b>Wjazd od ul. Sławkowskiej</b><br>Ok. 15:00–15:03 samochód wjeżdża na Rynek; tu padły pierwsze strzały do przypadkowych osób.',11);
+pin(50.0617,19.9372,C.shot,'<b>Płyta Rynku Głównego</b><br>Napastnik objechał płytę Rynku, strzelając m.in. w stronę uciekających ludzi i postoju dorożek. Zginęło 6 osób.',11);
+pin(50.0595,19.9378,C.other,'<b>Plac Wszystkich Świętych / Grodzka</b><br>Trasa ucieczki; w niedzielę zamknięta podczas oględzin.');
+pin(50.0553,19.9384,C.other,'<b>Grodzka — pod Wawelem</b><br>Trasa ucieczki w stronę Kazimierza.');
+pin(50.0519,19.9412,C.arrest,'<b>Skrzyżowanie Stradomskiej i Dietla</b><br>Tu policjanci zatrzymali i postrzelili sprawcę po wymianie ognia. Samochód sprawcy zderzył się z innym pojazdem. Wieczorem sprawdzenie pirotechniczne auta i ewakuacja okolicznych budynków.',11);
+pin(50.0154,20.0027,C.help,'<b>Szpital Uniwersytecki (Prokocim)</b><br>Trafiła tu część rannych. Łącznie ranni trafili do 6 krakowskich szpitali.');
+pin(50.0613,19.9389,C.help,'<b>Autobus policji dla świadków</b><br>W sobotę wieczorem na Rynku stanął autobus, w którym przyjmowano zgłoszenia świadków. (Lokalizacja przybliżona.)',7);
+
+// trasa przybliżona
+const route = [
+  [50.0640,19.9370],[50.0627,19.9373],[50.0622,19.9385],[50.0612,19.9392],
+  [50.0606,19.9378],[50.0614,19.9358],[50.0608,19.9365],[50.0601,19.9375],
+  [50.0595,19.9378],[50.0575,19.9381],[50.0553,19.9384],[50.0541,19.9393],
+  [50.0530,19.9402],[50.0519,19.9412]
+];
+L.polyline(route,{color:C.shot,weight:4,dashArray:'8 8',opacity:.85}).addTo(map)
+ .bindPopup('<b>Trasa przejazdu (przybliżona)</b><br>Sławkowska → Rynek → Grodzka → pod Wawelem → Stradomska → Dietla. Ok. 1,5 km.');
+
+// Ostrowiec – informacja w rogu
+const info = L.control({position:'bottomleft'});
+info.onAdd = function(){
+  const d = L.DomUtil.create('div');
+  d.style.cssText='background:#fff;color:#1c1c1e;padding:8px 10px;border-radius:8px;font:13px/1.4 Inter,sans-serif;max-width:220px;box-shadow:0 1px 4px rgba(0,0,0,.2)';
+  d.innerHTML='<b>Ostrowiec Świętokrzyski</b> (ok. 150 km od Krakowa): w mieszkaniu sprawcy znaleziono ciała 3 członków jego rodziny.';
+  return d;
+};
+info.addTo(map);
+
+/* ---------- CHRONOLOGIA ---------- */
+// t = typ: o = oficjalne, m = media, d = dementi
+const TL = [
+  ['sob','~15:00','o','Samochód wjeżdża na Rynek Główny od ul. Sławkowskiej, padają strzały do przypadkowych osób.','Małopolska Policja'],
+  ['sob','15:03','m','Pierwsze strzały odnotowane przy ul. Sławkowskiej.','Interia'],
+  ['sob','~15:03','o','Pierwszy patrol rusza 23 s po zgłoszeniu; po ok. 3 min wymiana ognia ze sprawcą.','KWP Kraków / KGP'],
+  ['sob','15:56','o','Straż pożarna: okolice Rynku to wciąż „strefa gorąca”, nie zbliżać się.','PSP'],
+  ['sob','16:05','o','PSP: 2 ofiary śmiertelne, 10 rannych; sprawca zatrzymany. Strzały z auta jadącego od Sławkowskiej.','PSP Kraków'],
+  ['sob','16:06','o','Wpis policji na X: ok. 15:00 mężczyzna z samochodu strzelał do przypadkowych osób, sprawca zatrzymany, ranni policjanci.','@policja_mpl'],
+  ['sob','16:18','o','Policja: 5 osób nie żyje, kilkanaście rannych; sprawca postrzelony, przewożony do szpitala.','@policja_mpl'],
+  ['sob','16:37','o','Rzeczniczka KWP: jeden sprawca, broń długa typu wojskowego, w aucie dużo innej broni i amunicji. Centrum jest bezpieczne.','KWP Kraków'],
+  ['sob','17:21','o','Prezydent Krakowa: w magistracie działa sztab kryzysowy.','Ł. Gibała, X'],
+  ['sob','17:22','m','KMP Kraków (dla PAP): wstępnie dwóch sprawców — informacja później zdementowana.','PAP'],
+  ['sob','17:39','d','KWP dementuje: nie ma drugiego sprawcy ani zabitego policjanta; sprawca jest obywatelem RP.','@policja_mpl'],
+  ['sob','17:41','o','Szef MSWiA: jeden policjant z raną postrzałową, drugi z 3 ranami — w stanie bardzo ciężkim.','M. Kierwiński, X'],
+  ['sob','18:00','o','Urząd Wojewódzki: liczba ofiar śmiertelnych wzrosła do 6.','MUW Kraków'],
+  ['sob','18:18','o','Ofiary to 4 kobiety i 2 mężczyzn.','Policja'],
+  ['sob','18:25','o','Prezydent Krakowa ogłasza żałobę w mieście do 11 listopada.','Ł. Gibała, X'],
+  ['sob','18:35','o','Sprawca to 24-letni mieszkaniec woj. świętokrzyskiego.','Małopolska Policja'],
+  ['sob','18:55','o','Prokuratura: sprawca objechał płytę Rynku i uciekł w stronę Kazimierza, gdzie został zatrzymany.','Prok. Okręgowa Kraków'],
+  ['sob','19:25','d','MON dementuje: sprawca nie był żołnierzem.','W. Kosiniak-Kamysz, X'],
+  ['sob','19:27','o','KGP: pozwolenie na broń, niekarany, cywilny AR-15.','KGP (TVN24)'],
+  ['sob','19:40','d','Policja dementuje zarzut późnej reakcji: 23 sekundy.','@policja_mpl'],
+  ['sob','20:03','o','Apel do świadków; autobus policji na Rynku.','@policja_mpl'],
+  ['sob','20:15','o','Konferencja MON/MSWiA/MS: zamach, reakcja policji zapobiegła większej masakrze; brak podstaw do mówienia o kolejnych sprawcach.','MSWiA'],
+  ['sob','20:41','o','Szef MSWiA: sprawca prawdopodobnie zafascynowany ideologiami skrajnie prawicowymi — do weryfikacji.','MSWiA'],
+  ['sob','20:59','o','Sprawdzenie pirotechniczne auta przy Dietla/Stradomskiej, ewakuacja okolicznych budynków.','@policja_mpl'],
+  ['sob','21:00','o','Hejnał mariacki przerwany na 12 godzin — pierwszy raz od 1939 r.','PSP'],
+  ['sob','21:24','d','Policja dementuje informację o osobie na dachu Kościoła Mariackiego.','@policja_mpl'],
+  ['sob','21:41','o','Premier: auto sprawcy nie stanowi zagrożenia pirotechnicznego.','KPRM'],
+  ['sob','21:49','o','Komendant główny: 16 rannych (11 Polaków, 5 cudzoziemców), 6 zabitych, w tym obywatel Wielkiej Brytanii.','KGP'],
+  ['sob','21:52','o','Premier: w domu sprawcy znaleziono ciała dwóch kobiet i mężczyzny.','KPRM'],
+  ['sob','22:38','o','Premier podaje nazwiska rannych policjantów: Jakub Kulik i Artur Morański.','D. Tusk, X'],
+  ['sob','23:04','o','Prezydent podpisuje rozporządzenie o żałobie narodowej 8–9 listopada.','KPRP'],
+  ['sob','23:20','m','Ostrzelany był też tramwaj linii 1 — bez rannych.','Urząd Miasta'],
+  ['nd','00:39','m','Koniec ewakuacji bloku sprawcy w Ostrowcu Świętokrzyskim.','TVN24'],
+  ['nd','07:41','o','KGP: w mieszkaniu ciała ojca (53), matki (52) i siostry sprawcy; rany postrzałowe. W aucie prawdopodobnie 5 jednostek broni.','KGP'],
+  ['nd','08:33','o','Apel policji o krew AB Rh+ dla Jakuba Kulika.','Policja, X'],
+  ['nd','08:55','o','MSWiA: jeden policjant w stanie stabilnym, drugi ciężkim, ale stabilnym.','MSWiA'],
+  ['nd','09:00','o','Hejnał znów rozbrzmiewa z wieży Mariackiej.','PSP'],
+  ['nd','09:10','o','Policja zapowiada ponowne zamknięcie Rynku i oględziny w świetle dziennym.','KWP Kraków'],
+  ['nd','09:28','o','Dwie ranne osoby wypisane; jeden z policjantów wybudzony ze śpiączki.','KWP Kraków'],
+  ['nd','09:32','d','RCKiK: krwi dla poszkodowanych nie brakuje.','RCKiK Kraków'],
+  ['nd','09:37','o','Wojewoda: wszyscy, którzy trafili do szpitali, przeżyli; w akcji 1146 policjantów.','Wojewoda małopolski'],
+  ['nd','09:43','o','Wojewoda podaje wiek i obywatelstwo zabitych.','Wojewoda małopolski'],
+  ['nd','~10:00','o','Policja na X: zamknięte Rynek, Grodzka, pl. Wszystkich Świętych, Stradomska, Gertrudy, Dietla/Stradomska.','@policja_mpl'],
+  ['nd','~11:00','o','Prokuratura Krajowa wszczyna śledztwo — przestępstwo o charakterze terrorystycznym + zabójstwo 3 osób w Ostrowcu.','@PK_GOV_PL'],
+  ['nd','16:00','m','Msza w Bazylice Mariackiej w intencji ofiar.','Archidiecezja krakowska'],
+];
+const tlEl = document.getElementById('timeline');
+const label = {o:'oficjalne',m:'media',d:'dementi'};
+function renderTL(f){
+  tlEl.innerHTML = TL.filter(e=>f==='all'||e[2]===f).map(e=>
+    `<li class="${e[2]}"><span class="t">${e[1]}</span><span class="day">${e[0]==='sob'?'sob. 7.11':'niedz. 8.11'}</span><span class="tag ${e[2]}">${label[e[2]]}</span><br>${e[3]}<br><span class="src">Źródło: ${e[4]}</span></li>`
+  ).join('');
+}
+renderTL('all');
+document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.filters button').forEach(x=>x.setAttribute('aria-pressed','false'));
+  b.setAttribute('aria-pressed','true'); renderTL(b.dataset.f);
+}));
+
+/* ---------- ŹRÓDŁA ---------- */
+const SRC = [
+  ['TVN24 – relacja na żywo','https://tvn24.pl/krakow/krakow-strzelanina-na-rynku-st9327846'],
+  ['TVN24 – śledztwo, motyw terrorystyczny','https://tvn24.pl/krakow/krakow-sledztwo-w-sprawie-ataku-w-krakowie-wstepne-ustalenia-wskazuja-na-motyw-terrorystyczny-st9328556'],
+  ['Zero.pl – najnowsze','https://zero.pl/najnowsze'],
+  ['Zero.pl – policja o sprawcy','https://zero.pl/news/policja-przekazala-informacje-o-sprawcy-strzelaniny-w-krakowie-mial-caly-arsenal'],
+  ['Onet – relacja (wskazana przez autora strony)','https://wiadomosci.onet.pl/krakow/strzelanina-w-krakowie-najnowsze-informacje-relacja/p16e8gh'],
+  ['Rzeczpospolita – wszystko, co wiemy','https://www.rp.pl/przestepczosc/art45459311-strzelanina-w-krakowie-wszystko-co-wiemy-na-te-chwile'],
+  ['Rzeczpospolita – śledztwo Prokuratury Krajowej','https://www.rp.pl/prawo-karne/art45460211-prokuratura-wszczela-sledztwo-ws-zamachu-w-krakowie'],
+  ['Interia – nowe informacje o napastniku','https://wydarzenia.interia.pl/kraj/news-strzelanina-w-krakowie-nowe-informacje-o-napastniku,nId,23570599'],
+  ['Polsat News – policja nie szuka drugiego sprawcy','https://www.polsatnews.pl/wiadomosc/2026-11-07/policja-sprawcow-strzelaniny-w-krakowie-bylo-dwoch/'],
+  ['RMF24 – komunikat „23 sekundy”','https://www.rmf24.pl/regiony/krakow/news-komunikat-policji-po-strzelaninie-w-krakowie-23-sekundy-po-z,nIdn,1025273'],
+  ['TVP Kraków','https://krakow.tvp.pl/96358338/strzelanina-w-krakowie-szesc-osob-nie-zyje-kilkanascie-rannych'],
+  ['Magiczny Kraków – komunikat miasta','https://krakow.pl/aktualnosci/345151,29,komunikat,strzelanina_w_centrum_krakowa__sa_zabici_i_ranni.html'],
+];
+document.getElementById('sources').innerHTML = SRC.map(s=>`<li><a href="${s[1]}" target="_blank" rel="noopener">${s[0]}</a></li>`).join('');
+</script>
+</body>
+</html>
