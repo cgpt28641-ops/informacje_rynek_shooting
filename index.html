@@ -111,6 +111,7 @@ h3{font-size:15px;margin:0 0 6px}
 .player select{font:inherit;font-size:13px;padding:4px 8px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink)}
 .mapstat{font-size:13px;color:var(--muted);margin:8px 0 0}
 .legend .ln{display:inline-block;width:24px;vertical-align:4px;margin-right:6px}
+.darktiles{filter:invert(1) hue-rotate(180deg) brightness(.9) contrast(.9)}
 .carpin{width:30px;height:30px;border-radius:50%;background:#111;border:3px solid #fff;box-shadow:0 0 0 3px rgba(138,28,28,.6),0 2px 6px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px}
 .carpin span{display:inline-block;transition:transform .1s linear}
 .legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--muted);margin-top:10px}
@@ -492,17 +493,18 @@ const LAST_UPDATE = '2026-11-09T12:30:00+01:00';
 const C = {shot:'#8a1c1c', arrest:'#1f4e79', help:'#2e6b3a', other:'#6b5b2e', closed:'#e08a1b'};
 const map = L.map('map',{scrollWheelZoom:false,zoomSnap:.5});
 const baseOSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'});
-const baseLight = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{maxZoom:20,subdomains:'abcd',attribution:'&copy; OpenStreetMap &copy; CARTO'});
-const baseDark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:20,subdomains:'abcd',attribution:'&copy; OpenStreetMap &copy; CARTO'});
+const baseDark = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,className:'darktiles',attribution:'&copy; OpenStreetMap'});
 const baseSat = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Zdjęcia &copy; Esri'});
+const baseSatLbl = L.layerGroup([L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Zdjęcia &copy; Esri'}),L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}',{maxZoom:19})]);
+const baseLight = baseOSM;
 const isDark = () => document.documentElement.dataset.theme ? document.documentElement.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-(isDark()?baseDark:baseLight).addTo(map);
+(isDark()?baseDark:baseOSM).addTo(map);
 map.fitBounds([[50.0642,19.9335],[50.0512,19.9435]]);
 L.control.scale({imperial:false}).addTo(map);
 
 const gRoute=L.layerGroup().addTo(map), gPins=L.layerGroup().addTo(map), gClosed=L.layerGroup(), gHelp=L.layerGroup().addTo(map);
 L.control.layers(
-  {'Jasna':baseLight,'Ciemna':baseDark,'OpenStreetMap':baseOSM,'Satelita':baseSat},
+  {'Mapa':baseOSM,'Mapa ciemna':baseDark,'Satelita':baseSat,'Satelita + ulice':baseSatLbl},
   {'Trasa i odtwarzanie':gRoute,'Punkty 1–4':gPins,'Zamknięcia ulic 8.11 (zniesione)':gClosed,'Szpital':gHelp},
   {collapsed:true}
 ).addTo(map);
@@ -511,15 +513,24 @@ L.circleMarker([50.0154,20.0027],{radius:8,color:'#fff',weight:2,fillColor:C.hel
   .bindPopup('<b>Szpital Uniwersytecki (Prokocim)</b><br>Trafiła tu część rannych. Łącznie ranni trafili do 6 krakowskich szpitali.');
 
 // Punkty zapasowe (gdy OSM niedostępne)
+// Punkty kontrolne (współrzędne adresów wg Targeo): Sławkowska 1, Grodzka 1, Grodzka 60, Stradomska 2, Stradomska 31
 const FB = {
-  approach:[50.06390,19.93705], slawEntry:[50.06283,19.93734], rynek:[50.06150,19.93660],
-  grodzkaStart:[50.06048,19.93770], plWS:[50.05920,19.93800], arrest:[50.05225,19.94105]
+  approach:[50.06405,19.93695],      // Sławkowska, ok. 120 m przed Rynkiem
+  slawEntry:[50.06300,19.93719],     // Sławkowska 1 — wylot na Rynek
+  rynek:[50.06135,19.93612],         // zachodnia część płyty (tor przybliżony)
+  grodzkaStart:[50.06010,19.93751],  // Grodzka 1 — wyjazd z Rynku
+  plWS:[50.05915,19.93775],          // pl. Wszystkich Świętych
+  grodzkaEnd:[50.05546,19.93853],    // Grodzka 60
+  stradStart:[50.05400,19.93954],    // Stradomska 2
+  strad31:[50.05268,19.94047],       // Stradomska 31
+  arrest:[50.05225,19.94082]         // Stradomska / Dietla (przybliżone)
 };
 const FB_ROUTE = {
   a:[FB.approach,FB.slawEntry],
-  r:[FB.slawEntry,[50.0624,19.9368],[50.0614,19.9360],[50.0606,19.9368],FB.grodzkaStart],
-  e:[FB.grodzkaStart,FB.plWS,[50.0568,19.9384],[50.0550,19.9381],[50.0545,19.9390],[50.0533,19.9400],FB.arrest]
+  r:[FB.slawEntry,[50.06272,19.93660],FB.rynek,[50.06062,19.93640],[50.06025,19.93700],FB.grodzkaStart],
+  e:[FB.grodzkaStart,FB.plWS,[50.05760,19.93810],FB.grodzkaEnd,FB.stradStart,FB.strad31,FB.arrest]
 };
+const RYNEK_POLY=[[50.06305,19.93610],[50.06300,19.93900],[50.06065,19.93915],[50.06040,19.93590]];
 
 const hav=(a,b)=>{const R=6371000,toR=Math.PI/180,dLa=(b[0]-a[0])*toR,dLo=(b[1]-a[1])*toR;
   const x=Math.sin(dLa/2)**2+Math.cos(a[0]*toR)*Math.cos(b[0]*toR)*Math.sin(dLo/2)**2;return 2*R*Math.asin(Math.sqrt(x));};
@@ -604,7 +615,7 @@ function buildRoute(segA,segR,segE,P,fromOSM){
   };
   document.getElementById('mapstat').innerHTML = fromOSM
     ? `Trasa wyznaczona po sieci ulic OpenStreetMap: <b>${fmtM(TOTAL)}</b> (w tym ok. ${fmtM(lR)} po płycie Rynku — przybliżone, ${fmtM(lE)} od wyjazdu z Rynku do miejsca zatrzymania).`
-    : `Nie udało się pobrać danych OpenStreetMap — pokazano trasę przybliżoną (ok. ${fmtM(TOTAL)}).`;
+    : `Trasa wg współrzędnych adresów (ok. ${fmtM(TOTAL)}) — trwa pobieranie dokładnej sieci ulic z OpenStreetMap…`;
   prog=0; render(); evcap.classList.remove('show');
   map.fitBounds(trailAll.getBounds().pad(0.12));
 }
@@ -627,12 +638,24 @@ document.getElementById('mapfs').addEventListener('click',()=>{
 addEventListener('keydown',e=>{ if(e.key==='Escape'&&mw.classList.contains('fs')) document.getElementById('mapfs').click(); });
 
 /* ---- Routing po sieci ulic OSM (Dijkstra) ---- */
-const Q = `[out:json][timeout:25];
+const Q_SMALL = `[out:json][timeout:20];
 (
- way["highway"]["highway"!~"^(footway|steps|cycleway|path|corridor|elevator|platform|construction|proposed|bridleway|track)$"](50.0500,19.9300,50.0660,19.9470);
+ way["highway"]["name"~"^(Sławkowska|Rynek Główny|Grodzka|Stradomska|Józefa Dietla|[Pp]lac Wszystkich Świętych|Gertrudy|Podzamcze|Świętego Idziego)$"](50.0500,19.9300,50.0660,19.9470);
  relation["name"="Rynek Główny"](50.059,19.933,50.064,19.941);
 );
 out body geom;`;
+const Q_FULL = Q_SMALL.replace('way["highway"]["name"~"^(Sławkowska|Rynek Główny|Grodzka|Stradomska|Józefa Dietla|[Pp]lac Wszystkich Świętych|Gertrudy|Podzamcze|Świętego Idziego)$"]','way["highway"]["highway"!~"^(footway|steps|cycleway|path|corridor|elevator|platform|construction|proposed|bridleway|track)$"]');
+const OVERPASS=['https://overpass-api.de/api/interpreter','https://overpass.private.coffee/api/interpreter','https://maps.mail.ru/osm/tools/overpass/api/interpreter','https://overpass.kumi.systems/api/interpreter'];
+async function overpass(q){
+  for(const url of OVERPASS){
+    try{
+      const ctl=new AbortController(); const to=setTimeout(()=>ctl.abort(),9000);
+      const r=await fetch(url+'?data='+encodeURIComponent(q),{signal:ctl.signal}); clearTimeout(to);
+      if(!r.ok) continue; const j=await r.json(); if(j&&j.elements&&j.elements.length) return j;
+    }catch(e){}
+  }
+  throw new Error('overpass');
+}
 const PREF=/^(Sławkowska|Rynek Główny|Grodzka|Stradomska|[Pp]lac Wszystkich Świętych)$/;
 
 function dijkstra(G,s,t){
@@ -645,9 +668,7 @@ function dijkstra(G,s,t){
   const path=[t]; while(path[0]!==s) path.unshift(prev.get(path[0])); return path;
 }
 
-fetch('https://overpass-api.de/api/interpreter',{method:'POST',body:'data='+encodeURIComponent(Q)})
- .then(r=>{if(!r.ok) throw 0; return r.json();})
- .then(d=>{
+function routeFrom(d){
    const G=new Map(), named={}, rynekPoly=[];
    const node=(id,lat,lon)=>{if(!G.has(id))G.set(id,{ll:[lat,lon],adj:[],names:new Set()});return G.get(id);};
    d.elements.forEach(e=>{
@@ -676,30 +697,56 @@ fetch('https://overpass-api.de/api/interpreter',{method:'POST',body:'data='+enco
    const toLL=p=>p.map(ll);
    const segA=toLL(pA), segR=toLL(pR), segE=toLL(pE);
 
-   // Rynek – strefa ostrzału
-   rynekPoly.forEach(g=>L.polygon(g,{color:C.shot,weight:1,fillColor:C.shot,fillOpacity:.15,interactive:false}).addTo(gRoute));
+   function closures(){
    // Zamknięcia 8.11 (Grodzka, Stradomska, okolice skrzyżowań)
    const wayLines=n=>d.elements.filter(e=>e.type==='way'&&e.tags&&e.tags.name&&n.test(e.tags.name)&&e.tags.area!=='yes'&&e.geometry).map(e=>e.geometry.map(p=>[p.lat,p.lon]));
    wayLines(/^(Grodzka|Stradomska)$/).forEach(g=>L.polyline(g,{color:C.closed,weight:7,opacity:.55}).addTo(gClosed));
    L.circle(ll(xEnd),{radius:60,color:C.closed,weight:2,fillOpacity:.2}).addTo(gClosed);
    const gt=ids('Gertrudy'), stS=new Set(st), xG=gt.find(id=>stS.has(id)); if(xG) L.circle(ll(xG),{radius:40,color:C.closed,weight:2,fillOpacity:.2}).addTo(gClosed);
    gClosed.eachLayer(l=>l.bindPopup('<b>Zamknięcia 8.11</b><br>Na czas ponownych oględzin policja zamknęła Rynek, Grodzką, pl. Wszystkich Świętych, Stradomską i skrzyżowania z Gertrudy i Dietla. Oględziny zakończono o 18:00 — ulice są otwarte.'));
+   }
 
    const mid=segR[Math.floor(segR.length/2)];
    const plWSnode=ids('Plac Wszystkich Świętych').concat(ids('plac Wszystkich Świętych'));
    const stSet=new Set(st), stFirst=pE.find(id=>stSet.has(id));
    const P={slawEntry:ll(sStart), rynek:mid, grodzkaStart:ll(gTop), arrest:ll(xEnd), plWS:plWSnode.length?ll(plWSnode[0]):FB.plWS, stradomska:stFirst?ll(stFirst):null};
-   buildRoute(segA,segR,segE,P,true);
- })
- .catch(()=>{
-   L.circle([50.06167,19.93722],{radius:95,color:C.shot,weight:1,fillColor:C.shot,fillOpacity:.15,interactive:false}).addTo(gRoute);
-   buildRoute(FB_ROUTE.a,FB_ROUTE.r,FB_ROUTE.e,FB,false);
- });
+   // kontrola: wyznaczone punkty muszą leżeć blisko punktów kontrolnych (adresy), inaczej odrzuć
+   const ok = hav(P.slawEntry,FB.slawEntry)<120 && hav(P.grodzkaStart,FB.grodzkaStart)<120 && hav(P.arrest,FB.arrest)<150 && plen(segE)<1600 && plen(segR)<700;
+   if(!ok) throw new Error('sanity');
+   return {segA,segR,segE,P,draw(){
+     rynekPoly.forEach(g=>L.polygon(g,{color:C.shot,weight:1,fillColor:C.shot,fillOpacity:.15,interactive:false}).addTo(gRoute));
+     closures();
+   }};
+}
+const gTmp=L.layerGroup().addTo(gRoute);
+function useFallback(){
+  gTmp.clearLayers(); gClosed.clearLayers();
+  L.polygon(RYNEK_POLY,{color:C.shot,weight:1,fillColor:C.shot,fillOpacity:.15,interactive:false}).addTo(gTmp);
+  L.polyline(FB_ROUTE.e.slice(0,-1).concat([FB.arrest]),{color:C.closed,weight:7,opacity:.55}).addTo(gClosed).bindPopup('<b>Zamknięcia 8.11</b><br>Grodzka, pl. Wszystkich Świętych, Stradomska i skrzyżowania z Gertrudy i Dietla — zamknięte na czas oględzin, otwarte od 18:00.');
+  buildRoute(FB_ROUTE.a,FB_ROUTE.r,FB_ROUTE.e,FB,false);
+}
+(async()=>{
+  const CK='osm-route-v2';
+  let d=null;
+  try{ const c=JSON.parse(localStorage.getItem(CK)||'null'); if(c&&Date.now()-c.t<7*864e5) d=c.d; }catch(e){}
+  if(!d) useFallback();   // od razu pokaż trasę wg adresów, potem podmień na dokładną
+  for(const q of d?[null]:[Q_SMALL,Q_FULL]){
+    try{
+      const data=d||await overpass(q);
+      const res=routeFrom(data);
+      gTmp.clearLayers(); gClosed.clearLayers();
+      res.draw(); buildRoute(res.segA,res.segR,res.segE,res.P,true);
+      try{ if(!d) localStorage.setItem(CK,JSON.stringify({t:Date.now(),d:data})); }catch(e){}
+      return;
+    }catch(e){ d=null; }
+  }
+  document.getElementById('mapstat').innerHTML=`Trasa wg współrzędnych adresów (Sławkowska 1, Grodzka 1 i 60, Stradomska 2 i 31): ok. ${fmtM(TOTAL)}. Dokładnej sieci ulic z OpenStreetMap nie udało się teraz pobrać.`;
+})();
 
 // zmiana motywu → zmiana podkładu (jeśli użytkownik nie wybrał innego)
 new MutationObserver(()=>{
-  if(map.hasLayer(baseLight)||map.hasLayer(baseDark)){
-    const want=isDark()?baseDark:baseLight, other=isDark()?baseLight:baseDark;
+  if(map.hasLayer(baseOSM)||map.hasLayer(baseDark)){
+    const want=isDark()?baseDark:baseOSM, other=isDark()?baseOSM:baseDark;
     if(map.hasLayer(other)){map.removeLayer(other);want.addTo(map);}
   }
 }).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
