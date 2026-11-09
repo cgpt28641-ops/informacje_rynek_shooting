@@ -143,7 +143,7 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
 <body>
 <div class="upbar" role="status">
   <div class="wrap">
-    <span><span class="dot"></span>Ostatnia aktualizacja: <b id="lastUpdate">pon. 9.11, 12:30</b></span>
+    <span><span class="dot"></span>Ostatnia aktualizacja: <b id="lastUpdate">pon. 9.11, 14:00</b></span>
     <span class="ago" id="ago"></span>
     <span class="ago every">· co ok. 2 godz.</span>
     <button class="sharebtn" id="share" type="button">Udostępnij</button>
@@ -172,13 +172,14 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
       <h3>Najnowsze — pon. 9.11</h3>
       <ul>
         <li><b>Sprawca zmarł w szpitalu ok. 4:30</b> — potwierdziła policja. Nie usłyszał zarzutów; śledztwo trwa (m.in. czy ktoś mu pomagał).</li>
-        <li>Wojewoda: straż miejska była na miejscu w niecałe 2 min, policja ok. 3 min, karetki po 4 min.</li>
-        <li>W szpitalach przebywa 15 rannych, w tym 2 policjantów (obaj wybudzeni ze śpiączki).</li>
+        <li><b>Prokuratura:</b> w Krakowie padło co najmniej kilkadziesiąt, być może kilkaset strzałów. Przy sprawcy i w aucie: 2 karabinki AR-15, 2 pistolety i kilkaset sztuk amunicji.</li>
+        <li><b>Policja:</b> pierwsze strzały o 14:59 przy skrzyżowaniu Sławkowskiej i Szczepańskiej; pościg od 15:01, zatrzymanie 2 min 3 s później.</li>
+        <li>Policjanci: „nadal ciężki, ale stabilny” stan (KGP). W szpitalach 15 rannych.</li>
         <li>Dziś o 20:00 wiec solidarności na rogu Rynku i ul. Sławkowskiej.</li>
       </ul>
     </div>
     <p class="lead">Zebrane i sprawdzone informacje o ataku z soboty 7 listopada 2026 r. Każda informacja ma źródło i oznaczenie, czy pochodzi z oficjalnego komunikatu (policja, prokuratura, wojewoda, MSWiA), czy z ustaleń mediów. Osobno wypisane są informacje zdementowane.</p>
-    <p class="updated">Stan informacji na: pon. 9 listopada 2026, 12:30 (czas polski)</p>
+    <p class="updated">Stan informacji na: pon. 9 listopada 2026, 14:00 (czas polski)</p>
     <div class="stats">
       <div class="stat"><b>6</b><span>ofiar śmiertelnych w Krakowie (4 kobiety, 2 mężczyzn)</span></div>
       <div class="stat"><b>15</b><span>rannych nadal w szpitalach, w tym 2 policjantów</span></div>
@@ -201,7 +202,7 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
   <div class="player" role="group" aria-label="Odtwarzanie przebiegu">
     <button type="button" id="play" class="playbtn" aria-label="Odtwórz przebieg">▶</button>
     <input type="range" id="scrub" min="0" max="1000" value="0" aria-label="Postęp przebiegu">
-    <span class="clock" id="clock">przed 15:00</span>
+    <span class="clock" id="clock">przed 14:59</span>
     <select id="speed" aria-label="Szybkość odtwarzania">
       <option value="20">20 s</option>
       <option value="45" selected>45 s</option>
@@ -218,12 +219,12 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
     <span><i style="background:#2e6b3a"></i>szpital</span>
   </div>
   <ol class="steps" aria-label="Przebieg krok po kroku — kliknij, by pokazać na mapie">
-    <li><button type="button" data-step="slawEntry"><span class="n" style="background:#8a1c1c">1</span><span>Wjazd od ul. Sławkowskiej<small>ok. 15:00 — pierwsze strzały</small></span></button></li>
+    <li><button type="button" data-step="slawEntry"><span class="n" style="background:#8a1c1c">1</span><span>Wjazd od ul. Sławkowskiej<small>14:59 — pierwsze strzały (Sławkowska / Szczepańska)</small></span></button></li>
     <li><button type="button" data-step="rynek"><span class="n" style="background:#8a1c1c">2</span><span>Objazd płyty Rynku<small>strzały do przechodniów; 6 ofiar</small></span></button></li>
     <li><button type="button" data-step="grodzkaStart"><span class="n" style="background:#6b5b2e">3</span><span>Ucieczka ul. Grodzką<small>pl. Wszystkich Świętych, pod Wawelem</small></span></button></li>
     <li><button type="button" data-step="arrest"><span class="n" style="background:#1f4e79">4</span><span>Stradomska / Dietla<small>wymiana ognia, zatrzymanie (~3 min)</small></span></button></li>
   </ol>
-  <p class="src" style="font-size:13px;color:var(--muted)"><b>Jak czytać mapę:</b> kolejność miejsc pochodzi z komunikatów policji i prokuratury (wjazd od Sławkowskiej → objazd płyty Rynku → Grodzka → Stradomska → zatrzymanie przy Dietla). Trasa jest wyznaczana automatycznie po sieci ulic OpenStreetMap między tymi punktami. Dokładny tor jazdy po płycie Rynku nie został podany — ten odcinek jest przerywany. Czas w odtwarzaniu jest <b>orientacyjny</b>: znane są tylko godzina 1. zgłoszenia (15:00:15) i wymiana ognia ok. 3 min później; pośrednie godziny są rozłożone proporcjonalnie do odległości.</p>
+  <p class="src" style="font-size:13px;color:var(--muted)"><b>Jak czytać mapę:</b> kolejność miejsc pochodzi z komunikatów policji i prokuratury (wjazd od Sławkowskiej → objazd płyty Rynku → Grodzka → Stradomska → zatrzymanie przy Dietla). Trasa jest wyznaczana automatycznie po sieci ulic OpenStreetMap między tymi punktami. Dokładny tor jazdy po płycie Rynku nie został podany — ten odcinek jest przerywany. Czas w odtwarzaniu jest <b>orientacyjny</b>: znane są: pierwsze strzały 14:59 (policja), 1. zgłoszenie 15:00:15, start pościgu 15:01 i zatrzymanie 2 min 3 s później; pośrednie godziny są rozłożone proporcjonalnie do odległości.</p>
 
   <h2 id="faq">Szybkie odpowiedzi</h2>
   <div class="card faq">
@@ -231,7 +232,7 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
     <details><summary>Czy Rynek Główny jest otwarty?</summary><p>Tak — po zakończeniu oględzin w niedzielę o 18:00 Rynek otwarto. Bazylika Mariacka była zamknięta do odwołania; sprawdzaj komunikaty parafii.</p></details>
     <details><summary>Ile osób zginęło i ile jest rannych?</summary><p>W Krakowie zginęło 6 osób, w Ostrowcu Świętokrzyskim sprawca wcześniej zabił 3 członków swojej rodziny — łącznie 9 ofiar. Rannych było 16 (z policjantami i sprawcą); w szpitalach przebywa 15 osób.</p></details>
     <details><summary>Co z rannymi policjantami?</summary><p>St. post. Jakub Kulik i st. post. Artur Morański są po operacjach i zostali wybudzeni ze śpiączki farmakologicznej. Stan jednego jest ciężki, drugiego stabilny (wojewoda, poniedziałek rano).</p></details>
-    <details><summary>Czy sprawca żyje? Co dalej ze śledztwem?</summary><p>Nie — zmarł 9.11 ok. 4:30 w szpitalu. Nie usłyszał zarzutów. Prokuratura Krajowa prowadzi śledztwo dalej: sprawdza, czy ktoś mu pomagał, skąd miał pozwolenie na broń i jakie miał motywy.</p></details>
+    <details><summary>Czy sprawca żyje? Co dalej ze śledztwem?</summary><p>Nie — zmarł 9.11 ok. 4:30 w szpitalu. Nie usłyszał zarzutów. Prokuratura Krajowa prowadzi śledztwo dalej: sprawdza, czy ktoś mu pomagał (na razie nic na to nie wskazuje), jak uzyskał pozwolenie na broń i jakie miał motywy.</p></details>
     <details><summary>Czy trzeba oddawać krew?</summary><p>W niedzielę RCKiK Kraków poinformowało, że zapasy krwi są wystarczające, i poprosiło o wstrzymanie wizyt. Krew zawsze jest potrzebna, ale nie trzeba już przychodzić specjalnie w związku z atakiem — śledź komunikaty RCKiK.</p></details>
     <details><summary>Byłem świadkiem — co zrobić?</summary><p>Zgłoś się do najbliższej jednostki policji. Śledczy zbierają też nagrania od świadków.</p></details>
     <details><summary>Gdzie szukać wsparcia psychologicznego?</summary><p>Ośrodek Interwencji Kryzysowej w Krakowie: 12 421 92 82. Telefon zaufania dla dorosłych: 116 123, dla dzieci i młodzieży: 116 111.</p></details>
@@ -242,7 +243,8 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
     <div class="card">
       <h3>Przebieg</h3>
       <ul class="facts">
-        <li>Sobota, 7.11, ok. 15:00 — samochód wjechał na Rynek Główny od strony ul. Sławkowskiej; kierowca otworzył ogień do przypadkowych osób z broni długiej. <span class="tag o">policja</span></li>
+        <li>Sobota, 7.11, <b>14:59</b> — pierwsze strzały przy skrzyżowaniu ul. Sławkowskiej i Szczepańskiej (północno-zachodni narożnik Rynku); samochód wjechał na Rynek od strony Sławkowskiej, kierowca strzelał do przypadkowych osób z broni długiej. <span class="tag o">policja</span></li>
+        <li>15:01 — pierwszy patrol rozpoczyna pościg; zatrzymanie nastąpiło <b>2 min 3 s</b> później. <span class="tag o">policja</span></li>
         <li>Napastnik objechał płytę Rynku i uciekł w stronę Kazimierza. <span class="tag o">prokuratura</span></li>
         <li>Został postrzelony i zatrzymany przez policjantów na skrzyżowaniu Stradomskiej i Dietla (ok. 1,5 km od Rynku). Wcześniej doszło do wymiany ognia. <span class="tag o">policja</span></li>
         <li>Pierwsze zgłoszenie: 15:00:15; w kolejnych minutach ok. 40 zgłoszeń. Na miejscu: straż miejska w niecałe 2 min, pierwszy patrol policji ok. 3 min (wymiana ognia), karetki po 4 min, strażacy po 5 min. Skierowano 30 patroli. <span class="tag o">wojewoda, konferencja 9.11</span></li>
@@ -254,8 +256,9 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
       <h3>Sprawca</h3>
       <ul class="facts">
         <li>24-letni obywatel Polski, mieszkaniec woj. świętokrzyskiego (Ostrowiec Świętokrzyski). <span class="tag o">policja</span></li>
-        <li>Miał pozwolenie na broń; wcześniej niekarany i nienotowany. <span class="tag o">KGP</span></li>
-        <li>Strzelał z cywilnej wersji karabinka AR-15; w aucie była też inna broń i amunicja. <span class="tag o">KGP</span></li>
+        <li>Miał pozwolenie na broń od marca 2026 r. — na jeden karabinek i jeden pistolet; ćwiczył na strzelnicy (strzelanie statyczne). Wcześniej niekarany i nienotowany. <span class="tag o">KGP / PK</span></li>
+        <li>Przy sprawcy i w aucie zabezpieczono <b>4 sztuki broni (2 karabinki AR-15, 2 pistolety) i kilkaset sztuk amunicji</b>, a także co najmniej 4 telefony. W Krakowie oddał co najmniej kilkadziesiąt, być może kilkaset strzałów. <span class="tag o">Prokuratura Krajowa, 9.11</span></li>
+        <li>Podejrzany pakunek w aucie sprawdzano robotem i psem do ok. 22:00 (ewakuowano dwie kamienice) — nie było w nim ładunku wybuchowego. <span class="tag o">MSWiA</span></li>
         <li><b>Łącznie zabezpieczono 11 sztuk broni</b> — 7 w mieszkaniu w Ostrowcu i 4 w Krakowie. To tyle, ile według prokuratury legalnie posiadali sprawca i jego ojciec (obaj mieli pozwolenia). Śledczy badają, jak sprawca uzyskał pozwolenie. <span class="tag o">Prok. Okręgowa w Kielcach</span></li>
         <li>Nigdy nie był żołnierzem WP. <span class="tag o">MON</span></li>
                 <li>W jego mieszkaniu znaleziono ciała ojca (53), matki (52) i siostry (media podają 20 lub 21 lat) z ranami postrzałowymi. <span class="tag o">KGP / prokuratura</span></li>
@@ -293,6 +296,7 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
         <li>Sprawę prowadzi zespół 7 prokuratorów (w tym 4 z wydziału zamiejscowego Prokuratury Krajowej). Sprawdzane są telefony, połączenia, strony internetowe i znajomi sprawcy, a także procedura wydania pozwolenia na broń. Prowadzone są rozmowy z ABW. <span class="tag o">Min. Sprawiedliwości</span></li>
         <li>Śledczy ustalają, skąd sprawca miał broń, i sprawdzają jego kontakty w internecie. W Ostrowcu zabezpieczono broń, nośniki danych i nagrania monitoringu. Przesłuchano pierwszych świadków. <span class="tag o">prokuratura</span> <span class="tag m">WP</span></li>
         <li>Według wstępnych ustaleń sprawca najprawdopodobniej nie zostawił listu ani wyjaśnienia motywów. <span class="tag m">TVP Info, za śledczymi</span></li>
+        <li>Na razie nie potwierdzono udziału innych osób w planowaniu ani przeprowadzeniu ataku; śledczy odtwarzają ostatnie godziny sprawcy z telefonów i elektroniki. <span class="tag o">PK</span></li>
         <li>W poniedziałek trwają sekcje zwłok 9 ofiar (6 z Krakowa i 3 z Ostrowca); ze względu na rany postrzałowe mogą potrwać do wtorku. <span class="tag o">PK</span></li>
         <li>MSWiA zwołało na poniedziałek 10:00 spotkanie o procedurach bezpieczeństwa i zapowiada zmiany w przepisach o broni (m.in. broń czarnoprochowa, badania kandydatów). <span class="tag o">MSWiA</span></li>
       </ul>
@@ -406,6 +410,8 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
       <li><b>„Zginął policjant”</b> — nieprawda, obaj policjanci żyją. <span class="tag d">zdementowane</span></li>
       <li><b>„Sprawca był żołnierzem”</b> — MON: nigdy nie był żołnierzem WP i nie miał nic wspólnego z wojskiem. <span class="tag d">zdementowane</span></li>
       <li><b>„Policja zareagowała późno”</b> — pierwszy patrol ruszył 23 sekundy po zgłoszeniu. <span class="tag d">zdementowane</span></li>
+      <li><b>Nagranie „Zrobię coś złego” krążące w sieci</b> — Konkret24: fałsz, nie przedstawia sprawcy. <span class="tag d">fałsz</span></li>
+      <li><b>„W aucie sprawcy był ładunek wybuchowy”</b> — MSWiA: pakunek sprawdzono, nic w nim nie było. <span class="tag d">zdementowane</span></li>
       <li><b>„Ktoś biega po dachu Kościoła Mariackiego”</b> — nieprawda. <span class="tag d">zdementowane</span></li>
       <li><b>„Brakuje krwi dla rannych”</b> — RCKiK: zapasy są wystarczające. <span class="tag d">zdementowane</span></li>
       <li><b>„Sprawca zabił wcześniej kogoś w Waśniowie”</b> — prokuratura w Kielcach dementuje. <span class="tag d">zdementowane</span></li>
@@ -456,7 +462,7 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
 
   <h2 id="english" lang="en">In English — summary</h2>
   <div class="card en" lang="en">
-    <p><b>What happened:</b> On Saturday 7 November 2026 at about 15:00, a 24-year-old Polish man drove a car onto Kraków's Main Market Square (Rynek Główny) from Sławkowska Street and opened fire on passers-by with a long gun. He then fled via Grodzka and Stradomska streets and was shot and detained by two police officers at the Stradomska/Dietla intersection, about 3 minutes after the first emergency call.</p>
+    <p><b>What happened:</b> On Saturday 7 November 2026 at 14:59, a 24-year-old Polish man drove a car onto Kraków's Main Market Square (Rynek Główny) from Sławkowska Street and opened fire on passers-by with a long gun. He then fled via Grodzka and Stradomska streets and was shot and detained by two police officers at the Stradomska/Dietla intersection, about 2 minutes after police began the pursuit (15:01). Prosecutors say he fired at least several dozen, possibly several hundred shots; two AR-15 rifles, two pistols and several hundred rounds were found with him.</p>
     <p><b>Victims:</b> 6 people were killed in Kraków (including a British and an Austrian citizen) and 16 were injured, including two police officers and the attacker; foreign nationals from the UK, Portugal, Russia, Germany and Austria are among the injured. The attacker's parents and sister were found shot dead in the family flat in Ostrowiec Świętokrzyski.</p>
     <p><b>Now:</b> The attacker died in hospital early on Monday 9 November. Both injured officers have been brought out of induced comas. The National Prosecutor's Office is investigating the attack as a terrorist offence and is checking whether anyone helped him. The square has reopened. National mourning: 8–9 November; city mourning in Kraków until 11 November.</p>
     <p><b>Help:</b> Kraków Crisis Intervention Centre: +48 12 421 92 82. Witnesses should contact any police station. In an emergency call 112.</p>
@@ -477,7 +483,7 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
 <script>
 /* ---------- OSTATNIA AKTUALIZACJA ---------- */
 // Przy każdej aktualizacji zmień LAST_UPDATE (czas polski, UTC+1 zimą).
-const LAST_UPDATE = '2026-11-09T12:30:00+01:00';
+const LAST_UPDATE = '2026-11-09T14:00:00+01:00';
 (function(){
   const d = new Date(LAST_UPDATE);
   const el = document.getElementById('ago');
@@ -539,7 +545,7 @@ const plen=pts=>pts.reduce((s,p,i)=>i?s+hav(pts[i-1],p):0,0);
 const fmtM=m=>m>=1000?(m/1000).toFixed(2).replace('.',',')+' km':Math.round(m)+' m';
 
 /* ---- Odtwarzanie ---- */
-const T0 = 15*3600, TDUR = 195;      // wjazd ok. 15:00 → wymiana ognia ok. 15:03:15 (orientacyjnie)
+const T0 = 14*3600+59*60, TDUR = 243;      // pierwsze strzały 14:59 → zatrzymanie ok. 15:03:03 (pościg od 15:01 + 2 min 3 s); pośrednie czasy orientacyjne
 let PTS=[], CUM=[], TOTAL=0, EVENTS=[], STEPF={}, prog=0, playing=false, lastTs=0;
 const trailAll=L.polyline([], {color:C.shot,weight:4,opacity:.25}).addTo(gRoute);
 const trailDone=L.polyline([], {color:C.shot,weight:5,opacity:.95}).addTo(gRoute);
@@ -560,7 +566,7 @@ function render(){
   trailDone.setLatLngs(PTS.slice(0,i).concat([p]));
   scrub.value=Math.round(prog*1000);
   const fE=STEPF.slawEntry||0;
-  clock.textContent = prog<fE ? 'przed 15:00' : '≈ '+fmtT(T0+(prog-fE)/((1-fE)||1)*TDUR);
+  clock.textContent = prog<fE ? 'przed 14:59' : '≈ '+fmtT(T0+(prog-fE)/((1-fE)||1)*TDUR);
   const ev=[...EVENTS].reverse().find(e=>prog>=e.f-0.001);
   if(ev){evcap.innerHTML=`<b>${ev.t}</b> · ${ev.txt}`;evcap.classList.add('show');} else evcap.classList.remove('show');
 }
@@ -599,7 +605,7 @@ function buildRoute(segA,segR,segE,P,fromOSM){
   STEPF={slawEntry:lA/TOTAL, rynek:fR, grodzkaStart:fG, arrest:1};
   EVENTS=[
     {f:0,t:'Sławkowska',txt:'Samochód jedzie w stronę Rynku.'},
-    {f:lA/TOTAL,t:'1 · Wjazd na Rynek',txt:'Napastnik otwiera ogień do przypadkowych osób (1. zgłoszenie 15:00:15).'},
+    {f:lA/TOTAL,t:'1 · Wjazd na Rynek',txt:'14:59 — pierwsze strzały przy skrzyżowaniu Sławkowskiej i Szczepańskiej (policja); 1. zgłoszenie 15:00:15.'},
     {f:fR,t:'2 · Płyta Rynku',txt:'Objazd Rynku, strzały m.in. w stronę uciekających i postoju dorożek. Zginęło 6 osób.'},
     {f:fG,t:'3 · Ul. Grodzka',txt:'Ucieczka na południe; pierwszy patrol policji rusza w pościg.'},
     {f:fW,t:'Pl. Wszystkich Świętych',txt:'Trasa ucieczki przecina plac.'},
@@ -608,7 +614,7 @@ function buildRoute(segA,segR,segE,P,fromOSM){
   ].sort((a,b)=>a.f-b.f);
   const add=(ll,c,h,n)=>L.marker(ll,{icon:L.divIcon({className:'',html:`<div class="numpin" style="background:${c}">${n}</div>`,iconSize:[28,28],iconAnchor:[14,14],popupAnchor:[0,-14]})}).addTo(gPins).bindPopup(h);
   window.MK={
-    slawEntry:add(P.slawEntry,C.shot,'<b>1. Wjazd od ul. Sławkowskiej</b><br>Ok. 15:00 samochód wjeżdża na Rynek; tu napastnik otwiera ogień do przypadkowych osób.',1),
+    slawEntry:add(P.slawEntry,C.shot,'<b>1. Sławkowska / Szczepańska — wjazd na Rynek</b><br>14:59 — tu według policji padły pierwsze strzały do przypadkowych osób.',1),
     rynek:add(P.rynek,C.shot,'<b>2. Płyta Rynku Głównego</b><br>Napastnik objeżdża płytę Rynku i strzela m.in. w stronę uciekających ludzi i postoju dorożek. Zginęło 6 osób, kilkanaście rannych.',2),
     grodzkaStart:add(P.grodzkaStart,C.other,'<b>3. Wyjazd w ul. Grodzką</b><br>Ucieczka w stronę Wawelu i Kazimierza.',3),
     arrest:add(P.arrest,C.arrest,'<b>4. Skrzyżowanie Stradomskiej i Dietla</b><br>Policjanci po wymianie ognia postrzelili i zatrzymali sprawcę. Jego auto uderzyło w inny pojazd. Wieczorem sprawdzenie pirotechniczne auta i ewakuacja pobliskich budynków.',4)
@@ -761,9 +767,9 @@ L.polyline([[50.9294,21.3853],[50.0617,19.9372]],{color:'#555',dashArray:'4 6',w
 /* ---------- CHRONOLOGIA ---------- */
 // t = typ: o = oficjalne, m = media, d = dementi
 const TL = [
-  ['sob','~15:00','o','Samochód wjeżdża na Rynek Główny od ul. Sławkowskiej, padają strzały do przypadkowych osób.','Małopolska Policja'],
-  ['sob','15:03','m','Pierwsze strzały odnotowane przy ul. Sławkowskiej.','Interia'],
-  ['sob','~15:03','o','Pierwszy patrol rusza 23 s po zgłoszeniu; po ok. 3 min wymiana ognia ze sprawcą.','KWP Kraków / KGP'],
+  ['sob','14:59','o','Pierwsze strzały przy skrzyżowaniu Sławkowskiej i Szczepańskiej; samochód wjeżdża na Rynek, napastnik strzela do przypadkowych osób.','Policja (za TVN24)'],
+  ['sob','15:00:15','o','Pierwsze zgłoszenie na numer alarmowy; w kolejnych minutach ok. 40 zgłoszeń.','Wojewoda małopolski'],
+  ['sob','15:01','o','Pierwszy patrol rozpoczyna pościg; zatrzymanie po 2 min 3 s (ok. 15:03).','Policja'],
   ['sob','15:56','o','Straż pożarna: okolice Rynku to wciąż „strefa gorąca”, nie zbliżać się.','PSP'],
   ['sob','16:05','o','PSP: 2 ofiary śmiertelne, 10 rannych; sprawca zatrzymany. Strzały z auta jadącego od Sławkowskiej.','PSP Kraków'],
   ['sob','16:06','o','Wpis policji na X: ok. 15:00 mężczyzna z samochodu strzelał do przypadkowych osób, sprawca zatrzymany, ranni policjanci.','@policja_mpl'],
@@ -824,6 +830,8 @@ const TL = [
   ['pn','09:00','m','W holu Urzędu Miasta wyłożona księga kondolencyjna; trwają sekcje zwłok ofiar.','Radio Kraków'],
   ['pn','przed południem','o','Konferencja wojewody: czasy dojazdu służb (straż miejska <2 min, policja ~3 min, karetki 4 min, PSP 5 min), 30 patroli; zapowiedź rozmów o zabezpieczeniu Rynku.','Wojewoda małopolski'],
   ['pn','przed południem','o','Prokuratura Krajowa: bez zarzutów i środków zapobiegawczych wobec zmarłego; reszta śledztwa trwa. Sekcje 9 ofiar mogą potrwać do wtorku.','PK (prok. E. Stasielak, PAP)'],
+  ['pn','rano','o','KGP o rannych policjantach: „nadal ciężki, ale stabilny” stan, obaj po operacjach.','KGP (podinsp. A. Fijołek, TVN24)'],
+  ['pn','~12:30','o','Prokuratura Krajowa: co najmniej kilkadziesiąt, być może kilkaset strzałów; przy sprawcy 2 AR-15, 2 pistolety, kilkaset sztuk amunicji, 4 telefony; pozwolenie od marca 2026 na karabinek i pistolet; brak potwierdzenia wspólników.','PK (prok. P. Nowak)'],
   ['pn','20:00','o','Wiec solidarności na rogu Rynku i ul. Sławkowskiej.','Prezydent Krakowa'],
 ];
 const tlEl = document.getElementById('timeline');
@@ -831,7 +839,7 @@ const label = {o:'oficjalne',m:'media',d:'dementi'};
 const DAYS = {sob:'Sobota 7 listopada',nd:'Niedziela 8 listopada',pn:'Poniedziałek 9 listopada'};
 const DAYSHORT = {sob:'sob. 7.11',nd:'niedz. 8.11',pn:'pon. 9.11'};
 // Ile ostatnich wpisów oznaczyć jako NOWE (zmieniaj przy aktualizacji)
-const NEW_COUNT = 4;
+const NEW_COUNT = 3;
 let tlF='all';
 const esc = t => t.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'})[c]);
 function renderTL(){
@@ -889,6 +897,9 @@ const SRC = [
   ['Radio ESKA – czasy reakcji służb, zabezpieczenia Rynku','https://krakow.eska.pl/w-szesc-minut-sluzby-byly-na-rynku-po-masakrze-w-krakowie-szykuja-zmiany-nie-oddamy-krakowa-przestepcom-aa-zCLh-vWUA-3uYh.html'],
   ['Interia – działania prokuratury, wiec, księga','https://wydarzenia.interia.pl/kraj/news-nowy-ruch-prokuratury-po-zamachu-w-krakowie-chodzi-o-ofiary,nId,23570865'],
   ['Super Express – prokuratura po śmierci sprawcy','https://www.se.pl/krakow/sprawca-masakry-w-krakowie-nie-zyje-prokuratura-ujawnia-co-wydarzy-sie-teraz-aa-JW54-i2Pv-fFLZ.html'],
+  ['Radio ESKA – prokuratura: liczba strzałów, broń','https://krakow.eska.pl/nawet-kilkaset-strzalow-na-rynku-w-krakowie-prokuratura-ujawnia-przerazajace-szczegoly-aa-FuPN-Bghk-38rx.html'],
+  ['TVN24 – najważniejsze fakty (godziny wg policji)','https://tvn24.pl/polska/krakow-strzelanina-na-rynku-glownym-najwazniejsze-fakty-st9329303'],
+  ['Kozaczek – komunikaty o stanie policjantów','https://www.kozaczek.pl/jest-nowy-komunikat-w-sprawie-rannych-policjantow-w-zamachu-w-krakowie-wiadomo-w-jakim-sa-stanie/'],
   ['TVP Kielce – rodzice i siostra sprawcy','https://kielce.tvp.pl/96367832/ostrowiec-swietokrzyski-nie-zyja-rodzice-i-siostra-sprawcy-ataku-w-krakowie'],
   ['WP – co wiemy o rodzinie zamachowca','https://wiadomosci.wp.pl/trzy-ciala-w-mieszkaniu-co-wiemy-o-rodzinie-zamachowca-z-krakowa-7348739801532864a'],
   ['Radio ESKA Kraków – jak zginęła rodzina','https://krakow.eska.pl/wiadomo-jak-zginela-rodzina-zamachowca-z-ostrowca-swietokrzyskiego-ciala-lezaly-w-lozkach-aa-Ciyp-piwT-4yEH.html'],
