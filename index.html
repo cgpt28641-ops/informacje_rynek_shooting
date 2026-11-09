@@ -112,6 +112,7 @@ h3{font-size:15px;margin:0 0 6px}
 .mapstat{font-size:13px;color:var(--muted);margin:8px 0 0}
 .legend .ln{display:inline-block;width:24px;vertical-align:4px;margin-right:6px}
 .darktiles{filter:invert(1) hue-rotate(180deg) brightness(.9) contrast(.9)}
+.coppin{font-size:20px;line-height:26px;text-align:center;filter:drop-shadow(0 1px 2px rgba(0,0,0,.6))}
 .carpin{width:30px;height:30px;border-radius:50%;background:#111;border:3px solid #fff;box-shadow:0 0 0 3px rgba(138,28,28,.6),0 2px 6px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px}
 .carpin span{display:inline-block;transition:transform .1s linear}
 .legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--muted);margin-top:10px}
@@ -143,7 +144,7 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
 <body>
 <div class="upbar" role="status">
   <div class="wrap">
-    <span><span class="dot"></span>Ostatnia aktualizacja: <b id="lastUpdate">pon. 9.11, 18:00</b></span>
+    <span><span class="dot"></span>Ostatnia aktualizacja: <b id="lastUpdate">pon. 9.11, 19:50</b></span>
     <span class="ago" id="ago"></span>
     <span class="ago every">· co ok. 2 godz.</span>
     <button class="sharebtn" id="share" type="button">Udostępnij</button>
@@ -169,16 +170,16 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
     <span class="mourning">Żałoba narodowa · 8–9 listopada 2026 · w Krakowie do 11 listopada</span>
     <h1>Atak na Rynku Głównym w Krakowie — co wiadomo na pewno</h1>
     <div class="whatsnew" id="whatsnew">
-      <h3>Najnowsze — pon. 9.11, 18:00</h3>
+      <h3>Najnowsze — pon. 9.11, 19:50</h3>
       <ul>
+        <li><b>Nowa mapa minuta po minucie</b> wg rekonstrukcji Onetu: postój na rogu Szczepańskiej i Sławkowskiej (14:58:43), pierwsze strzały 14:58:58, ofiary przy wschodniej pierzei, Grodzka 15:01:16, zderzenie przy Dietla 15:02:53, sprawca powalony 15:03:11.</li>
         <li><b>Motyw wciąż nieustalony.</b> Szef MSWiA: sobotnie słowa o skrajnych poglądach sprawcy to „pierwsze hipotezy”, nie wnioski śledczych. Telefony i dwa laptopy analizuje CBZC.</li>
         <li>Prokuratura: w pokoju sprawcy wisiała duża flaga Gadsdena („Don't Tread on Me”) — rzecznik PK: „nie ma oczywistych konotacji”.</li>
         <li><b>Obaj ranni policjanci odzyskali przytomność.</b> Pierwsze pytanie st. post. Artura Morańskiego po wybudzeniu: „A Kuba żyje?” (relacja bliskich za burmistrzem Muszyny).</li>
-        <li>Prokuratura: w śledztwie może zostać przesłuchanych nawet kilkaset osób, w tym cudzoziemcy. Policja apeluje o zgłaszanie się do KMP Kraków osób z istotnymi informacjami.</li>
       </ul>
     </div>
     <p class="lead">Zebrane i sprawdzone informacje o ataku z soboty 7 listopada 2026 r. Każda informacja ma źródło i oznaczenie, czy pochodzi z oficjalnego komunikatu (policja, prokuratura, wojewoda, MSWiA), czy z ustaleń mediów. Osobno wypisane są informacje zdementowane.</p>
-    <p class="updated">Stan informacji na: pon. 9 listopada 2026, 18:00 (czas polski)</p>
+    <p class="updated">Stan informacji na: pon. 9 listopada 2026, 19:50 (czas polski)</p>
     <div class="stats">
       <div class="stat"><b>6</b><span>ofiar śmiertelnych w Krakowie (4 kobiety, 2 mężczyzn)</span></div>
       <div class="stat"><b>15</b><span>rannych nadal w szpitalach, w tym 2 policjantów</span></div>
@@ -201,29 +202,30 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
   <div class="player" role="group" aria-label="Odtwarzanie przebiegu">
     <button type="button" id="play" class="playbtn" aria-label="Odtwórz przebieg">▶</button>
     <input type="range" id="scrub" min="0" max="1000" value="0" aria-label="Postęp przebiegu">
-    <span class="clock" id="clock">przed 14:59</span>
+    <span class="clock" id="clock">14:58:35</span>
     <select id="speed" aria-label="Szybkość odtwarzania">
-      <option value="20">20 s</option>
-      <option value="45" selected>45 s</option>
-      <option value="180">czas rzeczywisty (~3 min)</option>
+      <option value="30">30 s</option>
+      <option value="60" selected>60 s</option>
+      <option value="300">czas rzeczywisty (5 min)</option>
     </select>
   </div>
   <p class="mapstat" id="mapstat">Ładowanie sieci ulic z OpenStreetMap…</p>
   <div class="legend">
     <span><span class="ln" style="border-top:4px solid #8a1c1c"></span>trasa sprawcy (po ulicach z OSM)</span>
-    <span><span class="ln" style="border-top:4px dashed #8a1c1c;opacity:.6"></span>przejazd po Rynku (wg relacji)</span>
+    <span><span class="ln" style="border-top:4px dashed #8a1c1c;opacity:.6"></span>odcinek szacowany (brak nagrań)</span>
+    <span>🚓 radiowóz w pościgu</span>
     <span><i style="background:rgba(138,28,28,.3);border-radius:2px"></i>Rynek – strefa ostrzału</span>
     <span><span class="ln" style="border-top:4px solid #e08a1b"></span>zamknięcia 8.11 (zniesione)</span>
     <span><i style="background:#1f4e79"></i>zatrzymanie</span>
     <span><i style="background:#2e6b3a"></i>szpital</span>
   </div>
   <ol class="steps" aria-label="Przebieg krok po kroku — kliknij, by pokazać na mapie">
-    <li><button type="button" data-step="slawEntry"><span class="n" style="background:#8a1c1c">1</span><span>Wjazd ul. Szczepańską<small>14:59 — pierwsze strzały (narożnik ze Sławkowską)</small></span></button></li>
-    <li><button type="button" data-step="rynek"><span class="n" style="background:#8a1c1c">2</span><span>Wzdłuż Rynku → postój<small>w stronę Mariackiego, skręt w prawo, postój przed Sienną</small></span></button></li>
-    <li><button type="button" data-step="grodzkaStart"><span class="n" style="background:#6b5b2e">3</span><span>Ucieczka ul. Grodzką<small>pl. Wszystkich Świętych, pod Wawelem</small></span></button></li>
-    <li><button type="button" data-step="arrest"><span class="n" style="background:#1f4e79">4</span><span>Stradomska / Dietla<small>wymiana ognia, zatrzymanie (~3 min)</small></span></button></li>
+    <li><button type="button" data-step="slawEntry"><span class="n" style="background:#8a1c1c">1</span><span>Róg Szczepańskiej i Sławkowskiej<small>14:58:43 postój, 14:58:58 pierwsze strzały</small></span></button></li>
+    <li><button type="button" data-step="rynek"><span class="n" style="background:#8a1c1c">2</span><span>Wschodnia pierzeja<small>przez Mariacki, ofiary ok. 15:00–15:01</small></span></button></li>
+    <li><button type="button" data-step="grodzkaStart"><span class="n" style="background:#6b5b2e">3</span><span>Ul. Grodzka — 15:01:16<small>za nim radiowóz; 15:01:28 ostrzał tramwaju</small></span></button></li>
+    <li><button type="button" data-step="arrest"><span class="n" style="background:#1f4e79">4</span><span>Stradomska / Dietla<small>15:02:53 zderzenie, 15:03:11 sprawca powalony</small></span></button></li>
   </ol>
-  <p class="src" style="font-size:13px;color:var(--muted)"><b>Jak czytać mapę:</b> pierwsze strzały przy Szczepańskiej/Sławkowskiej, ucieczka Grodzką i Stradomską oraz zatrzymanie przy Dietla — wg policji i prokuratury. Przejazd po Rynku (wjazd Szczepańską → pierzeja północna → skręt przy Mariackim → postój między Mariackim a Sienną → Grodzka) pokazano wg relacji; oficjalnie podano tylko, że sprawca „objechał płytę Rynku”. Trasa jest wyznaczana automatycznie po sieci ulic OpenStreetMap między tymi punktami. Odcinek po Rynku jest przerywany, bo nie pochodzi z oficjalnego komunikatu. Czas w odtwarzaniu jest <b>orientacyjny</b>: znane są: pierwsze strzały 14:59 (policja), 1. zgłoszenie 15:00:15, start pościgu 15:01 i zatrzymanie 2 min 3 s później; pośrednie godziny są rozłożone proporcjonalnie do odległości.</p>
+  <p class="src" style="font-size:13px;color:var(--muted)"><b>Jak czytać mapę:</b> trasa i godziny pochodzą z rekonstrukcji Onetu „Kluczowe cztery i pół minuty” (analiza nagrań świadków, monitoringu i relacji policji): wjazd od Szczepańskiej → postój na rogu przy Sławkowskiej i pierwsze strzały → pierzeja północna do Mariackiego → wschodnia pierzeja → Grodzka → pl. Wszystkich Świętych → Stradomska → Dietla. Linia jest rysowana po ulicach z OpenStreetMap. Przejazd dalszą częścią Grodzkiej i Stradomską (15:01:55–15:02:43) nie ma nagrań — ten odcinek jest przerywany. Policja podaje zgodnie: pierwsze strzały ok. 14:59, pościg od 15:01, zatrzymanie po 2 min 3 s.</p>
 
   <h2 id="faq">Szybkie odpowiedzi</h2>
   <div class="card faq">
@@ -243,7 +245,19 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
       <h3>Przebieg</h3>
       <ul class="facts">
         <li>Sobota, 7.11, <b>14:59</b> — pierwsze strzały przy skrzyżowaniu ul. Sławkowskiej i Szczepańskiej (północno-zachodni narożnik Rynku); kierowca strzelał z samochodu do przypadkowych osób z broni długiej. <span class="tag o">policja</span></li>
-        <li>Przejazd po Rynku: wjazd ul. Szczepańską, prosto pierzeją północną w stronę kościoła Mariackiego, skręt w prawo, postój między Mariackim a ul. Sienną, potem odjazd w ul. Grodzką. <span class="tag m">relacja, niepotwierdzone oficjalnie</span></li>
+        <li><b>Przebieg minuta po minucie</b> (rekonstrukcja Onetu na podstawie nagrań świadków, monitoringu i relacji policji):
+          <ul>
+            <li>14:58:39 — czarne Subaru Impreza wjeżdża od ul. Szczepańskiej; 14:58:43 staje na rogu przy Sławkowskiej.</li>
+            <li>14:58:58 — pierwsze strzały z okna samochodu w stronę Sławkowskiej; przy narożniku kamienicy padają ofiary.</li>
+            <li>14:59:25 — auto rusza pierzeją północną w stronę Bazyliki Mariackiej, słychać strzały; 14:59:49 przechodnie pomagają rannym na rogu.</li>
+            <li>15:00–15:01 — ofiary przy wschodniej pierzei Rynku; 15:00:15 pierwsze zgłoszenie (KGP).</li>
+            <li>15:01:00 — pierwszy patrol rusza w pościg; 15:01:16 auto wjeżdża w Grodzką, radiowóz tuż za nim (15:01:23 ok. 4 s różnicy).</li>
+            <li>15:01:28 — pl. Wszystkich Świętych: ostrzał tramwaju linii 1.</li>
+            <li>15:01:55–15:02:43 — brak nagrań (Grodzka, Stradomska); policja przestrzeliwuje opony samochodu sprawcy.</li>
+            <li>15:02:53–55 — Subaru uderza w biały samochód na światłach przy Dietla; sprawca wysiada i strzela do dwóch policjantów.</li>
+            <li>15:03:11 — strzał policjanta powala napastnika; 15:03:26 sprawca z rękami w górze, ranny policjant osuwa się na ziemię.</li>
+          </ul>
+          <span class="tag m">Onet</span></li>
         <li>15:01 — pierwszy patrol rozpoczyna pościg; zatrzymanie nastąpiło <b>2 min 3 s</b> później. <span class="tag o">policja</span></li>
         <li>Napastnik objechał płytę Rynku i uciekł w stronę Kazimierza. <span class="tag o">prokuratura</span></li>
         <li>Został postrzelony i zatrzymany przez policjantów na skrzyżowaniu Stradomskiej i Dietla (ok. 1,5 km od Rynku). Wcześniej doszło do wymiany ognia. <span class="tag o">policja</span></li>
@@ -489,7 +503,7 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
 <script>
 /* ---------- OSTATNIA AKTUALIZACJA ---------- */
 // Przy każdej aktualizacji zmień LAST_UPDATE (czas polski, UTC+1 zimą).
-const LAST_UPDATE = '2026-11-09T18:00:00+01:00';
+const LAST_UPDATE = '2026-11-09T19:50:00+01:00';
 (function(){
   const d = new Date(LAST_UPDATE);
   const el = document.getElementById('ago');
@@ -526,12 +540,12 @@ L.circleMarker([50.0154,20.0027],{radius:8,color:'#fff',weight:2,fillColor:C.hel
 
 // Punkty zapasowe (gdy OSM niedostępne)
 // Punkty kontrolne: adresy wg Targeo (Grodzka 1 i 60, Stradomska 2 i 31) + punkty na Rynku odczytane z podkładu OSM.
-// Tor po Rynku wg relacji: Szczepańska → pierzeja północna → skręt przy Mariackim → postój między Mariackim a Sienną → Grodzka.
+// Tor po Rynku wg rekonstrukcji Onetu: Szczepańska → postój na rogu Sławkowskiej → pierzeja północna → Mariacki → wschodnia pierzeja → Grodzka.
 const FB = {
   approach:[50.06336,19.93556],      // ul. Szczepańska, ok. 150 m przed Rynkiem
   slawEntry:[50.06277,19.93676],     // narożnik Szczepańska / Sławkowska — wjazd na Rynek, pierwsze strzały 14:59
   mariacki:[50.06218,19.93912],      // skręt w prawo przy kościele Mariackim
-  rynek:[50.06144,19.93906],         // postój między Mariackim a ul. Sienną
+  rynek:[50.06144,19.93906],         // wschodnia pierzeja, okolice ul. Siennej
   grodzkaStart:[50.06010,19.93751],  // Grodzka 1 — wyjazd z Rynku
   plWS:[50.05915,19.93775],          // pl. Wszystkich Świętych
   grodzkaEnd:[50.05546,19.93853],    // Grodzka 60
@@ -553,31 +567,41 @@ const bearing=(a,b)=>{const toR=Math.PI/180,y=Math.sin((b[1]-a[1])*toR)*Math.cos
 const plen=pts=>pts.reduce((s,p,i)=>i?s+hav(pts[i-1],p):0,0);
 const fmtM=m=>m>=1000?(m/1000).toFixed(2).replace('.',',')+' km':Math.round(m)+' m';
 
-/* ---- Odtwarzanie ---- */
-const T0 = 14*3600+59*60, TDUR = 243;      // pierwsze strzały 14:59 → zatrzymanie ok. 15:03:03 (pościg od 15:01 + 2 min 3 s); pośrednie czasy orientacyjne
-let PTS=[], CUM=[], TOTAL=0, EVENTS=[], STEPF={}, prog=0, playing=false, lastTs=0;
+/* ---- Odtwarzanie wg rekonstrukcji Onetu (nagrania świadków, monitoring, relacja policji) ---- */
+const HMS=(h,m,x)=>h*3600+m*60+x;
+const TA=HMS(14,58,35), TB=HMS(15,3,35), TDUR=TB-TA;
+let PTS=[], CUM=[], TOTAL=0, KF=[], EVENTS=[], STEPT={}, prog=0, playing=false, lastTs=0;
 const trailAll=L.polyline([], {color:C.shot,weight:4,opacity:.25}).addTo(gRoute);
 const trailDone=L.polyline([], {color:C.shot,weight:5,opacity:.95}).addTo(gRoute);
 const car=L.marker(FB.slawEntry,{icon:L.divIcon({className:'',html:'<div class="carpin"><span id="carArrow">➤</span></div>',iconSize:[30,30],iconAnchor:[15,15]}),zIndexOffset:1000,interactive:false,keyboard:false}).addTo(gRoute);
+const cop=L.marker(FB.slawEntry,{icon:L.divIcon({className:'',html:'<div class="coppin" title="Radiowóz">🚓</div>',iconSize:[26,26],iconAnchor:[13,13]}),zIndexOffset:900,interactive:false,keyboard:false,opacity:0}).addTo(gRoute);
 const scrub=document.getElementById('scrub'), clock=document.getElementById('clock'), evcap=document.getElementById('evcap'), playBtn=document.getElementById('play');
 
-function posAt(f){
+function posAtF(f){
   const d=f*TOTAL; let i=CUM.findIndex(c=>c>=d); if(i<=0) return {p:PTS[0],i:0,b:PTS.length>1?bearing(PTS[0],PTS[1]):0};
   const t=(d-CUM[i-1])/((CUM[i]-CUM[i-1])||1), a=PTS[i-1], b=PTS[i];
   return {p:[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t],i,b:bearing(a,b)};
 }
+function fAtT(t){ // pozycja na trasie (ułamek) dla danej godziny – interpolacja między punktami kluczowymi
+  if(!KF.length) return 0;
+  if(t<=KF[0][0]) return KF[0][1];
+  for(let k=1;k<KF.length;k++){ if(t<=KF[k][0]){ const [t0,f0]=KF[k-1],[t1,f1]=KF[k]; return f0+(f1-f0)*((t-t0)/((t1-t0)||1)); } }
+  return KF[KF.length-1][1];
+}
 const fmtT=sec=>{sec=Math.round(sec);const h=Math.floor(sec/3600),m=Math.floor(sec%3600/60),x=sec%60;return `${h}:${String(m).padStart(2,'0')}:${String(x).padStart(2,'0')}`;};
 function render(){
   if(!PTS.length) return;
-  const {p,i,b}=posAt(prog);
+  const t=TA+prog*TDUR;
+  const {p,i,b}=posAtF(fAtT(t));
   car.setLatLng(p);
   const ar=document.getElementById('carArrow'); if(ar) ar.style.transform=`rotate(${b-90}deg)`;
   trailDone.setLatLngs(PTS.slice(0,i).concat([p]));
+  // radiowóz: pościg od 15:01:00, ok. 4–5 s za sprawcą (Onet)
+  if(t>=HMS(15,1,0)){ cop.setOpacity(1); cop.setLatLng(posAtF(fAtT(Math.min(t-5,HMS(15,2,55)))).p); } else cop.setOpacity(0);
   scrub.value=Math.round(prog*1000);
-  const fE=STEPF.slawEntry||0;
-  clock.textContent = prog<fE ? 'przed 14:59' : '≈ '+fmtT(T0+(prog-fE)/((1-fE)||1)*TDUR);
-  const ev=[...EVENTS].reverse().find(e=>prog>=e.f-0.001);
-  if(ev){evcap.innerHTML=`<b>${ev.t}</b> · ${ev.txt}`;evcap.classList.add('show');} else evcap.classList.remove('show');
+  clock.textContent=fmtT(t);
+  const ev=[...EVENTS].reverse().find(e=>t>=e.t);
+  if(ev){evcap.innerHTML=`<b>${ev.lbl||(fmtT(ev.t)+(ev.t2?'–'+fmtT(ev.t2):''))}</b> · ${ev.txt}${ev.est?' <i>(odcinek szacowany)</i>':''}`;evcap.classList.add('show');} else evcap.classList.remove('show');
 }
 function frame(ts){
   if(!playing) return;
@@ -606,41 +630,67 @@ function buildRoute(segA,segR,segE,P,fromOSM){
   PTS=[...segA,...segR.slice(1),...segE.slice(1)];
   CUM=[0]; for(let i=1;i<PTS.length;i++) CUM.push(CUM[i-1]+hav(PTS[i-1],PTS[i])); TOTAL=CUM[CUM.length-1];
   trailAll.setLatLngs(PTS);
-  // odcinek po Rynku – przerywany
-  L.polyline(segR,{color:C.shot,weight:4,dashArray:'6 8',opacity:.7}).addTo(gPins)
-    .bindPopup('<b>Przejazd przez Rynek</b><br>Wjazd ul. Szczepańską, prosto pierzeją północną w stronę kościoła Mariackiego, skręt w prawo, postój między Mariackim a ul. Sienną, odjazd w ul. Grodzką. <i>Szczegóły toru wg relacji — oficjalnie policja podała, że pierwsze strzały padły przy Sławkowskiej/Szczepańskiej, a sprawca objechał płytę Rynku.</i>');
   const lA=plen(segA), lR=plen(segR), lE=plen(segE);
-  const fR=nearestF(P.rynek), fG=lA/TOTAL+lR/TOTAL, fW=nearestF(P.plWS);
-  STEPF={slawEntry:lA/TOTAL, rynek:fR, grodzkaStart:fG, arrest:1};
+  const fC=lA/TOTAL, fG=(lA+lR)/TOTAL;
+  // odcinek szacowany przez Onet (brak nagrań 15:01:55–15:02:43): od pl. Wszystkich Świętych do Dietla
+  const fW=nearestF(P.plWS);
+  const iW=PTS.findIndex((p,i)=>CUM[i]/TOTAL>=fW);
+  L.polyline(PTS.slice(Math.max(0,iW)),{color:C.shot,weight:4,dashArray:'6 8',opacity:.7}).addTo(gPins)
+    .bindPopup('<b>Odcinek szacowany</b><br>Według Onetu brak nagrań z przejazdu dalszą częścią Grodzkiej i Stradomską (15:01:55–15:02:43). Na tym odcinku policja przestrzeliła opony samochodu sprawcy.');
+  // punkty kluczowe: [godzina, pozycja na trasie]
+  KF=[
+    [HMS(14,58,39),0],                         // wjeżdża w kadr od Szczepańskiej
+    [HMS(14,58,43),fC],                        // staje na rogu przy Sławkowskiej
+    [HMS(14,59,25),fC],                        // ostatnia klatka postoju; rusza w stronę Mariackiego
+    [HMS(15,0,50),P.mariacki?nearestF(P.mariacki):fC+(fG-fC)*.5], // narożnik przy Mariackim (szac.)
+    [HMS(15,1,5), nearestF(P.rynek)],          // wschodnia pierzeja, okolice Siennej (kadr Onetu)
+    [HMS(15,1,16),fG],                         // wjazd w Grodzką
+    [HMS(15,1,28),fW],                         // pl. Wszystkich Świętych – ostrzał tramwaju
+    [HMS(15,1,47),Math.min(1,fW+0.03)],        // odjeżdża na południe
+    [HMS(15,2,53),1]                           // Dietla – zderzenie z białym autem
+  ];
+  for(let k=1;k<KF.length;k++) if(KF[k][1]<KF[k-1][1]) KF[k][1]=KF[k-1][1];
+  STEPT={slawEntry:HMS(14,58,58), rynek:HMS(15,1,5), grodzkaStart:HMS(15,1,16), arrest:HMS(15,3,11)};
   EVENTS=[
-    {f:0,t:'Ul. Szczepańska',txt:'Samochód jedzie w stronę Rynku.'},
-    {f:lA/TOTAL,t:'1 · Wjazd na Rynek',txt:'14:59 — pierwsze strzały przy skrzyżowaniu Sławkowskiej i Szczepańskiej (policja); 1. zgłoszenie 15:00:15.'},
-    {f:lA/TOTAL+0.012,t:'Pierzeja północna',txt:'Jazda prosto wzdłuż Rynku w stronę kościoła Mariackiego, strzały do przechodniów.'},
-    {f:P.mariacki?nearestF(P.mariacki):fR*0.9,t:'Kościół Mariacki',txt:'Skręt w prawo, wzdłuż wschodniej pierzei.'},
-    {f:fR,t:'2 · Postój: Mariacki – Sienna',txt:'Samochód zatrzymuje się między kościołem Mariackim a ul. Sienną; strzały m.in. w stronę uciekających i postoju dorożek. Zginęło 6 osób.'},
-    {f:fG,t:'3 · Ul. Grodzka',txt:'Ucieczka na południe; pierwszy patrol policji rusza w pościg.'},
-    {f:fW,t:'Pl. Wszystkich Świętych',txt:'Trasa ucieczki przecina plac. Wg rekonstrukcji Onetu w tym rejonie ostrzelany został tramwaj linii 1 (bez rannych).'},
-    {f:P.stradomska?nearestF(P.stradomska):Math.max(fW+0.01,0.75),t:'Stradomska',txt:'Dalej pod Wawelem w stronę Kazimierza.'},
-    {f:0.995,t:'4 · Stradomska / Dietla',txt:'Wymiana ognia z dwoma policjantami (ok. 3 min po 1. zgłoszeniu). Sprawca postrzelony i zatrzymany; oboje policjanci ranni.'}
-  ].sort((a,b)=>a.f-b.f);
+    {t:HMS(14,58,39),txt:'Czarne Subaru Impreza wjeżdża od strony ul. Szczepańskiej.'},
+    {t:HMS(14,58,43),txt:'Subaru zatrzymuje się na rogu przy ul. Sławkowskiej.'},
+    {t:HMS(14,58,58),txt:'Pierwsze strzały z okna samochodu w stronę ul. Sławkowskiej. Przy narożniku kamienicy padają ofiary.'},
+    {t:HMS(14,59,25),txt:'Ostatnia klatka z autem na rogu. Sprawca rusza w stronę Bazyliki Mariackiej; na nagraniach słychać strzały.'},
+    {t:HMS(14,59,49),txt:'Przechodnie udzielają pomocy rannym na rogu.'},
+    {t:HMS(15,0,0),txt:'Na wielu nagraniach słychać bicie dzwonów kościelnych.'},
+    {t:HMS(15,0,15),txt:'Pierwsze zgłoszenie na numer alarmowy (wg Komendanta Głównego Policji).'},
+    {t:HMS(15,0,30),txt:'Panika na Rynku, uciekający tłum.'},
+    {t:HMS(15,0,45),lbl:'15:00–15:01',txt:'Ofiary przy wschodniej pierzei Rynku.'},
+    {t:HMS(15,1,0),txt:'Pierwszy patrol policji podejmuje pościg.'},
+    {t:HMS(15,1,16),txt:'Auto wjeżdża z Rynku w ul. Grodzką, tuż za nim radiowóz.'},
+    {t:HMS(15,1,23),txt:'Auto mija kamerę na Grodzkiej; radiowóz ok. 4 s za nim.'},
+    {t:HMS(15,1,28),txt:'Pl. Wszystkich Świętych: ostrzał tramwaju linii 1 (bez rannych), nagranie z okrzykiem „strzelają”.'},
+    {t:HMS(15,1,47),txt:'Auto odjeżdża na południe, tuż za nim radiowóz.'},
+    {t:HMS(15,1,55),t2:HMS(15,2,43),est:true,txt:'Brak nagrań — przejazd Grodzką i Stradomską. Policja przestrzeliwuje opony samochodu sprawcy.'},
+    {t:HMS(15,2,44),txt:'Na światłach przy Dietla stoją dwa samochody: szary i za nim biały.'},
+    {t:HMS(15,2,53),lbl:'15:02:53–55',txt:'Subaru uderza w biały samochód na światłach przy Dietla. Radiowóz staje kilka metrów za nim; sprawca wysiada i strzela do dwóch policjantów.'},
+    {t:HMS(15,3,11),txt:'Strzał policjanta powala napastnika.'},
+    {t:HMS(15,3,26),txt:'Sprawca z rękami w górze, ranny policjant osuwa się na ziemię.'}
+  ];
   const add=(ll,c,h,n)=>L.marker(ll,{icon:L.divIcon({className:'',html:`<div class="numpin" style="background:${c}">${n}</div>`,iconSize:[28,28],iconAnchor:[14,14],popupAnchor:[0,-14]})}).addTo(gPins).bindPopup(h);
   window.MK={
-    slawEntry:add(P.slawEntry,C.shot,'<b>1. Szczepańska / Sławkowska — wjazd na Rynek</b><br>14:59 — tu według policji padły pierwsze strzały do przypadkowych osób.',1),
-    rynek:add(P.rynek,C.shot,'<b>2. Postój między Mariackim a ul. Sienną</b><br>Po przejechaniu pierzei północnej i skręcie przy Mariackim samochód się zatrzymuje; strzały m.in. w stronę uciekających ludzi i postoju dorożek. Zginęło 6 osób, kilkanaście rannych.',2),
-    grodzkaStart:add(P.grodzkaStart,C.other,'<b>3. Wyjazd w ul. Grodzką</b><br>Ucieczka w stronę Wawelu i Kazimierza.',3),
-    arrest:add(P.arrest,C.arrest,'<b>4. Skrzyżowanie Stradomskiej i Dietla</b><br>Policjanci po wymianie ognia postrzelili i zatrzymali sprawcę. Jego auto uderzyło w inny pojazd. Wieczorem sprawdzenie pirotechniczne auta i ewakuacja pobliskich budynków.',4)
+    slawEntry:add(P.slawEntry,C.shot,'<b>1. Róg Szczepańskiej i Sławkowskiej</b><br>14:58:43 auto staje na rogu; 14:58:58 pierwsze strzały z okna w stronę Sławkowskiej, przy narożniku kamienicy padają ofiary; 14:59:25 auto rusza w stronę Mariackiego. <i>(Onet; policja: pierwsze strzały 14:59)</i>',1),
+    rynek:add(P.rynek,C.shot,'<b>2. Wschodnia pierzeja Rynku</b><br>Po przejechaniu pierzei północnej i skręcie przy Mariackim — ofiary przy wschodniej pierzei (ok. 15:00–15:01); dalej obok ul. Siennej w stronę Grodzkiej. <i>(Onet)</i>',2),
+    grodzkaStart:add(P.grodzkaStart,C.other,'<b>3. Wjazd w ul. Grodzką — 15:01:16</b><br>Tuż za sprawcą radiowóz (pościg od 15:01:00). 15:01:28 na pl. Wszystkich Świętych ostrzelany tramwaj linii 1. <i>(Onet)</i>',3),
+    arrest:add(P.arrest,C.arrest,'<b>4. Stradomska / Dietla — 15:02:53–15:03:26</b><br>Subaru (z przestrzelonymi oponami) uderza w biały samochód na światłach. Sprawca wysiada i strzela do dwóch policjantów; 15:03:11 strzał policjanta go powala. Obaj policjanci ranni. <i>(Onet; policja: zatrzymanie 2 min 3 s po rozpoczęciu pościgu)</i>',4)
   };
-  document.getElementById('mapstat').innerHTML = fromOSM
-    ? `Trasa wyznaczona po sieci ulic OpenStreetMap: <b>${fmtM(TOTAL)}</b> (w tym ok. ${fmtM(lR)} po płycie Rynku — przybliżone, ${fmtM(lE)} od wyjazdu z Rynku do miejsca zatrzymania).`
-    : `Trasa wg współrzędnych adresów (ok. ${fmtM(TOTAL)}) — trwa pobieranie dokładnej sieci ulic z OpenStreetMap…`;
+  document.getElementById('mapstat').innerHTML = (fromOSM
+    ? `Trasa po sieci ulic OpenStreetMap: <b>${fmtM(TOTAL)}</b> (ok. ${fmtM(lR)} po Rynku, ${fmtM(lE)} od Grodzkiej do Dietla).`
+    : `Trasa wg punktów kontrolnych (ok. ${fmtM(TOTAL)}) — trwa pobieranie dokładnej sieci ulic z OpenStreetMap…`)
+    + ' Godziny: rekonstrukcja Onetu na podstawie nagrań świadków, monitoringu i relacji policji.';
   prog=0; render(); evcap.classList.remove('show');
   map.fitBounds(trailAll.getBounds().pad(0.12));
 }
 
 document.querySelectorAll('.steps button').forEach(b=>b.addEventListener('click',()=>{
-  const k=b.dataset.step; if(!(k in STEPF)) return;
+  const k=b.dataset.step; if(!(k in STEPT)) return;
   playing=false; playBtn.textContent='▶';
-  prog=STEPF[k]; render();
+  prog=(STEPT[k]-TA)/TDUR; render();
   document.getElementById('mapwrap').scrollIntoView({block:'center'});
   map.flyTo(window.MK[k].getLatLng(),18,{duration:.8});
   setTimeout(()=>window.MK[k].openPopup(),850);
@@ -789,8 +839,13 @@ L.polyline([[50.9294,21.3853],[50.0617,19.9372]],{color:'#555',dashArray:'4 6',w
 // t = typ: o = oficjalne, m = media, d = dementi
 const TL = [
   ['sob','14:59','o','Pierwsze strzały przy skrzyżowaniu Sławkowskiej i Szczepańskiej; samochód wjeżdża na Rynek, napastnik strzela do przypadkowych osób.','Policja (za TVN24)'],
+  ['sob','14:58:43','m','Subaru (wjazd od Szczepańskiej) zatrzymuje się na rogu przy Sławkowskiej.','Onet – rekonstrukcja'],
+  ['sob','14:58:58','m','Pierwsze strzały z okna samochodu w stronę Sławkowskiej; przy narożniku kamienicy padają ofiary.','Onet – rekonstrukcja'],
+  ['sob','14:59:25','m','Auto rusza pierzeją północną w stronę Bazyliki Mariackiej; ofiary przy wschodniej pierzei ok. 15:00–15:01.','Onet – rekonstrukcja'],
   ['sob','15:00:15','o','Pierwsze zgłoszenie na numer alarmowy; w kolejnych minutach ok. 40 zgłoszeń.','Wojewoda małopolski'],
   ['sob','15:01','o','Pierwszy patrol rozpoczyna pościg; zatrzymanie po 2 min 3 s (ok. 15:03).','Policja'],
+  ['sob','15:01:16','m','Auto wjeżdża w Grodzką, radiowóz tuż za nim; 15:01:28 ostrzał tramwaju linii 1 na pl. Wszystkich Świętych.','Onet – rekonstrukcja'],
+  ['sob','15:02:53','m','Przy Dietla Subaru (z przestrzelonymi przez policję oponami) uderza w biały samochód; sprawca wysiada i strzela do policjantów. 15:03:11 strzał policjanta go powala.','Onet – rekonstrukcja'],
   ['sob','15:56','o','Straż pożarna: okolice Rynku to wciąż „strefa gorąca”, nie zbliżać się.','PSP'],
   ['sob','16:05','o','PSP: 2 ofiary śmiertelne, 10 rannych; sprawca zatrzymany. Strzały z auta jadącego od Sławkowskiej.','PSP Kraków'],
   ['sob','16:06','o','Wpis policji na X: ok. 15:00 mężczyzna z samochodu strzelał do przypadkowych osób, sprawca zatrzymany, ranni policjanci.','@policja_mpl'],
@@ -930,6 +985,7 @@ const SRC = [
   ['rp.pl – Kierwiński o pierwszych hipotezach','https://www.rp.pl/przestepczosc/art45462471-radykalne-poglady-i-skrajna-ideologia-kierwinski-wyjasnia-slowa-o-zamachowcu'],
   ['Kozaczek – PK o pokoju sprawcy','https://www.kozaczek.pl/sledczy-przeszukali-pokoj-sprawcy-zamachu-w-krakowie-jeden-przedmiot-szczegolnie-zwrocil-ich-uwage/'],
   ['terroryzm.pl – opracowanie (m.in. rekonstrukcja Onetu)','https://www.terroryzm.pl/atak-na-rynku-glownym-w-krakowie-7-listopada-2026.html'],
+  ['Onet – rekonstrukcja „Kluczowe cztery i pół minuty” (Instagram @onet_pl)','https://www.instagram.com/reel/Dfhnwp0sKvJ/'],
   ['TVP Kielce – rodzice i siostra sprawcy','https://kielce.tvp.pl/96367832/ostrowiec-swietokrzyski-nie-zyja-rodzice-i-siostra-sprawcy-ataku-w-krakowie'],
   ['WP – co wiemy o rodzinie zamachowca','https://wiadomosci.wp.pl/trzy-ciala-w-mieszkaniu-co-wiemy-o-rodzinie-zamachowca-z-krakowa-7348739801532864a'],
   ['Radio ESKA Kraków – jak zginęła rodzina','https://krakow.eska.pl/wiadomo-jak-zginela-rodzina-zamachowca-z-ostrowca-swietokrzyskiego-ciala-lezaly-w-lozkach-aa-Ciyp-piwT-4yEH.html'],
