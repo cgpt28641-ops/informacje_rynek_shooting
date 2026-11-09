@@ -11,6 +11,7 @@
 <meta property="og:locale" content="pl_PL">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#1c1c1e">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%231c1c1e%27/%3E%3Cpath d=%27M9 6h3v20H9zM14 6h9l-2 5 2 5h-9z%27 fill=%27%23fff%27/%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -44,7 +45,7 @@ html{scroll-behavior:smooth;scroll-padding-top:110px}
 .whatsnew{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:12px 16px;margin:14px 0 4px;max-width:760px}
 .whatsnew h3{margin:0 0 4px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
 .whatsnew ul{margin:0;padding-left:18px} .whatsnew li{margin:3px 0}
-.sharebtn{margin-left:auto;font:inherit;font-size:13px;background:transparent;color:var(--bg);border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:3px 12px;cursor:pointer}
+.sharebtn{margin-left:auto;font:inherit;font-size:13px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:3px 12px;cursor:pointer}
 .tltools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
 .tltools input{font:inherit;font-size:14px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);min-width:0;flex:1 1 180px}
 .tltools select{font:inherit;font-size:13px;padding:5px 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink)}
@@ -55,14 +56,32 @@ html{scroll-behavior:smooth;scroll-padding-top:110px}
 .numpin{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;color:#fff;font:700 14px/1 Inter,sans-serif;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35)}
 .totop{position:fixed;right:16px;bottom:16px;z-index:999;width:44px;height:44px;border-radius:50%;border:0;background:var(--ink);color:var(--bg);font-size:20px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s;box-shadow:0 2px 8px rgba(0,0,0,.25)}
 .totop.show{opacity:1;pointer-events:auto}
-.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .2s;z-index:1001;pointer-events:none}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#1c1c1e;color:#fff;padding:8px 16px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .2s;z-index:1001;pointer-events:none}
 .toast.show{opacity:1}
 @media print{.upbar,.navbar,.totop,#map,#omap,.legend,.filters,.tltools,.sharebtn{display:none!important} body{background:#fff;color:#000} .card{break-inside:avoid}}
-.upbar{position:sticky;top:0;z-index:1000;background:var(--ink);color:var(--bg);font-size:14px}
+.iconbtn{font:inherit;font-size:13px;background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:3px 10px;cursor:pointer}
+.newver{display:none;position:fixed;left:50%;top:calc(var(--upbar-h,40px) + 60px);transform:translateX(-50%);z-index:1002;background:var(--accent);color:#fff;border:0;border-radius:999px;padding:9px 18px;font:600 14px Inter,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.3);cursor:pointer}
+.newver.show{display:block}
+.steps{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+.steps button{width:100%;text-align:left;font:inherit;font-size:14px;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+.steps button:hover,.steps button:focus-visible{border-color:var(--ink)}
+.steps .n{flex:0 0 24px;height:24px;border-radius:50%;color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.steps small{display:block;color:var(--muted);font-size:12px}
+.faq details{border-bottom:1px solid var(--line);padding:10px 0}
+.faq details:last-child{border-bottom:0}
+.faq summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-weight:400;color:var(--muted);font-size:20px;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:8px 0 0;color:var(--ink)}
+.en{font-size:15px}
+.en p{margin:0 0 8px}
+.upbar{position:sticky;top:0;z-index:1000;background:#1c1c1e;color:#fff;font-size:14px}
 .upbar .wrap{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center;padding:8px 16px}
 .upbar b{font-size:15px}
 .upbar .dot{width:9px;height:9px;border-radius:50%;background:#e04848;display:inline-block;margin-right:6px;animation:pulse 2s infinite}
 .upbar .ago{opacity:.8}
+@media (max-width:520px){.upbar .every{display:none}.upbar .wrap{padding:6px 16px}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 @media (prefers-reduced-motion:reduce){.upbar .dot{animation:none}}
 header{border-top:6px solid #111;padding:28px 0 18px;border-bottom:1px solid var(--line)}
@@ -109,19 +128,22 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
   <div class="wrap">
     <span><span class="dot"></span>Ostatnia aktualizacja: <b id="lastUpdate">pon. 9.11, 12:30</b></span>
     <span class="ago" id="ago"></span>
-    <span class="ago">· co ok. 2 godz.</span>
+    <span class="ago every">· co ok. 2 godz.</span>
     <button class="sharebtn" id="share" type="button">Udostępnij</button>
+    <button class="iconbtn" id="theme" type="button" aria-label="Zmień motyw jasny/ciemny" title="Motyw jasny/ciemny">◐</button>
   </div>
 </div>
 <nav class="navbar" aria-label="Sekcje strony">
   <div class="wrap">
     <a href="#mapa">Mapa</a>
+    <a href="#faq">Szybkie odpowiedzi</a>
     <a href="#fakty">Fakty</a>
     <a href="#ranni">Stan rannych</a>
     <a href="#ostrowiec">Ostrowiec</a>
     <a href="#dementi">Dementi</a>
     <a href="#chronologia">Chronologia</a>
     <a href="#pomoc">Pomoc</a>
+    <a href="#english">English</a>
     <a href="#zrodla">Źródła</a>
   </div>
 </nav>
@@ -162,7 +184,25 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
     <span><i style="background:#6b5b2e"></i>punkt na trasie</span>
     <span><span style="display:inline-block;width:22px;border-top:3px dashed #8a1c1c;vertical-align:4px;margin-right:6px"></span>trasa ucieczki (ulice z OpenStreetMap)</span><span><i style="background:rgba(138,28,28,.3);border-radius:2px"></i>Rynek – strefa ostrzału</span>
   </div>
+  <ol class="steps" aria-label="Przebieg krok po kroku — kliknij, by pokazać na mapie">
+    <li><button type="button" data-step="slawEntry"><span class="n" style="background:#8a1c1c">1</span><span>Wjazd od ul. Sławkowskiej<small>ok. 15:00 — pierwsze strzały</small></span></button></li>
+    <li><button type="button" data-step="rynek"><span class="n" style="background:#8a1c1c">2</span><span>Objazd płyty Rynku<small>strzały do przechodniów; 6 ofiar</small></span></button></li>
+    <li><button type="button" data-step="grodzkaStart"><span class="n" style="background:#6b5b2e">3</span><span>Ucieczka ul. Grodzką<small>pod Wawelem, potem Stradomska</small></span></button></li>
+    <li><button type="button" data-step="arrest"><span class="n" style="background:#1f4e79">4</span><span>Stradomska / Dietla<small>wymiana ognia, zatrzymanie (~3 min)</small></span></button></li>
+  </ol>
   <p class="src" style="font-size:13px;color:var(--muted)">Kolejność wg policji i prokuratury: 1) wjazd od ul. Sławkowskiej → 2) objazd płyty Rynku → 3) ul. Grodzka, pod Wawelem → ul. Stradomska → 4) zatrzymanie na skrzyżowaniu z ul. Dietla (ok. 1,5 km). Ulice są rysowane z danych OpenStreetMap; dokładny tor jazdy po płycie Rynku nie został podany.</p>
+
+  <h2 id="faq">Szybkie odpowiedzi</h2>
+  <div class="card faq">
+    <details open><summary>Czy w centrum Krakowa jest teraz bezpiecznie?</summary><p>Tak. Policja potwierdziła, że był jeden sprawca; został zatrzymany w sobotę i zmarł w szpitalu w poniedziałek nad ranem. Informacje o drugim sprawcy zdementowano. Na Rynku są dodatkowe patrole i zapory.</p></details>
+    <details><summary>Czy Rynek Główny jest otwarty?</summary><p>Tak — po zakończeniu oględzin w niedzielę o 18:00 Rynek otwarto. Bazylika Mariacka była zamknięta do odwołania; sprawdzaj komunikaty parafii.</p></details>
+    <details><summary>Ile osób zginęło i ile jest rannych?</summary><p>W Krakowie zginęło 6 osób, w Ostrowcu Świętokrzyskim sprawca wcześniej zabił 3 członków swojej rodziny — łącznie 9 ofiar. Rannych było 16 (z policjantami i sprawcą); w szpitalach przebywa 15 osób.</p></details>
+    <details><summary>Co z rannymi policjantami?</summary><p>St. post. Jakub Kulik i st. post. Artur Morański są po operacjach i zostali wybudzeni ze śpiączki farmakologicznej. Stan jednego jest ciężki, drugiego stabilny (wojewoda, poniedziałek rano).</p></details>
+    <details><summary>Czy sprawca żyje? Co dalej ze śledztwem?</summary><p>Nie — zmarł 9.11 ok. 4:30 w szpitalu. Nie usłyszał zarzutów. Prokuratura Krajowa prowadzi śledztwo dalej: sprawdza, czy ktoś mu pomagał, skąd miał pozwolenie na broń i jakie miał motywy.</p></details>
+    <details><summary>Czy trzeba oddawać krew?</summary><p>W niedzielę RCKiK Kraków poinformowało, że zapasy krwi są wystarczające, i poprosiło o wstrzymanie wizyt. Krew zawsze jest potrzebna, ale nie trzeba już przychodzić specjalnie w związku z atakiem — śledź komunikaty RCKiK.</p></details>
+    <details><summary>Byłem świadkiem — co zrobić?</summary><p>Zgłoś się do najbliższej jednostki policji. Śledczy zbierają też nagrania od świadków.</p></details>
+    <details><summary>Gdzie szukać wsparcia psychologicznego?</summary><p>Ośrodek Interwencji Kryzysowej w Krakowie: 12 421 92 82. Telefon zaufania dla dorosłych: 116 123, dla dzieci i młodzieży: 116 111.</p></details>
+  </div>
 
   <h2 id="fakty">Najważniejsze fakty</h2>
   <div class="grid2">
@@ -376,9 +416,17 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
     <ul class="facts">
       <li>Ośrodek Interwencji Kryzysowej w Krakowie: <b>12 421 92 82</b></li>
       <li>Telefon zaufania dla dorosłych: <b>116 123</b> · dla dzieci i młodzieży: <b>116 111</b></li>
-      <li>Krew dla st. post. Jakuba Kulika: grupa <b>AB Rh+</b>, dowolna stacja krwiodawstwa w Polsce</li>
+      <li>Krew: RCKiK Kraków informuje, że zapasy są wystarczające i prosiło o wstrzymanie wizyt związanych z atakiem (apel o AB Rh+ dla st. post. Kulika został zrealizowany)</li>
       <li>Świadkowie: najbliższa jednostka policji</li>
     </ul>
+  </div>
+
+  <h2 id="english" lang="en">In English — summary</h2>
+  <div class="card en" lang="en">
+    <p><b>What happened:</b> On Saturday 7 November 2026 at about 15:00, a 24-year-old Polish man drove a car onto Kraków's Main Market Square (Rynek Główny) from Sławkowska Street and opened fire on passers-by with a long gun. He then fled via Grodzka and Stradomska streets and was shot and detained by two police officers at the Stradomska/Dietla intersection, about 3 minutes after the first emergency call.</p>
+    <p><b>Victims:</b> 6 people were killed in Kraków (including a British and an Austrian citizen) and 16 were injured, including two police officers and the attacker; foreign nationals from the UK, Portugal, Russia, Germany and Austria are among the injured. The attacker's parents and sister were found shot dead in the family flat in Ostrowiec Świętokrzyski.</p>
+    <p><b>Now:</b> The attacker died in hospital early on Monday 9 November. Both injured officers have been brought out of induced comas. The National Prosecutor's Office is investigating the attack as a terrorist offence and is checking whether anyone helped him. The square has reopened. National mourning: 8–9 November; city mourning in Kraków until 11 November.</p>
+    <p><b>Help:</b> Kraków Crisis Intervention Centre: +48 12 421 92 82. Witnesses should contact any police station. In an emergency call 112.</p>
   </div>
 
   <h2 id="zrodla">Źródła</h2>
@@ -432,16 +480,17 @@ const FB = {
 
 const layerInfo = L.layerGroup().addTo(map);
 
+const MK={}; let CUR=FB;
 function drawPins(P){
-  layerInfo.clearLayers();
+  layerInfo.clearLayers(); CUR=P;
   const add=(ll,c,h,r=9,n)=>n
     ? L.marker(ll,{icon:L.divIcon({className:'',html:`<div class="numpin" style="background:${c}">${n}</div>`,iconSize:[28,28],iconAnchor:[14,14],popupAnchor:[0,-14]}),title:h.replace(/<[^>]+>/g,' ').slice(0,60)}).addTo(layerInfo).bindPopup(h)
     : L.circleMarker(ll,{radius:r,color:'#fff',weight:2,fillColor:c,fillOpacity:.95}).addTo(layerInfo).bindPopup(h);
-  add(P.slawEntry,C.shot,'<b>1. Wjazd od ul. Sławkowskiej</b><br>Ok. 15:00 samochód wjeżdża na Rynek; tu napastnik otwiera ogień do przypadkowych osób.',11,1);
-  add(P.rynek,C.shot,'<b>2. Płyta Rynku Głównego</b><br>Napastnik objeżdża płytę Rynku i strzela m.in. w stronę uciekających ludzi i postoju dorożek. Zginęło 6 osób, kilkanaście rannych.',11,2);
-  add(P.grodzkaStart,C.other,'<b>3. Wyjazd w ul. Grodzką</b><br>Ucieczka w stronę Wawelu i Kazimierza.',9,3);
+  MK.slawEntry=add(P.slawEntry,C.shot,'<b>1. Wjazd od ul. Sławkowskiej</b><br>Ok. 15:00 samochód wjeżdża na Rynek; tu napastnik otwiera ogień do przypadkowych osób.',11,1);
+  MK.rynek=add(P.rynek,C.shot,'<b>2. Płyta Rynku Głównego</b><br>Napastnik objeżdża płytę Rynku i strzela m.in. w stronę uciekających ludzi i postoju dorożek. Zginęło 6 osób, kilkanaście rannych.',11,2);
+  MK.grodzkaStart=add(P.grodzkaStart,C.other,'<b>3. Wyjazd w ul. Grodzką</b><br>Ucieczka w stronę Wawelu i Kazimierza.',9,3);
   add(P.plWS,C.other,'<b>Plac Wszystkich Świętych</b><br>Na trasie ucieczki; w niedzielę zamknięty na czas oględzin.',7);
-  add(P.arrest,C.arrest,'<b>4. Skrzyżowanie Stradomskiej i Dietla</b><br>Policjanci po wymianie ognia postrzelili i zatrzymali sprawcę. Jego auto uderzyło w inny pojazd. Wieczorem sprawdzenie pirotechniczne auta i ewakuacja pobliskich budynków.',11,4);
+  MK.arrest=add(P.arrest,C.arrest,'<b>4. Skrzyżowanie Stradomskiej i Dietla</b><br>Policjanci po wymianie ognia postrzelili i zatrzymali sprawcę. Jego auto uderzyło w inny pojazd. Wieczorem sprawdzenie pirotechniczne auta i ewakuacja pobliskich budynków.',11,4);
 }
 
 pinH(50.0154,20.0027,C.help,'<b>Szpital Uniwersytecki (Prokocim)</b><br>Trafiła tu część rannych. Łącznie ranni trafili do 6 krakowskich szpitali.');
@@ -455,6 +504,12 @@ function drawFallbackRoute(){
 }
 
 drawPins(FB);
+document.querySelectorAll('.steps button').forEach(b=>b.addEventListener('click',()=>{
+  const k=b.dataset.step;
+  document.getElementById('map').scrollIntoView({block:'center'});
+  map.flyTo(CUR[k],18,{duration:.8});
+  setTimeout(()=>MK[k]&&MK[k].openPopup(),850);
+}));
 map.fitBounds([[50.0640,19.9330],[50.0510,19.9440]]);
 
 // ---- Prawdziwe geometrie ulic z OpenStreetMap (Overpass API) ----
@@ -657,6 +712,7 @@ document.getElementById('sources').innerHTML = SRC.map(s=>`<li><a href="${s[1]}"
 </script>
 <button class="totop" id="totop" type="button" aria-label="Wróć na górę">↑</button>
 <div class="toast" id="toast" role="status"></div>
+<button class="newver" id="newver" type="button">Są nowe informacje — odśwież stronę</button>
 <script>
 (function(){
   // wysokość paska aktualizacji -> pozycja nawigacji
@@ -664,6 +720,28 @@ document.getElementById('sources').innerHTML = SRC.map(s=>`<li><a href="${s[1]}"
   const nav=document.querySelector('.navbar');
   const setH=()=>{const r=document.documentElement.style;r.setProperty('--upbar-h',up.offsetHeight+'px');r.scrollPaddingTop=(up.offsetHeight+nav.offsetHeight+12)+'px';};
   setH(); addEventListener('resize',setH);
+
+  // motyw jasny/ciemny
+  const root=document.documentElement;
+  try{const t=localStorage.getItem('theme'); if(t) root.dataset.theme=t;}catch(e){}
+  document.getElementById('theme').addEventListener('click',()=>{
+    const dark = root.dataset.theme ? root.dataset.theme==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+    try{localStorage.setItem('theme',root.dataset.theme);}catch(e){}
+  });
+
+  // sprawdzanie, czy jest nowsza wersja strony (co 3 min)
+  const nv=document.getElementById('newver');
+  nv.addEventListener('click',()=>location.reload());
+  async function checkNew(){
+    try{
+      const r=await fetch(location.href.split('#')[0],{cache:'no-store'});
+      const t=await r.text();
+      const m=t.match(/const LAST_UPDATE = '([^']+)'/);
+      if(m && m[1]!==LAST_UPDATE) nv.classList.add('show');
+    }catch(e){}
+  }
+  if(location.protocol.startsWith('http')) setInterval(checkNew,180000);
 
   // wróć na górę
   const tt=document.getElementById('totop');

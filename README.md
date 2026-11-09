@@ -16,3 +16,6 @@ Przy każdej aktualizacji zmień w `index.html`:
 - linię „Stan informacji na:” w nagłówku.
 - ramkę „Najnowsze” (`#whatsnew`) — 3–5 najważniejszych zmian,
 - `NEW_COUNT` w skrypcie chronologii — ile ostatnich wpisów `TL` oznaczyć jako NOWE.
+- sekcję „Szybkie odpowiedzi” (`#faq`) i streszczenie po angielsku (`#english`), jeśli zmieniły się kluczowe fakty.
+
+Otwarta strona sama sprawdza co 3 min, czy `LAST_UPDATE` się zmienił, i pokazuje przycisk „Są nowe informacje — odśwież”.
