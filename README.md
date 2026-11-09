@@ -14,3 +14,5 @@ Przy każdej aktualizacji zmień w `index.html`:
 - `<b id="lastUpdate">…</b>` (pasek na górze, np. `pon. 9.11, 12:30`),
 - stałą `LAST_UPDATE` w skrypcie (ISO, np. `2026-11-09T12:30:00+01:00`) — z niej liczy się „X min temu”,
 - linię „Stan informacji na:” w nagłówku.
+- ramkę „Najnowsze” (`#whatsnew`) — 3–5 najważniejszych zmian,
+- `NEW_COUNT` w skrypcie chronologii — ile ostatnich wpisów `TL` oznaczyć jako NOWE.

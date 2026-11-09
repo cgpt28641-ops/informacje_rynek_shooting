@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Atak na Rynku Głównym</title>
 <meta name="description" content="Zweryfikowane informacje o ataku na Rynku Głównym w Krakowie 7 listopada 2026 r. – mapa, chronologia, komunikaty policji i prokuratury.">
+<meta property="og:title" content="Atak na Rynku Głównym w Krakowie — co wiadomo na pewno">
+<meta property="og:description" content="Mapa, chronologia, stan rannych, śledztwo i zdementowane informacje. Każda informacja ze źródłem. Aktualizowane co ok. 2 godziny.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pl_PL">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#1c1c1e">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -28,6 +34,30 @@
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif}
 a{color:var(--official)}
 .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.navbar{position:sticky;top:var(--upbar-h,40px);z-index:999;background:var(--bg);border-bottom:1px solid var(--line)}
+.navbar .wrap{display:flex;gap:6px;overflow-x:auto;padding:8px 16px;scrollbar-width:none}
+.navbar .wrap::-webkit-scrollbar{display:none}
+.navbar a{flex:0 0 auto;font-size:13px;font-weight:500;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 11px}
+.navbar a.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.whatsnew{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:12px 16px;margin:14px 0 4px;max-width:760px}
+.whatsnew h3{margin:0 0 4px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.whatsnew ul{margin:0;padding-left:18px} .whatsnew li{margin:3px 0}
+.sharebtn{margin-left:auto;font:inherit;font-size:13px;background:transparent;color:var(--bg);border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:3px 12px;cursor:pointer}
+.tltools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+.tltools input{font:inherit;font-size:14px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);min-width:0;flex:1 1 180px}
+.tltools select{font:inherit;font-size:13px;padding:5px 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink)}
+.tlcount{font-size:13px;color:var(--muted)}
+.timeline li.new .t::after{content:"NOWE";font-size:10px;font-weight:700;letter-spacing:.05em;background:var(--accent);color:#fff;border-radius:4px;padding:1px 5px;margin-left:6px;vertical-align:1px}
+.daysep{list-style:none;font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding:6px 0 10px 20px!important}
+.daysep::before{display:none!important}
+.numpin{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;color:#fff;font:700 14px/1 Inter,sans-serif;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35)}
+.totop{position:fixed;right:16px;bottom:16px;z-index:999;width:44px;height:44px;border-radius:50%;border:0;background:var(--ink);color:var(--bg);font-size:20px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.totop.show{opacity:1;pointer-events:auto}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .2s;z-index:1001;pointer-events:none}
+.toast.show{opacity:1}
+@media print{.upbar,.navbar,.totop,#map,#omap,.legend,.filters,.tltools,.sharebtn{display:none!important} body{background:#fff;color:#000} .card{break-inside:avoid}}
 .upbar{position:sticky;top:0;z-index:1000;background:var(--ink);color:var(--bg);font-size:14px}
 .upbar .wrap{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center;padding:8px 16px}
 .upbar b{font-size:15px}
@@ -80,18 +110,39 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
     <span><span class="dot"></span>Ostatnia aktualizacja: <b id="lastUpdate">pon. 9.11, 12:30</b></span>
     <span class="ago" id="ago"></span>
     <span class="ago">· co ok. 2 godz.</span>
+    <button class="sharebtn" id="share" type="button">Udostępnij</button>
   </div>
 </div>
+<nav class="navbar" aria-label="Sekcje strony">
+  <div class="wrap">
+    <a href="#mapa">Mapa</a>
+    <a href="#fakty">Fakty</a>
+    <a href="#ranni">Stan rannych</a>
+    <a href="#ostrowiec">Ostrowiec</a>
+    <a href="#dementi">Dementi</a>
+    <a href="#chronologia">Chronologia</a>
+    <a href="#pomoc">Pomoc</a>
+    <a href="#zrodla">Źródła</a>
+  </div>
+</nav>
 <header>
   <div class="wrap">
     <span class="mourning">Żałoba narodowa · 8–9 listopada 2026 · w Krakowie do 11 listopada</span>
     <h1>Atak na Rynku Głównym w Krakowie — co wiadomo na pewno</h1>
-    <p class="lead" style="margin-bottom:10px"><b style="color:var(--accent)">Najnowsze (pon. 9.11):</b> sprawca zmarł w szpitalu ok. 4:30 — potwierdziła to policja. Śledztwo trwa dalej: prokuratura sprawdza, czy ktoś mu pomagał.</p>
+    <div class="whatsnew" id="whatsnew">
+      <h3>Najnowsze — pon. 9.11</h3>
+      <ul>
+        <li><b>Sprawca zmarł w szpitalu ok. 4:30</b> — potwierdziła policja. Nie usłyszał zarzutów; śledztwo trwa (m.in. czy ktoś mu pomagał).</li>
+        <li>Wojewoda: straż miejska była na miejscu w niecałe 2 min, policja ok. 3 min, karetki po 4 min.</li>
+        <li>W szpitalach przebywa 15 rannych, w tym 2 policjantów (obaj wybudzeni ze śpiączki).</li>
+        <li>Dziś o 20:00 wiec solidarności na rogu Rynku i ul. Sławkowskiej.</li>
+      </ul>
+    </div>
     <p class="lead">Zebrane i sprawdzone informacje o ataku z soboty 7 listopada 2026 r. Każda informacja ma źródło i oznaczenie, czy pochodzi z oficjalnego komunikatu (policja, prokuratura, wojewoda, MSWiA), czy z ustaleń mediów. Osobno wypisane są informacje zdementowane.</p>
     <p class="updated">Stan informacji na: pon. 9 listopada 2026, 12:30 (czas polski)</p>
     <div class="stats">
       <div class="stat"><b>6</b><span>ofiar śmiertelnych w Krakowie (4 kobiety, 2 mężczyzn)</span></div>
-      <div class="stat"><b>16</b><span>rannych w szpitalach, w tym 2 policjantów i sprawca (zmarł 9.11)</span></div>
+      <div class="stat"><b>15</b><span>rannych nadal w szpitalach, w tym 2 policjantów</span></div>
       <div class="stat"><b>3</b><span>ciała w mieszkaniu sprawcy w Ostrowcu Św.</span></div>
       <div class="stat"><b>9</b><span>zabitych łącznie (Kraków + Ostrowiec)</span></div>
       <div class="stat"><b>23 s</b><span>od zgłoszenia do startu pierwszego patrolu</span></div>
@@ -102,18 +153,18 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
 
 <main class="wrap">
 
-  <h2>Mapa zdarzenia</h2>
+  <h2 id="mapa">Mapa zdarzenia</h2>
   <div id="map" role="region" aria-label="Mapa miejsc zdarzenia"></div>
   <div class="legend">
-    <span><i style="background:#8a1c1c"></i>miejsce strzałów</span>
-    <span><i style="background:#1f4e79"></i>zatrzymanie sprawcy</span>
+    <span><i style="background:#8a1c1c"></i>1–2 miejsce strzałów</span>
+    <span><i style="background:#1f4e79"></i>4 zatrzymanie sprawcy</span>
     <span><i style="background:#2e6b3a"></i>szpital / pomoc</span>
-    <span><i style="background:#6b5b2e"></i>trasa</span>
+    <span><i style="background:#6b5b2e"></i>punkt na trasie</span>
     <span><span style="display:inline-block;width:22px;border-top:3px dashed #8a1c1c;vertical-align:4px;margin-right:6px"></span>trasa ucieczki (ulice z OpenStreetMap)</span><span><i style="background:rgba(138,28,28,.3);border-radius:2px"></i>Rynek – strefa ostrzału</span>
   </div>
   <p class="src" style="font-size:13px;color:var(--muted)">Kolejność wg policji i prokuratury: 1) wjazd od ul. Sławkowskiej → 2) objazd płyty Rynku → 3) ul. Grodzka, pod Wawelem → ul. Stradomska → 4) zatrzymanie na skrzyżowaniu z ul. Dietla (ok. 1,5 km). Ulice są rysowane z danych OpenStreetMap; dokładny tor jazdy po płycie Rynku nie został podany.</p>
 
-  <h2>Najważniejsze fakty</h2>
+  <h2 id="fakty">Najważniejsze fakty</h2>
   <div class="grid2">
     <div class="card">
       <h3>Przebieg</h3>
@@ -190,7 +241,7 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
   </div>
 
 
-  <h2>Stan rannych</h2>
+  <h2 id="ranni">Stan rannych</h2>
   <p style="color:var(--muted);margin-top:-4px">Najnowsze dostępne informacje (niedziela 8.11). Stan zdrowia zmienia się w ciągu dnia — rozstrzyga najnowszy komunikat szpitala, wojewody lub MSWiA.</p>
   <div class="grid2">
     <div class="card">
@@ -237,7 +288,7 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
     </div>
   </div>
 
-  <h2>Ostrowiec Świętokrzyski — zabójstwo rodziny sprawcy</h2>
+  <h2 id="ostrowiec">Ostrowiec Świętokrzyski — zabójstwo rodziny sprawcy</h2>
   <div class="grid2">
     <div class="card">
       <h3>Co potwierdzono</h3>
@@ -275,7 +326,7 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
     <p style="font-size:12px;color:var(--muted);margin:6px 0 0">Na mapie zaznaczono tylko miasto, bez adresu.</p>
   </div>
 
-  <h2>Zdementowane informacje</h2>
+  <h2 id="dementi">Zdementowane informacje</h2>
   <div class="card">
     <ul class="denied">
       <li><b>„Było dwóch sprawców”</b> — wstępna informacja KMP Kraków (ok. 17:20) zdementowana przez KWP Kraków: jedyny znany sprawca jest w rękach policji. <span class="tag d">zdementowane</span></li>
@@ -291,15 +342,21 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
     <p style="font-size:14px;color:var(--muted);margin-bottom:0">Ministerstwo Cyfryzacji i MSWiA apelują: przed udostępnieniem sensacyjnej informacji sprawdź, czy potwierdziło ją oficjalne źródło.</p>
   </div>
 
-  <h2>Chronologia</h2>
+  <h2 id="chronologia">Chronologia</h2>
   <div class="filters" role="group" aria-label="Filtr chronologii">
     <button data-f="all" aria-pressed="true">Wszystko</button>
     <button data-f="o" aria-pressed="false">Tylko oficjalne</button>
     <button data-f="d" aria-pressed="false">Dementi</button>
   </div>
+  <div class="tltools">
+    <input id="tlq" type="search" placeholder="Szukaj w chronologii, np. policjant, Ostrowiec…" aria-label="Szukaj w chronologii">
+    <select id="tlday" aria-label="Dzień"><option value="all">Wszystkie dni</option><option value="sob">sob. 7.11</option><option value="nd">niedz. 8.11</option><option value="pn">pon. 9.11</option></select>
+    <select id="tlord" aria-label="Kolejność"><option value="desc">Najnowsze najpierw</option><option value="asc">Od początku</option></select>
+    <span class="tlcount" id="tlcount"></span>
+  </div>
   <ul class="timeline" id="timeline"></ul>
 
-  <h2>Oficjalne konta do śledzenia</h2>
+  <h2 id="konta">Oficjalne konta do śledzenia</h2>
   <div class="card">
     <table>
       <thead><tr><th>Konto na X</th><th>Kto</th></tr></thead>
@@ -314,7 +371,7 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
     <p style="font-size:13px;color:var(--muted);margin:10px 0 0">Wpisy z X na tej stronie są przytoczone za relacjami mediów, które je osadzały (X nie udostępnia treści bez logowania). Nazwy kont sprawdź przed obserwowaniem.</p>
   </div>
 
-  <h2>Pomoc</h2>
+  <h2 id="pomoc">Pomoc</h2>
   <div class="card help">
     <ul class="facts">
       <li>Ośrodek Interwencji Kryzysowej w Krakowie: <b>12 421 92 82</b></li>
@@ -324,7 +381,7 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
     </ul>
   </div>
 
-  <h2>Źródła</h2>
+  <h2 id="zrodla">Źródła</h2>
   <div class="card">
     <ul class="facts" id="sources"></ul>
   </div>
@@ -377,12 +434,14 @@ const layerInfo = L.layerGroup().addTo(map);
 
 function drawPins(P){
   layerInfo.clearLayers();
-  const add=(ll,c,h,r=9)=>L.circleMarker(ll,{radius:r,color:'#fff',weight:2,fillColor:c,fillOpacity:.95}).addTo(layerInfo).bindPopup(h);
-  add(P.slawEntry,C.shot,'<b>1. Wjazd od ul. Sławkowskiej</b><br>Ok. 15:00 samochód wjeżdża na Rynek; tu napastnik otwiera ogień do przypadkowych osób.',11);
-  add(P.rynek,C.shot,'<b>2. Płyta Rynku Głównego</b><br>Napastnik objeżdża płytę Rynku i strzela m.in. w stronę uciekających ludzi i postoju dorożek. Zginęło 6 osób, kilkanaście rannych.',11);
-  add(P.grodzkaStart,C.other,'<b>3. Wyjazd w ul. Grodzką</b><br>Ucieczka w stronę Wawelu i Kazimierza.');
+  const add=(ll,c,h,r=9,n)=>n
+    ? L.marker(ll,{icon:L.divIcon({className:'',html:`<div class="numpin" style="background:${c}">${n}</div>`,iconSize:[28,28],iconAnchor:[14,14],popupAnchor:[0,-14]}),title:h.replace(/<[^>]+>/g,' ').slice(0,60)}).addTo(layerInfo).bindPopup(h)
+    : L.circleMarker(ll,{radius:r,color:'#fff',weight:2,fillColor:c,fillOpacity:.95}).addTo(layerInfo).bindPopup(h);
+  add(P.slawEntry,C.shot,'<b>1. Wjazd od ul. Sławkowskiej</b><br>Ok. 15:00 samochód wjeżdża na Rynek; tu napastnik otwiera ogień do przypadkowych osób.',11,1);
+  add(P.rynek,C.shot,'<b>2. Płyta Rynku Głównego</b><br>Napastnik objeżdża płytę Rynku i strzela m.in. w stronę uciekających ludzi i postoju dorożek. Zginęło 6 osób, kilkanaście rannych.',11,2);
+  add(P.grodzkaStart,C.other,'<b>3. Wyjazd w ul. Grodzką</b><br>Ucieczka w stronę Wawelu i Kazimierza.',9,3);
   add(P.plWS,C.other,'<b>Plac Wszystkich Świętych</b><br>Na trasie ucieczki; w niedzielę zamknięty na czas oględzin.',7);
-  add(P.arrest,C.arrest,'<b>4. Skrzyżowanie Stradomskiej i Dietla</b><br>Policjanci po wymianie ognia postrzelili i zatrzymali sprawcę. Jego auto uderzyło w inny pojazd. Wieczorem sprawdzenie pirotechniczne auta i ewakuacja pobliskich budynków.',11);
+  add(P.arrest,C.arrest,'<b>4. Skrzyżowanie Stradomskiej i Dietla</b><br>Policjanci po wymianie ognia postrzelili i zatrzymali sprawcę. Jego auto uderzyło w inny pojazd. Wieczorem sprawdzenie pirotechniczne auta i ewakuacja pobliskich budynków.',11,4);
 }
 
 pinH(50.0154,20.0027,C.help,'<b>Szpital Uniwersytecki (Prokocim)</b><br>Trafiła tu część rannych. Łącznie ranni trafili do 6 krakowskich szpitali.');
@@ -528,16 +587,33 @@ const TL = [
 ];
 const tlEl = document.getElementById('timeline');
 const label = {o:'oficjalne',m:'media',d:'dementi'};
-function renderTL(f){
-  tlEl.innerHTML = TL.filter(e=>f==='all'||e[2]===f).map(e=>
-    `<li class="${e[2]}"><span class="t">${e[1]}</span><span class="day">${({sob:'sob. 7.11',nd:'niedz. 8.11',pn:'pon. 9.11'})[e[0]]}</span><span class="tag ${e[2]}">${label[e[2]]}</span><br>${e[3]}<br><span class="src">Źródło: ${e[4]}</span></li>`
-  ).join('');
+const DAYS = {sob:'Sobota 7 listopada',nd:'Niedziela 8 listopada',pn:'Poniedziałek 9 listopada'};
+const DAYSHORT = {sob:'sob. 7.11',nd:'niedz. 8.11',pn:'pon. 9.11'};
+// Ile ostatnich wpisów oznaczyć jako NOWE (zmieniaj przy aktualizacji)
+const NEW_COUNT = 4;
+let tlF='all';
+const esc = t => t.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'})[c]);
+function renderTL(){
+  const q=document.getElementById('tlq').value.trim().toLowerCase();
+  const day=document.getElementById('tlday').value;
+  const ord=document.getElementById('tlord').value;
+  let rows = TL.map((e,i)=>({e,i,isNew:i>=TL.length-NEW_COUNT}))
+    .filter(({e})=>(tlF==='all'||e[2]===tlF)&&(day==='all'||e[0]===day)&&(!q||(e[3]+' '+e[4]).toLowerCase().includes(q)));
+  if(ord==='desc') rows.reverse();
+  let html='', last=null;
+  rows.forEach(({e,isNew})=>{
+    if(e[0]!==last){ html+=`<li class="daysep">${DAYS[e[0]]}</li>`; last=e[0]; }
+    html+=`<li class="${e[2]}${isNew?' new':''}"><span class="t">${e[1]}</span><span class="day">${DAYSHORT[e[0]]}</span><span class="tag ${e[2]}">${label[e[2]]}</span><br>${e[3]}<br><span class="src">Źródło: ${e[4]}</span></li>`;
+  });
+  tlEl.innerHTML = html || '<li class="daysep">Brak wpisów dla wybranych filtrów</li>';
+  document.getElementById('tlcount').textContent = `${rows.length} z ${TL.length} wpisów`;
 }
-renderTL('all');
+renderTL();
 document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.filters button').forEach(x=>x.setAttribute('aria-pressed','false'));
-  b.setAttribute('aria-pressed','true'); renderTL(b.dataset.f);
+  b.setAttribute('aria-pressed','true'); tlF=b.dataset.f; renderTL();
 }));
+['tlq','tlday','tlord'].forEach(id=>document.getElementById(id).addEventListener('input',renderTL));
 
 /* ---------- ŹRÓDŁA ---------- */
 const SRC = [
@@ -578,6 +654,44 @@ const SRC = [
   ['Magiczny Kraków – komunikat miasta','https://krakow.pl/aktualnosci/345151,29,komunikat,strzelanina_w_centrum_krakowa__sa_zabici_i_ranni.html'],
 ];
 document.getElementById('sources').innerHTML = SRC.map(s=>`<li><a href="${s[1]}" target="_blank" rel="noopener">${s[0]}</a></li>`).join('');
+</script>
+<button class="totop" id="totop" type="button" aria-label="Wróć na górę">↑</button>
+<div class="toast" id="toast" role="status"></div>
+<script>
+(function(){
+  // wysokość paska aktualizacji -> pozycja nawigacji
+  const up=document.querySelector('.upbar');
+  const nav=document.querySelector('.navbar');
+  const setH=()=>{const r=document.documentElement.style;r.setProperty('--upbar-h',up.offsetHeight+'px');r.scrollPaddingTop=(up.offsetHeight+nav.offsetHeight+12)+'px';};
+  setH(); addEventListener('resize',setH);
+
+  // wróć na górę
+  const tt=document.getElementById('totop');
+  addEventListener('scroll',()=>tt.classList.toggle('show',scrollY>800),{passive:true});
+  tt.addEventListener('click',()=>scrollTo({top:0}));
+
+  // udostępnij
+  const toast=document.getElementById('toast');
+  const say=m=>{toast.textContent=m;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2000);};
+  document.getElementById('share').addEventListener('click',async()=>{
+    const data={title:document.title,text:'Atak na Rynku Głównym w Krakowie — sprawdzone informacje',url:location.href.split('#')[0]};
+    try{
+      if(navigator.share){await navigator.share(data);return;}
+      await navigator.clipboard.writeText(data.url); say('Link skopiowany');
+    }catch(e){ if(e&&e.name!=='AbortError') say('Nie udało się — skopiuj adres z paska przeglądarki'); }
+  });
+
+  // podświetlanie aktywnej sekcji w nawigacji
+  const links=[...document.querySelectorAll('.navbar a')];
+  const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting){
+      links.forEach(a=>a.classList.remove('on'));
+      const a=map.get(e.target.id); if(a){a.classList.add('on'); const nw=a.parentElement; nw.scrollLeft=a.offsetLeft-(nw.clientWidth-a.offsetWidth)/2;}
+    }});
+  },{rootMargin:'-120px 0px -70% 0px'});
+  map.forEach((a,id)=>{const el=document.getElementById(id); if(el) io.observe(el);});
+})();
 </script>
 </body>
 </html>
