@@ -212,19 +212,19 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
   <p class="mapstat" id="mapstat">Ładowanie sieci ulic z OpenStreetMap…</p>
   <div class="legend">
     <span><span class="ln" style="border-top:4px solid #8a1c1c"></span>trasa sprawcy (po ulicach z OSM)</span>
-    <span><span class="ln" style="border-top:4px dashed #8a1c1c;opacity:.6"></span>tor po płycie Rynku — przybliżony</span>
+    <span><span class="ln" style="border-top:4px dashed #8a1c1c;opacity:.6"></span>przejazd po Rynku (wg relacji)</span>
     <span><i style="background:rgba(138,28,28,.3);border-radius:2px"></i>Rynek – strefa ostrzału</span>
     <span><span class="ln" style="border-top:4px solid #e08a1b"></span>zamknięcia 8.11 (zniesione)</span>
     <span><i style="background:#1f4e79"></i>zatrzymanie</span>
     <span><i style="background:#2e6b3a"></i>szpital</span>
   </div>
   <ol class="steps" aria-label="Przebieg krok po kroku — kliknij, by pokazać na mapie">
-    <li><button type="button" data-step="slawEntry"><span class="n" style="background:#8a1c1c">1</span><span>Wjazd od ul. Sławkowskiej<small>14:59 — pierwsze strzały (Sławkowska / Szczepańska)</small></span></button></li>
-    <li><button type="button" data-step="rynek"><span class="n" style="background:#8a1c1c">2</span><span>Objazd płyty Rynku<small>strzały do przechodniów; 6 ofiar</small></span></button></li>
+    <li><button type="button" data-step="slawEntry"><span class="n" style="background:#8a1c1c">1</span><span>Wjazd ul. Szczepańską<small>14:59 — pierwsze strzały (narożnik ze Sławkowską)</small></span></button></li>
+    <li><button type="button" data-step="rynek"><span class="n" style="background:#8a1c1c">2</span><span>Wzdłuż Rynku → postój<small>w stronę Mariackiego, skręt w prawo, postój przed Sienną</small></span></button></li>
     <li><button type="button" data-step="grodzkaStart"><span class="n" style="background:#6b5b2e">3</span><span>Ucieczka ul. Grodzką<small>pl. Wszystkich Świętych, pod Wawelem</small></span></button></li>
     <li><button type="button" data-step="arrest"><span class="n" style="background:#1f4e79">4</span><span>Stradomska / Dietla<small>wymiana ognia, zatrzymanie (~3 min)</small></span></button></li>
   </ol>
-  <p class="src" style="font-size:13px;color:var(--muted)"><b>Jak czytać mapę:</b> kolejność miejsc pochodzi z komunikatów policji i prokuratury (wjazd od Sławkowskiej → objazd płyty Rynku → Grodzka → Stradomska → zatrzymanie przy Dietla). Trasa jest wyznaczana automatycznie po sieci ulic OpenStreetMap między tymi punktami. Dokładny tor jazdy po płycie Rynku nie został podany — ten odcinek jest przerywany. Czas w odtwarzaniu jest <b>orientacyjny</b>: znane są: pierwsze strzały 14:59 (policja), 1. zgłoszenie 15:00:15, start pościgu 15:01 i zatrzymanie 2 min 3 s później; pośrednie godziny są rozłożone proporcjonalnie do odległości.</p>
+  <p class="src" style="font-size:13px;color:var(--muted)"><b>Jak czytać mapę:</b> pierwsze strzały przy Szczepańskiej/Sławkowskiej, ucieczka Grodzką i Stradomską oraz zatrzymanie przy Dietla — wg policji i prokuratury. Przejazd po Rynku (wjazd Szczepańską → pierzeja północna → skręt przy Mariackim → postój między Mariackim a Sienną → Grodzka) pokazano wg relacji; oficjalnie podano tylko, że sprawca „objechał płytę Rynku”. Trasa jest wyznaczana automatycznie po sieci ulic OpenStreetMap między tymi punktami. Odcinek po Rynku jest przerywany, bo nie pochodzi z oficjalnego komunikatu. Czas w odtwarzaniu jest <b>orientacyjny</b>: znane są: pierwsze strzały 14:59 (policja), 1. zgłoszenie 15:00:15, start pościgu 15:01 i zatrzymanie 2 min 3 s później; pośrednie godziny są rozłożone proporcjonalnie do odległości.</p>
 
   <h2 id="faq">Szybkie odpowiedzi</h2>
   <div class="card faq">
@@ -243,7 +243,8 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
     <div class="card">
       <h3>Przebieg</h3>
       <ul class="facts">
-        <li>Sobota, 7.11, <b>14:59</b> — pierwsze strzały przy skrzyżowaniu ul. Sławkowskiej i Szczepańskiej (północno-zachodni narożnik Rynku); samochód wjechał na Rynek od strony Sławkowskiej, kierowca strzelał do przypadkowych osób z broni długiej. <span class="tag o">policja</span></li>
+        <li>Sobota, 7.11, <b>14:59</b> — pierwsze strzały przy skrzyżowaniu ul. Sławkowskiej i Szczepańskiej (północno-zachodni narożnik Rynku); kierowca strzelał z samochodu do przypadkowych osób z broni długiej. <span class="tag o">policja</span></li>
+        <li>Przejazd po Rynku: wjazd ul. Szczepańską, prosto pierzeją północną w stronę kościoła Mariackiego, skręt w prawo, postój między Mariackim a ul. Sienną, potem odjazd w ul. Grodzką. <span class="tag m">relacja, niepotwierdzone oficjalnie</span></li>
         <li>15:01 — pierwszy patrol rozpoczyna pościg; zatrzymanie nastąpiło <b>2 min 3 s</b> później. <span class="tag o">policja</span></li>
         <li>Napastnik objechał płytę Rynku i uciekł w stronę Kazimierza. <span class="tag o">prokuratura</span></li>
         <li>Został postrzelony i zatrzymany przez policjantów na skrzyżowaniu Stradomskiej i Dietla (ok. 1,5 km od Rynku). Wcześniej doszło do wymiany ognia. <span class="tag o">policja</span></li>
@@ -462,7 +463,7 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
 
   <h2 id="english" lang="en">In English — summary</h2>
   <div class="card en" lang="en">
-    <p><b>What happened:</b> On Saturday 7 November 2026 at 14:59, a 24-year-old Polish man drove a car onto Kraków's Main Market Square (Rynek Główny) from Sławkowska Street and opened fire on passers-by with a long gun. He then fled via Grodzka and Stradomska streets and was shot and detained by two police officers at the Stradomska/Dietla intersection, about 2 minutes after police began the pursuit (15:01). Prosecutors say he fired at least several dozen, possibly several hundred shots; two AR-15 rifles, two pistols and several hundred rounds were found with him.</p>
+    <p><b>What happened:</b> On Saturday 7 November 2026 at 14:59, a 24-year-old Polish man drove a car onto Kraków's Main Market Square (Rynek Główny) at the corner of Szczepańska and Sławkowska streets and opened fire on passers-by with a long gun. He then fled via Grodzka and Stradomska streets and was shot and detained by two police officers at the Stradomska/Dietla intersection, about 2 minutes after police began the pursuit (15:01). Prosecutors say he fired at least several dozen, possibly several hundred shots; two AR-15 rifles, two pistols and several hundred rounds were found with him.</p>
     <p><b>Victims:</b> 6 people were killed in Kraków (including a British and an Austrian citizen) and 16 were injured, including two police officers and the attacker; foreign nationals from the UK, Portugal, Russia, Germany and Austria are among the injured. The attacker's parents and sister were found shot dead in the family flat in Ostrowiec Świętokrzyski.</p>
     <p><b>Now:</b> The attacker died in hospital early on Monday 9 November. Both injured officers have been brought out of induced comas. The National Prosecutor's Office is investigating the attack as a terrorist offence and is checking whether anyone helped him. The square has reopened. National mourning: 8–9 November; city mourning in Kraków until 11 November.</p>
     <p><b>Help:</b> Kraków Crisis Intervention Centre: +48 12 421 92 82. Witnesses should contact any police station. In an emergency call 112.</p>
@@ -519,11 +520,13 @@ L.circleMarker([50.0154,20.0027],{radius:8,color:'#fff',weight:2,fillColor:C.hel
   .bindPopup('<b>Szpital Uniwersytecki (Prokocim)</b><br>Trafiła tu część rannych. Łącznie ranni trafili do 6 krakowskich szpitali.');
 
 // Punkty zapasowe (gdy OSM niedostępne)
-// Punkty kontrolne (współrzędne adresów wg Targeo): Sławkowska 1, Grodzka 1, Grodzka 60, Stradomska 2, Stradomska 31
+// Punkty kontrolne: adresy wg Targeo (Grodzka 1 i 60, Stradomska 2 i 31) + punkty na Rynku odczytane z podkładu OSM.
+// Tor po Rynku wg relacji: Szczepańska → pierzeja północna → skręt przy Mariackim → postój między Mariackim a Sienną → Grodzka.
 const FB = {
-  approach:[50.06405,19.93695],      // Sławkowska, ok. 120 m przed Rynkiem
-  slawEntry:[50.06300,19.93719],     // Sławkowska 1 — wylot na Rynek
-  rynek:[50.06135,19.93612],         // zachodnia część płyty (tor przybliżony)
+  approach:[50.06336,19.93556],      // ul. Szczepańska, ok. 150 m przed Rynkiem
+  slawEntry:[50.06277,19.93676],     // narożnik Szczepańska / Sławkowska — wjazd na Rynek, pierwsze strzały 14:59
+  mariacki:[50.06218,19.93912],      // skręt w prawo przy kościele Mariackim
+  rynek:[50.06144,19.93906],         // postój między Mariackim a ul. Sienną
   grodzkaStart:[50.06010,19.93751],  // Grodzka 1 — wyjazd z Rynku
   plWS:[50.05915,19.93775],          // pl. Wszystkich Świętych
   grodzkaEnd:[50.05546,19.93853],    // Grodzka 60
@@ -532,11 +535,12 @@ const FB = {
   arrest:[50.05225,19.94082]         // Stradomska / Dietla (przybliżone)
 };
 const FB_ROUTE = {
-  a:[FB.approach,FB.slawEntry],
-  r:[FB.slawEntry,[50.06272,19.93660],FB.rynek,[50.06062,19.93640],[50.06025,19.93700],FB.grodzkaStart],
+  a:[FB.approach,[50.06312,19.93615],FB.slawEntry],
+  r:[FB.slawEntry,[50.06272,19.93776],[50.06266,19.93886],FB.mariacki,FB.rynek,[50.06080,19.93888],[50.06064,19.93820],[50.06046,19.93751],FB.grodzkaStart],
   e:[FB.grodzkaStart,FB.plWS,[50.05760,19.93810],FB.grodzkaEnd,FB.stradStart,FB.strad31,FB.arrest]
 };
-const RYNEK_POLY=[[50.06305,19.93610],[50.06300,19.93900],[50.06065,19.93915],[50.06040,19.93590]];
+// obrys płyty Rynku odczytany z podkładu OSM (kalibracja po punktach kontrolnych)
+const RYNEK_POLY=[[50.06268,19.93661],[50.06274,19.93867],[50.06210,19.93919],[50.06077,19.93898],[50.06072,19.93641],[50.06170,19.93626]];
 
 const hav=(a,b)=>{const R=6371000,toR=Math.PI/180,dLa=(b[0]-a[0])*toR,dLo=(b[1]-a[1])*toR;
   const x=Math.sin(dLa/2)**2+Math.cos(a[0]*toR)*Math.cos(b[0]*toR)*Math.sin(dLo/2)**2;return 2*R*Math.asin(Math.sqrt(x));};
@@ -599,14 +603,16 @@ function buildRoute(segA,segR,segE,P,fromOSM){
   trailAll.setLatLngs(PTS);
   // odcinek po Rynku – przerywany
   L.polyline(segR,{color:C.shot,weight:4,dashArray:'6 8',opacity:.7}).addTo(gPins)
-    .bindPopup('<b>Tor po płycie Rynku — przybliżony</b><br>Policja i prokuratura podały tylko, że napastnik „objechał płytę Rynku”.');
+    .bindPopup('<b>Przejazd przez Rynek</b><br>Wjazd ul. Szczepańską, prosto pierzeją północną w stronę kościoła Mariackiego, skręt w prawo, postój między Mariackim a ul. Sienną, odjazd w ul. Grodzką. <i>Szczegóły toru wg relacji — oficjalnie policja podała, że pierwsze strzały padły przy Sławkowskiej/Szczepańskiej, a sprawca objechał płytę Rynku.</i>');
   const lA=plen(segA), lR=plen(segR), lE=plen(segE);
   const fR=nearestF(P.rynek), fG=lA/TOTAL+lR/TOTAL, fW=nearestF(P.plWS);
   STEPF={slawEntry:lA/TOTAL, rynek:fR, grodzkaStart:fG, arrest:1};
   EVENTS=[
-    {f:0,t:'Sławkowska',txt:'Samochód jedzie w stronę Rynku.'},
+    {f:0,t:'Ul. Szczepańska',txt:'Samochód jedzie w stronę Rynku.'},
     {f:lA/TOTAL,t:'1 · Wjazd na Rynek',txt:'14:59 — pierwsze strzały przy skrzyżowaniu Sławkowskiej i Szczepańskiej (policja); 1. zgłoszenie 15:00:15.'},
-    {f:fR,t:'2 · Płyta Rynku',txt:'Objazd Rynku, strzały m.in. w stronę uciekających i postoju dorożek. Zginęło 6 osób.'},
+    {f:lA/TOTAL+0.012,t:'Pierzeja północna',txt:'Jazda prosto wzdłuż Rynku w stronę kościoła Mariackiego, strzały do przechodniów.'},
+    {f:P.mariacki?nearestF(P.mariacki):fR*0.9,t:'Kościół Mariacki',txt:'Skręt w prawo, wzdłuż wschodniej pierzei.'},
+    {f:fR,t:'2 · Postój: Mariacki – Sienna',txt:'Samochód zatrzymuje się między kościołem Mariackim a ul. Sienną; strzały m.in. w stronę uciekających i postoju dorożek. Zginęło 6 osób.'},
     {f:fG,t:'3 · Ul. Grodzka',txt:'Ucieczka na południe; pierwszy patrol policji rusza w pościg.'},
     {f:fW,t:'Pl. Wszystkich Świętych',txt:'Trasa ucieczki przecina plac.'},
     {f:P.stradomska?nearestF(P.stradomska):Math.max(fW+0.01,0.75),t:'Stradomska',txt:'Dalej pod Wawelem w stronę Kazimierza.'},
@@ -614,8 +620,8 @@ function buildRoute(segA,segR,segE,P,fromOSM){
   ].sort((a,b)=>a.f-b.f);
   const add=(ll,c,h,n)=>L.marker(ll,{icon:L.divIcon({className:'',html:`<div class="numpin" style="background:${c}">${n}</div>`,iconSize:[28,28],iconAnchor:[14,14],popupAnchor:[0,-14]})}).addTo(gPins).bindPopup(h);
   window.MK={
-    slawEntry:add(P.slawEntry,C.shot,'<b>1. Sławkowska / Szczepańska — wjazd na Rynek</b><br>14:59 — tu według policji padły pierwsze strzały do przypadkowych osób.',1),
-    rynek:add(P.rynek,C.shot,'<b>2. Płyta Rynku Głównego</b><br>Napastnik objeżdża płytę Rynku i strzela m.in. w stronę uciekających ludzi i postoju dorożek. Zginęło 6 osób, kilkanaście rannych.',2),
+    slawEntry:add(P.slawEntry,C.shot,'<b>1. Szczepańska / Sławkowska — wjazd na Rynek</b><br>14:59 — tu według policji padły pierwsze strzały do przypadkowych osób.',1),
+    rynek:add(P.rynek,C.shot,'<b>2. Postój między Mariackim a ul. Sienną</b><br>Po przejechaniu pierzei północnej i skręcie przy Mariackim samochód się zatrzymuje; strzały m.in. w stronę uciekających ludzi i postoju dorożek. Zginęło 6 osób, kilkanaście rannych.',2),
     grodzkaStart:add(P.grodzkaStart,C.other,'<b>3. Wyjazd w ul. Grodzką</b><br>Ucieczka w stronę Wawelu i Kazimierza.',3),
     arrest:add(P.arrest,C.arrest,'<b>4. Skrzyżowanie Stradomskiej i Dietla</b><br>Policjanci po wymianie ognia postrzelili i zatrzymali sprawcę. Jego auto uderzyło w inny pojazd. Wieczorem sprawdzenie pirotechniczne auta i ewakuacja pobliskich budynków.',4)
   };
@@ -652,13 +658,14 @@ const Q_SMALL = `[out:json][timeout:20];
 out body geom;`;
 const Q_FULL = Q_SMALL.replace('way["highway"]["name"~"^(Sławkowska|Rynek Główny|Grodzka|Stradomska|Józefa Dietla|[Pp]lac Wszystkich Świętych|Gertrudy|Podzamcze|Świętego Idziego)$"]','way["highway"]["highway"!~"^(footway|steps|cycleway|path|corridor|elevator|platform|construction|proposed|bridleway|track)$"]');
 const OVERPASS=['https://overpass-api.de/api/interpreter','https://overpass.private.coffee/api/interpreter','https://maps.mail.ru/osm/tools/overpass/api/interpreter','https://overpass.kumi.systems/api/interpreter'];
+let OPERR=[];
 async function overpass(q){
   for(const url of OVERPASS){
     try{
-      const ctl=new AbortController(); const to=setTimeout(()=>ctl.abort(),9000);
+      const ctl=new AbortController(); const to=setTimeout(()=>ctl.abort(),15000);
       const r=await fetch(url+'?data='+encodeURIComponent(q),{signal:ctl.signal}); clearTimeout(to);
-      if(!r.ok) continue; const j=await r.json(); if(j&&j.elements&&j.elements.length) return j;
-    }catch(e){}
+      if(!r.ok){OPERR.push(new URL(url).host+' HTTP '+r.status);continue;} const j=await r.json(); if(j&&j.elements&&j.elements.length) return j; OPERR.push(new URL(url).host+' pusto');
+    }catch(e){OPERR.push(new URL(url).host+' '+(e.name==='AbortError'?'timeout':'błąd sieci'));}
   }
   throw new Error('overpass');
 }
@@ -690,16 +697,24 @@ function routeFrom(d){
      }
    });
    const ids=n=>[...new Set(named[n]||[])];
-   const sl=ids('Sławkowska'), gr=ids('Grodzka'), st=ids('Stradomska'), di=ids('Józefa Dietla');
-   if(!sl.length||!gr.length||!st.length) throw 0;
+   const sl=ids('Sławkowska').concat(ids('Szczepańska')), sz=ids('Szczepańska'), gr=ids('Grodzka'), st=ids('Stradomska'), di=ids('Józefa Dietla');
+   if(!sl.length||!gr.length||!st.length) throw new Error('brak ulic w danych ('+[sl.length,gr.length,st.length].join('/')+')');
    const ll=id=>G.get(id).ll;
-   const sStart=sl.reduce((a,b)=>ll(b)[0]<ll(a)[0]?b:a);                     // wylot Sławkowskiej na Rynek
-   const sApp=sl.reduce((a,b)=>Math.abs(ll(b)[0]-(ll(sStart)[0]+0.0011))<Math.abs(ll(a)[0]-(ll(sStart)[0]+0.0011))?b:a);
+   const near=(pt,pool)=>pool.reduce((a,b)=>hav(ll(b),pt)<hav(ll(a),pt)?b:a);
+   const allIds=[...G.keys()].filter(id=>G.get(id).adj.length);
+   const sStart=near(FB.slawEntry, sl.length?sl:allIds);                      // narożnik Szczepańska/Sławkowska
+   const sApp=near(FB.approach, sz.length?sz:allIds);                        // Szczepańska, przed Rynkiem
    const gTop=gr.reduce((a,b)=>ll(b)[0]>ll(a)[0]?b:a);                       // początek Grodzkiej przy Rynku
    const diS=new Set(di); let xEnd=st.find(id=>diS.has(id));
    if(!xEnd) xEnd=st.reduce((a,b)=>ll(b)[0]<ll(a)[0]?b:a);
-   const pA=dijkstra(G,sApp,sStart), pR=dijkstra(G,sStart,gTop), pE=dijkstra(G,gTop,xEnd);
-   if(!pA||!pR||!pE) throw 0;
+   // tor po Rynku przez punkty: pierzeja północna → Mariacki → postój → Sienna → Grodzka
+   const ryn=ids('Rynek Główny').concat(ids('Plac Mariacki'),ids('Sienna'));
+   const wps=[sStart, near([50.06272,19.93776],ryn.length?ryn:allIds), near(FB.mariacki,ryn.length?ryn:allIds), near(FB.rynek,ryn.length?ryn:allIds), near([50.06080,19.93888],ryn.length?ryn:allIds), gTop];
+   let pR=[wps[0]];
+   for(let k=1;k<wps.length;k++){ const seg=dijkstra(G,wps[k-1],wps[k]); if(!seg){pR=null;break;} pR=pR.concat(seg.slice(1)); }
+   const pA=dijkstra(G,sApp,sStart), pE=dijkstra(G,gTop,xEnd);
+   const stopNode=wps[3];
+   if(!pA||!pR||!pE) throw new Error('brak połączenia w sieci ulic ('+[!!pA,!!pR,!!pE].join('/')+')');
    const toLL=p=>p.map(ll);
    const segA=toLL(pA), segR=toLL(pR), segE=toLL(pE);
 
@@ -712,13 +727,14 @@ function routeFrom(d){
    gClosed.eachLayer(l=>l.bindPopup('<b>Zamknięcia 8.11</b><br>Na czas ponownych oględzin policja zamknęła Rynek, Grodzką, pl. Wszystkich Świętych, Stradomską i skrzyżowania z Gertrudy i Dietla. Oględziny zakończono o 18:00 — ulice są otwarte.'));
    }
 
-   const mid=segR[Math.floor(segR.length/2)];
+   const mid=ll(stopNode);
    const plWSnode=ids('Plac Wszystkich Świętych').concat(ids('plac Wszystkich Świętych'));
    const stSet=new Set(st), stFirst=pE.find(id=>stSet.has(id));
-   const P={slawEntry:ll(sStart), rynek:mid, grodzkaStart:ll(gTop), arrest:ll(xEnd), plWS:plWSnode.length?ll(plWSnode[0]):FB.plWS, stradomska:stFirst?ll(stFirst):null};
+   const P={mariacki:ll(wps[2]), slawEntry:ll(sStart), rynek:mid, grodzkaStart:ll(gTop), arrest:ll(xEnd), plWS:plWSnode.length?ll(plWSnode[0]):FB.plWS, stradomska:stFirst?ll(stFirst):null};
    // kontrola: wyznaczone punkty muszą leżeć blisko punktów kontrolnych (adresy), inaczej odrzuć
-   const ok = hav(P.slawEntry,FB.slawEntry)<120 && hav(P.grodzkaStart,FB.grodzkaStart)<120 && hav(P.arrest,FB.arrest)<150 && plen(segE)<1600 && plen(segR)<700;
-   if(!ok) throw new Error('sanity');
+   const chk=[['wjazd',hav(P.slawEntry,FB.slawEntry),150],['Grodzka',hav(P.grodzkaStart,FB.grodzkaStart),150],['zatrzymanie',hav(P.arrest,FB.arrest),350],['ucieczka',plen(segE),2200],['Rynek',plen(segR),1000]];
+   const bad=chk.filter(c=>c[1]>c[2]);
+   if(bad.length) throw new Error('kontrola: '+bad.map(c=>c[0]+' '+Math.round(c[1])+' m').join(', '));
    return {segA,segR,segE,P,draw(){
      rynekPoly.forEach(g=>L.polygon(g,{color:C.shot,weight:1,fillColor:C.shot,fillOpacity:.15,interactive:false}).addTo(gRoute));
      closures();
@@ -732,7 +748,7 @@ function useFallback(){
   buildRoute(FB_ROUTE.a,FB_ROUTE.r,FB_ROUTE.e,FB,false);
 }
 (async()=>{
-  const CK='osm-route-v2';
+  const CK='osm-route-v4';
   let d=null;
   try{ const c=JSON.parse(localStorage.getItem(CK)||'null'); if(c&&Date.now()-c.t<7*864e5) d=c.d; }catch(e){}
   if(!d) useFallback();   // od razu pokaż trasę wg adresów, potem podmień na dokładną
@@ -744,9 +760,9 @@ function useFallback(){
       res.draw(); buildRoute(res.segA,res.segR,res.segE,res.P,true);
       try{ if(!d) localStorage.setItem(CK,JSON.stringify({t:Date.now(),d:data})); }catch(e){}
       return;
-    }catch(e){ d=null; }
+    }catch(e){ d=null; if(e&&e.message&&e.message!=='overpass') OPERR.push(e.message); console.warn('OSM:',e); }
   }
-  document.getElementById('mapstat').innerHTML=`Trasa wg współrzędnych adresów (Sławkowska 1, Grodzka 1 i 60, Stradomska 2 i 31): ok. ${fmtM(TOTAL)}. Dokładnej sieci ulic z OpenStreetMap nie udało się teraz pobrać.`;
+  document.getElementById('mapstat').innerHTML=`Trasa wg punktów kontrolnych (adresy Grodzka 1 i 60, Stradomska 2 i 31; punkty na Rynku z podkładu OSM): ok. ${fmtM(TOTAL)}. Dokładnej sieci ulic z OpenStreetMap nie udało się teraz pobrać.<br><small style="opacity:.7">diagnostyka: ${OPERR.slice(-4).join(' · ')||'—'}</small>`;
 })();
 
 // zmiana motywu → zmiana podkładu (jeśli użytkownik nie wybrał innego)
