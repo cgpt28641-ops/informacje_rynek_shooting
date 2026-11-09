@@ -144,7 +144,7 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
 <body>
 <div class="upbar" role="status">
   <div class="wrap">
-    <span><span class="dot"></span>Ostatnia aktualizacja: <b id="lastUpdate">pon. 9.11, 19:50</b></span>
+    <span><span class="dot"></span>Ostatnia aktualizacja: <b id="lastUpdate">pon. 9.11, 20:00</b></span>
     <span class="ago" id="ago"></span>
     <span class="ago every">· co ok. 2 godz.</span>
     <button class="sharebtn" id="share" type="button">Udostępnij</button>
@@ -170,16 +170,16 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
     <span class="mourning">Żałoba narodowa · 8–9 listopada 2026 · w Krakowie do 11 listopada</span>
     <h1>Atak na Rynku Głównym w Krakowie — co wiadomo na pewno</h1>
     <div class="whatsnew" id="whatsnew">
-      <h3>Najnowsze — pon. 9.11, 19:50</h3>
+      <h3>Najnowsze — pon. 9.11, 20:00</h3>
       <ul>
+        <li>Wojewoda: w 6 szpitalach 15 poszkodowanych — 14 w stanie stabilnym, 1 (policjant uczestniczący w zatrzymaniu) w ciężkim; jego stan „nie uległ znaczącej zmianie”. Rzecznik wojewody: zidentyfikowano wszystkie ofiary.</li>
         <li><b>Nowa mapa minuta po minucie</b> wg rekonstrukcji Onetu: postój na rogu Szczepańskiej i Sławkowskiej (14:58:43), pierwsze strzały 14:58:58, ofiary przy wschodniej pierzei, Grodzka 15:01:16, zderzenie przy Dietla 15:02:53, sprawca powalony 15:03:11.</li>
         <li><b>Motyw wciąż nieustalony.</b> Szef MSWiA: sobotnie słowa o skrajnych poglądach sprawcy to „pierwsze hipotezy”, nie wnioski śledczych. Telefony i dwa laptopy analizuje CBZC.</li>
         <li>Prokuratura: w pokoju sprawcy wisiała duża flaga Gadsdena („Don't Tread on Me”) — rzecznik PK: „nie ma oczywistych konotacji”.</li>
-        <li><b>Obaj ranni policjanci odzyskali przytomność.</b> Pierwsze pytanie st. post. Artura Morańskiego po wybudzeniu: „A Kuba żyje?” (relacja bliskich za burmistrzem Muszyny).</li>
       </ul>
     </div>
     <p class="lead">Zebrane i sprawdzone informacje o ataku z soboty 7 listopada 2026 r. Każda informacja ma źródło i oznaczenie, czy pochodzi z oficjalnego komunikatu (policja, prokuratura, wojewoda, MSWiA), czy z ustaleń mediów. Osobno wypisane są informacje zdementowane.</p>
-    <p class="updated">Stan informacji na: pon. 9 listopada 2026, 19:50 (czas polski)</p>
+    <p class="updated">Stan informacji na: pon. 9 listopada 2026, 20:00 (czas polski)</p>
     <div class="stats">
       <div class="stat"><b>6</b><span>ofiar śmiertelnych w Krakowie (4 kobiety, 2 mężczyzn)</span></div>
       <div class="stat"><b>15</b><span>rannych nadal w szpitalach, w tym 2 policjantów</span></div>
@@ -367,7 +367,8 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
     <div class="card">
       <h3>Pozostali ranni</h3>
       <ul class="facts">
-        <li>Po śmierci sprawcy w 6 szpitalach przebywa 15 rannych (wśród nich 2 policjantów). <span class="tag m">Radio Kraków</span></li>
+        <li><b>Wojewoda (pon. 9.11):</b> w 6 szpitalach 15 poszkodowanych — 14 w stanie stabilnym, 1 w ciężkim (policjant, który zatrzymywał sprawcę; wybudzony, stan „nie uległ znaczącej zmianie”). Komendant wojewódzki: obaj policjanci mają ciężkie obrażenia, ich stan się stabilizuje. <span class="tag o">wojewoda / KWP</span></li>
+        <li>Rzecznik wojewody potwierdził, że zidentyfikowano wszystkie ofiary. <span class="tag m">goniec.pl, za rzecznikiem wojewody</span></li>
         <li>Łącznie 16 rannych (z policjantami i sprawcą) w 6 szpitalach, m.in. w Szpitalu Uniwersyteckim. <span class="tag o">MSWiA / wojewoda</span></li>
         <li><b>Wszyscy, którzy trafili do szpitali, przeżyli.</b> <span class="tag o">wojewoda</span></li>
         <li>Wojewoda (niedziela 17:57): w szpitalach 16 osób — 14 w stanie stabilnym, 1 ciężkim, 1 krytycznym (sprawca, zmarł w poniedziałek). <span class="tag o">wojewoda</span></li>
@@ -503,7 +504,7 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
 <script>
 /* ---------- OSTATNIA AKTUALIZACJA ---------- */
 // Przy każdej aktualizacji zmień LAST_UPDATE (czas polski, UTC+1 zimą).
-const LAST_UPDATE = '2026-11-09T19:50:00+01:00';
+const LAST_UPDATE = '2026-11-09T20:00:00+01:00';
 (function(){
   const d = new Date(LAST_UPDATE);
   const el = document.getElementById('ago');
@@ -912,6 +913,7 @@ const TL = [
   ['pn','~14:30','o','Prokuratura: w śledztwie może zostać przesłuchanych nawet kilkaset osób; policja apeluje o zgłaszanie się świadków do KMP Kraków.','PK / KMP Kraków'],
   ['pn','~14:40','m','Rzeczniczka MSWiA: CBZC zatrzymało 5 osób, których aktywność w sieci mogła stanowić zagrożenie.','SE / ESKA, za MSWiA'],
   ['pn','popołudnie','o','Rzecznik PK: w pokoju sprawcy duża flaga Gadsdena („Don\'t Tread on Me”), „nie ma oczywistych konotacji”. Telefony i 2 laptopy analizuje CBZC.','Prokuratura Krajowa / MSWiA'],
+  ['pn','wieczór','m','Rzecznik wojewody: zidentyfikowano wszystkie ofiary. W szpitalach 15 osób: 14 stabilnych, 1 ciężka (policjant).','Wojewoda (za Polsat News / goniec.pl)'],
   ['pn','20:00','o','Wiec solidarności na rogu Rynku i ul. Sławkowskiej.','Prezydent Krakowa'],
 ];
 const tlEl = document.getElementById('timeline');
@@ -986,6 +988,7 @@ const SRC = [
   ['Kozaczek – PK o pokoju sprawcy','https://www.kozaczek.pl/sledczy-przeszukali-pokoj-sprawcy-zamachu-w-krakowie-jeden-przedmiot-szczegolnie-zwrocil-ich-uwage/'],
   ['terroryzm.pl – opracowanie (m.in. rekonstrukcja Onetu)','https://www.terroryzm.pl/atak-na-rynku-glownym-w-krakowie-7-listopada-2026.html'],
   ['Onet – rekonstrukcja „Kluczowe cztery i pół minuty” (Instagram @onet_pl)','https://www.instagram.com/reel/Dfhnwp0sKvJ/'],
+  ['Polsat News – wojewoda o stanie poszkodowanych','https://www.polsatnews.pl/wiadomosc/2026-11-09/nowe-informacje-ze-szpitali-wiadomo-co-z-rannymi-policjantami/'],
   ['TVP Kielce – rodzice i siostra sprawcy','https://kielce.tvp.pl/96367832/ostrowiec-swietokrzyski-nie-zyja-rodzice-i-siostra-sprawcy-ataku-w-krakowie'],
   ['WP – co wiemy o rodzinie zamachowca','https://wiadomosci.wp.pl/trzy-ciala-w-mieszkaniu-co-wiemy-o-rodzinie-zamachowca-z-krakowa-7348739801532864a'],
   ['Radio ESKA Kraków – jak zginęła rodzina','https://krakow.eska.pl/wiadomo-jak-zginela-rodzina-zamachowca-z-ostrowca-swietokrzyskiego-ciala-lezaly-w-lozkach-aa-Ciyp-piwT-4yEH.html'],
