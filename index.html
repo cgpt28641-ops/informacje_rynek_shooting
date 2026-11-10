@@ -42,6 +42,15 @@ html{scroll-behavior:smooth;scroll-padding-top:110px}
 .navbar .wrap::-webkit-scrollbar{display:none}
 .navbar a{flex:0 0 auto;font-size:13px;font-weight:500;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 11px}
 .navbar a.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+@media (max-width:640px){table.rozb thead{display:none}table.rozb,table.rozb tbody,table.rozb tr,table.rozb td{display:block;width:auto}table.rozb tr{border-bottom:1px solid var(--line);padding:8px 0}table.rozb td{border:0;padding:2px 0}table.rozb td:first-child{font-weight:600}table.rozb td:last-child::before{content:"Przyjęto: ";color:var(--muted)}}
+.srclist a{overflow-wrap:anywhere}
+.srclist{list-style:none;margin:0;padding:0}
+.srclist .srchead{margin:14px 0 6px;padding-top:10px;border-top:1px solid var(--line)}
+.srclist .srchead:first-child{border-top:0;margin-top:0;padding-top:0}
+.srclist .srchead span{color:var(--muted);font-size:13px;margin-left:6px}
+.srclist .srcitem{margin:5px 0;line-height:1.45}
+.srclist .srcitem .tag{margin-left:0;margin-right:4px}
+.srclist small{color:var(--muted);margin-left:4px}
 .whatsnew{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:12px 16px;margin:14px 0 4px;max-width:760px}
 .whatsnew h3{margin:0 0 4px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
 .whatsnew ul{margin:0;padding-left:18px} .whatsnew li{margin:3px 0}
@@ -158,6 +167,7 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
     <a href="#fakty">Fakty</a>
     <a href="#ranni">Stan rannych</a>
     <a href="#ostrowiec">Ostrowiec</a>
+    <a href="#rozbieznosci">Rozbieżności</a>
     <a href="#dementi">Dementi</a>
     <a href="#chronologia">Chronologia</a>
     <a href="#pomoc">Pomoc</a>
@@ -172,10 +182,10 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
     <div class="whatsnew" id="whatsnew">
       <h3>Najnowsze — wt. 10.11, 10:00</h3>
       <ul>
+        <li><b>Nowe na stronie:</b> sekcja „Rozbieżności w źródłach”, rozbudowane dementi (fact-checking Demagog i Konkret24) oraz pogrupowane źródła — oficjalne, rekonstrukcje, fact-checking, media polskie i zagraniczne.</li>
         <li><b>CBZC: 6 osób zatrzymanych za szerzenie fałszywych informacji</b> po ataku (wiek 15–36 lat). Policja: zatrzymania nie mają związku z przygotowaniem zamachu.</li>
         <li><b>11 listopada w Krakowie bez pochodu:</b> odwołano tradycyjny pochód, piknik patriotyczny i defiladę pojazdów służb; centralna uroczystość przy Grobie Nieznanego Żołnierza na pl. Matejki. Dziś sekcja zwłok sprawcy (ZMS UJ CM).</li>
         <li><b>Marsz Ciszy w Krakowie</b> (pon. 20:00): tysiące osób przeszły w milczeniu od rogu Rynku i Sławkowskiej obok Bazyliki Mariackiej pod Wieżę Ratuszową. Byli m.in. prezydent Karol Nawrocki, premier Donald Tusk, prezydent Krakowa i kard. Grzegorz Ryś.</li>
-        <li><b>Zakończyły się sekcje zwłok</b> 9 ofiar (6 z Krakowa i 3 z Ostrowca) w Zakładzie Medycyny Sądowej UJ CM. Szczegółowa opinia może powstawać kilka tygodni; sekcja sprawcy prawdopodobnie we wtorek (Prokuratura Krajowa).</li>
       </ul>
     </div>
     <p class="lead">Zebrane i sprawdzone informacje o ataku z soboty 7 listopada 2026 r. Każda informacja ma źródło i oznaczenie, czy pochodzi z oficjalnego komunikatu (policja, prokuratura, wojewoda, MSWiA), czy z ustaleń mediów. Osobno wypisane są informacje zdementowane.</p>
@@ -426,6 +436,24 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
     <p style="font-size:12px;color:var(--muted);margin:6px 0 0">Na mapie zaznaczono tylko miasto, bez adresu.</p>
   </div>
 
+  <h2 id="rozbieznosci">Rozbieżności w źródłach</h2>
+  <div class="card">
+    <p style="margin:0 0 10px;color:var(--muted);font-size:14px">Tu zbieramy miejsca, w których źródła podają różne dane — i którą wersję przyjmuje strona.</p>
+    <table class="rozb">
+      <thead><tr><th>Co</th><th>Wersje</th><th>Przyjęto</th></tr></thead>
+      <tbody>
+        <tr><td>Godzina zatrzymania</td><td>Policja: 2 min 3 s po rozpoczęciu pościgu (15:01) · Onet: 15:02:53–15:03:26 · Wikipedia EN (za Reuters/BBC): ok. 15:20</td><td>ok. 15:03 (policja i Onet są zgodne)</td></tr>
+        <tr><td>Ostrzał tramwaju</td><td>Onet: 15:01:28, pl. Wszystkich Świętych · AP (za Wikipedią): ok. 15:05, „w pobliżu Rynku”</td><td>15:01:28, pl. Wszystkich Świętych (Onet — oparty na nagraniach)</td></tr>
+        <tr><td>Wjazd na Rynek</td><td>Prokuratura/TVN24: „od strony Sławkowskiej” · Onet: wjazd ul. Szczepańską, postój na rogu przy Sławkowskiej</td><td>Szczepańska → róg Sławkowskiej (oba opisy dotyczą tego samego narożnika)</td></tr>
+        <tr><td>Liczba rannych</td><td>16 (z policjantami i sprawcą) · 15 w szpitalach po śmierci sprawcy · w niektórych artykułach 15 jako łączna liczba</td><td>16 rannych łącznie, 15 w szpitalach (wojewoda)</td></tr>
+        <tr><td>Wypisani ze szpitali</td><td>Policja (niedz. rano): 2 osoby · wojewoda (niedz. wieczór): dementi · igryfino.pl (wt.): 2 osoby</td><td>niejasne — czekamy na komunikat szpitali/wojewody</td></tr>
+        <tr><td>Pozwolenie na broń</td><td>„od marca 2026” (PK, pon.) · „od stycznia 2026, pierwsza broń w marcu” (późniejsze doniesienia)</td><td>styczeń 2026 (nowsze dane)</td></tr>
+        <tr><td>Wiek siostry sprawcy</td><td>20 lat (KGP, niedz.) · 21 lat (prokuratura, media)</td><td>21 lat</td></tr>
+        <tr><td>Legalność broni</td><td>WP (nieoficjalnie): część bez pozwoleń · Prokuratura w Kielcach: 11 sztuk zgodnie z pozwoleniami sprawcy i ojca</td><td>wersja prokuratury</td></tr>
+      </tbody>
+    </table>
+  </div>
+
   <h2 id="dementi">Zdementowane informacje</h2>
   <div class="card">
     <ul class="denied">
@@ -433,7 +461,11 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
       <li><b>„Zginął policjant”</b> — nieprawda, obaj policjanci żyją. <span class="tag d">zdementowane</span></li>
       <li><b>„Sprawca był żołnierzem”</b> — MON: nigdy nie był żołnierzem WP i nie miał nic wspólnego z wojskiem. <span class="tag d">zdementowane</span></li>
       <li><b>„Policja zareagowała późno”</b> — pierwszy patrol ruszył 23 sekundy po zgłoszeniu. <span class="tag d">zdementowane</span></li>
-      <li><b>Nagranie „Zrobię coś złego” krążące w sieci</b> — Konkret24: fałsz, nie przedstawia sprawcy. <span class="tag d">fałsz</span></li>
+      <li><b>Nagranie „Zrobię coś złego”, w którym sprawca miał zapowiadać atak</b> — wygenerowane przy użyciu AI, nie przedstawia sprawcy (Konkret24, Demagog). <span class="tag d">fałsz</span></li>
+      <li><b>„Zamachowiec walczył na Ukrainie” (na podstawie naszywki)</b> — Demagog: naszywka tego nie potwierdza. <span class="tag d">fałsz</span></li>
+      <li><b>„Mężczyzna obok zamachowca na zdjęciu to działacz partii”</b> — Demagog: to nie działacz żadnej partii. <span class="tag d">fałsz</span></li>
+      <li><b>„Policji nie było przez pół godziny”</b> — Demagog i policja: pierwszy patrol ruszył 23 s po zgłoszeniu, pościg od 15:01. <span class="tag d">fałsz</span></li>
+      <li><b>6 osób zatrzymanych przez CBZC</b> za szerzenie fałszywych informacji po ataku (bez związku z samym zamachem). <span class="tag o">CBZC</span></li>
       <li><b>„W aucie sprawcy był ładunek wybuchowy”</b> — MSWiA: pakunek sprawdzono, nic w nim nie było. <span class="tag d">zdementowane</span></li>
       <li><b>„Ktoś biega po dachu Kościoła Mariackiego”</b> — nieprawda. <span class="tag d">zdementowane</span></li>
       <li><b>„Brakuje krwi dla rannych”</b> — RCKiK: zapasy są wystarczające. <span class="tag d">zdementowane</span></li>
@@ -493,7 +525,10 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
 
   <h2 id="zrodla">Źródła</h2>
   <div class="card">
-    <ul class="facts" id="sources"></ul>
+    <p style="margin:0 0 10px;color:var(--muted);font-size:14px">Źródła pogrupowane według rodzaju. Oficjalne komunikaty mają pierwszeństwo; jeśli media podają co innego, rozbieżność jest opisana w sekcji „Rozbieżności”.</p>
+    <div class="filters" id="srcfilters" role="group" aria-label="Rodzaj źródła"></div>
+    <div class="tltools"><input id="srcq" type="search" placeholder="Szukaj źródła, np. prokuratura, TVN24…" aria-label="Szukaj źródła"><span class="tlcount" id="srccount"></span></div>
+    <ul class="srclist" id="sources"></ul>
   </div>
 
 </main>
@@ -678,7 +713,7 @@ function buildRoute(segA,segR,segE,P,fromOSM){
   const add=(ll,c,h,n)=>L.marker(ll,{icon:L.divIcon({className:'',html:`<div class="numpin" style="background:${c}">${n}</div>`,iconSize:[28,28],iconAnchor:[14,14],popupAnchor:[0,-14]})}).addTo(gPins).bindPopup(h);
   window.MK={
     slawEntry:add(P.slawEntry,C.shot,'<b>1. Róg Szczepańskiej i Sławkowskiej</b><br>14:58:43 auto staje na rogu; 14:58:58 pierwsze strzały z okna w stronę Sławkowskiej, przy narożniku kamienicy padają ofiary; 14:59:25 auto rusza w stronę Mariackiego. <i>(Onet; policja: pierwsze strzały 14:59)</i>',1),
-    rynek:add(P.rynek,C.shot,'<b>2. Wschodnia pierzeja Rynku</b><br>Po przejechaniu pierzei północnej i skręcie przy Mariackim — ofiary przy wschodniej pierzei (ok. 15:00–15:01); dalej obok ul. Siennej w stronę Grodzkiej. <i>(Onet)</i>',2),
+    rynek:add(P.rynek,C.shot,'<b>2. Wschodnia pierzeja Rynku</b><br>Po przejechaniu pierzei północnej i skręcie przy Mariackim — ofiary przy wschodniej pierzei (ok. 15:00–15:01); na rogu ul. Siennej napastnik ponownie strzelał, raniąc osobę <i>(RMF FM, za Wikipedią)</i>; dalej w stronę Grodzkiej. <i>(Onet)</i>',2),
     grodzkaStart:add(P.grodzkaStart,C.other,'<b>3. Wjazd w ul. Grodzką — 15:01:16</b><br>Tuż za sprawcą radiowóz (pościg od 15:01:00). 15:01:28 na pl. Wszystkich Świętych ostrzelany tramwaj linii 1. <i>(Onet)</i>',3),
     arrest:add(P.arrest,C.arrest,'<b>4. Stradomska / Dietla — 15:02:53–15:03:26</b><br>Subaru (z przestrzelonymi oponami) uderza w biały samochód na światłach. Sprawca wysiada i strzela do dwóch policjantów; 15:03:11 strzał policjanta go powala. Obaj policjanci ranni. <i>(Onet; policja: zatrzymanie 2 min 3 s po rozpoczęciu pościgu)</i>',4)
   };
@@ -953,58 +988,96 @@ document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('clic
 
 /* ---------- ŹRÓDŁA ---------- */
 const SRC = [
-  ['TVN24 – relacja na żywo','https://tvn24.pl/krakow/krakow-strzelanina-na-rynku-st9327846'],
-  ['TVN24 – śledztwo, motyw terrorystyczny','https://tvn24.pl/krakow/krakow-sledztwo-w-sprawie-ataku-w-krakowie-wstepne-ustalenia-wskazuja-na-motyw-terrorystyczny-st9328556'],
-  ['Zero.pl – najnowsze','https://zero.pl/najnowsze'],
-  ['Zero.pl – policja o sprawcy','https://zero.pl/news/policja-przekazala-informacje-o-sprawcy-strzelaniny-w-krakowie-mial-caly-arsenal'],
-  ['Onet – relacja (wskazana przez autora strony)','https://wiadomosci.onet.pl/krakow/strzelanina-w-krakowie-najnowsze-informacje-relacja/p16e8gh'],
-  ['Rzeczpospolita – wszystko, co wiemy','https://www.rp.pl/przestepczosc/art45459311-strzelanina-w-krakowie-wszystko-co-wiemy-na-te-chwile'],
-  ['Rzeczpospolita – śledztwo Prokuratury Krajowej','https://www.rp.pl/prawo-karne/art45460211-prokuratura-wszczela-sledztwo-ws-zamachu-w-krakowie'],
-  ['Interia – nowe informacje o napastniku','https://wydarzenia.interia.pl/kraj/news-strzelanina-w-krakowie-nowe-informacje-o-napastniku,nId,23570599'],
-  ['Polsat News – policja nie szuka drugiego sprawcy','https://www.polsatnews.pl/wiadomosc/2026-11-07/policja-sprawcow-strzelaniny-w-krakowie-bylo-dwoch/'],
-  ['RMF24 – komunikat „23 sekundy”','https://www.rmf24.pl/regiony/krakow/news-komunikat-policji-po-strzelaninie-w-krakowie-23-sekundy-po-z,nIdn,1025273'],
-  ['TVP Kraków','https://krakow.tvp.pl/96358338/strzelanina-w-krakowie-szesc-osob-nie-zyje-kilkanascie-rannych'],
-  ['Rynek Zdrowia – stan rannych, pomoc lekarzy','https://rynekzdrowia.pl/Polska-i-swiat/Atak-w-Krakowie-Jeden-policjant-wybudzony-drugi-w-spiaczce-Dwaj-lekarze-pomagali-rannym-przed-przyjazdem-karetek,291013,15.html'],
-  ['Rzeczpospolita – ranni policjanci przeżyli noc','https://www.rp.pl/przestepczosc/art45460071-ranni-policjanci-przezyli-noc-jeden-wybudzony-drugi-w-spiaczce-nowe-informacje-z-krakowa'],
-  ['TVN24 – kim są policjanci','https://tvn24.pl/krakow/krakow-jakub-kulik-i-artur-moranski-kim-sa-policjanci-ktorzy-zatrzymali-napastnika-w-krakowie-st9329019'],
-  ['Interia – stan rannych','https://wydarzenia.interia.pl/malopolskie/news-po-strzelaninie-walczyli-o-zycie-najnowsze-informacje-o-stan,nId,23570663'],
-  ['Zero.pl – policjant wybudzony','https://zero.pl/news/dobre-wiadomosci-ze-szpitali-po-zamachu-w-krakowie-policjant-wybudzony-ze-spiaczki'],
-  ['WP – koniec oględzin, Rynek otwarty','https://wiadomosci.wp.pl/koniec-policyjnych-ogledzin-w-krakowie-rynek-glowny-otwarty-7348872495008192a'],
-  ['Super Express – kwalifikacja czynów, min. Żurek','https://www.se.pl/krakow/zarzuty-za-krwawa-tragedie-w-krakowie-i-zabojstwo-trzech-osob-w-ostrowcu-michalowi-o-grozi-mu-dozywocie-aa-PR9j-nrAQ-z2Qz.html'],
-  ['TVP Info – sprawca nie zostawił listu','https://www.tvp.info/96373812/zamach-w-krakowie-sledczy-ujawnili-wazny-szczegol-o-sprawcy-nowe-fakty-o-sprawcy-zamachu-w-krakowie-nie-zostawil-sladu'],
-  ['Dziennik.pl – msza w Kolegiacie św. Anny','https://wiadomosci.dziennik.pl/wydarzenia/artykuly/11342219,msza-sw-za-ofiary-tragedii-w-krakowie-zmiana-miejsca-uroczystosci-z-kard-rysiem.html'],
-  ['RMF24 – prezydent Krakowa','https://www.rmf24.pl/regiony/krakow/news-lukasz-gibala-po-ataku-w-krakowie-nie-mozemy-dac-sie-pokonac,nIdn,1025315'],
-  ['rp.pl – nie żyje zamachowiec','https://www.rp.pl/przestepczosc/art45463021-nie-zyje-zamachowiec-z-krakowa'],
-  ['WP – policja o śmierci sprawcy','https://wiadomosci.wp.pl/zamachowie-z-krakowa-nie-zyje-policja-informuje-7349055875480000a'],
-  ['WP – relacja na żywo 9.11','https://wiadomosci.wp.pl/pierwsi-swiadkowie-przesluchani-sledczy-o-zabezpieczonych-dowodach-relacja-na-zywo-7348861264566752l'],
-  ['Radio Kraków – Kraków po tragedii','https://radiokrakow.pl/wiadomosci/krakow/strzaly-na-rynku-glownym-w-krakowie/187431'],
-  ['Interia – drugi policjant wybudzony','https://wydarzenia.interia.pl/malopolskie/news-drugi-z-rannych-policjantow-wybudzony-ze-spiaczki-prokurator,nId,23570745'],
-  ['SE – relacja na żywo','https://www.se.pl/krakow/dramat-w-krakowie-strzaly-na-rynku-glownym-sa-doniesienia-o-rannych-aa-j9KR-i4b6-47km.html'],
-  ['RMF24 – Mroczek o dostępie do broni','https://www.rmf24.pl/regiony/krakow/news-pytania-o-zmiany-w-dostepie-do-broni-po-tragedii-w-krakowie-,nIdn,1025395'],
-  ['Radio ESKA – czasy reakcji służb, zabezpieczenia Rynku','https://krakow.eska.pl/w-szesc-minut-sluzby-byly-na-rynku-po-masakrze-w-krakowie-szykuja-zmiany-nie-oddamy-krakowa-przestepcom-aa-zCLh-vWUA-3uYh.html'],
-  ['Interia – działania prokuratury, wiec, księga','https://wydarzenia.interia.pl/kraj/news-nowy-ruch-prokuratury-po-zamachu-w-krakowie-chodzi-o-ofiary,nId,23570865'],
-  ['Super Express – prokuratura po śmierci sprawcy','https://www.se.pl/krakow/sprawca-masakry-w-krakowie-nie-zyje-prokuratura-ujawnia-co-wydarzy-sie-teraz-aa-JW54-i2Pv-fFLZ.html'],
-  ['Radio ESKA – prokuratura: liczba strzałów, broń','https://krakow.eska.pl/nawet-kilkaset-strzalow-na-rynku-w-krakowie-prokuratura-ujawnia-przerazajace-szczegoly-aa-FuPN-Bghk-38rx.html'],
-  ['TVN24 – najważniejsze fakty (godziny wg policji)','https://tvn24.pl/polska/krakow-strzelanina-na-rynku-glownym-najwazniejsze-fakty-st9329303'],
-  ['Kozaczek – komunikaty o stanie policjantów','https://www.kozaczek.pl/jest-nowy-komunikat-w-sprawie-rannych-policjantow-w-zamachu-w-krakowie-wiadomo-w-jakim-sa-stanie/'],
-  ['Super Express – relacja na żywo 9.11','https://www.se.pl/krakow/zamach-w-krakowie-relacja-na-zywo-tylko-u-nas-znamy-pierwsze-slowa-policjanta-po-wybudzeniu-ze-spiaczki-aa-j9KR-i4b6-47km.html'],
-  ['Radio ESKA – relacja na żywo 9.11','https://krakow.eska.pl/modlimy-sie-za-tego-dzielnego-policjanta-zamach-w-krakowie-6-osob-nie-zyje-kilkanascie-rannych-relacja-na-zywo-aa-jYYr-ga4K-A6nz.html'],
-  ['rp.pl – Kierwiński o pierwszych hipotezach','https://www.rp.pl/przestepczosc/art45462471-radykalne-poglady-i-skrajna-ideologia-kierwinski-wyjasnia-slowa-o-zamachowcu'],
-  ['Kozaczek – PK o pokoju sprawcy','https://www.kozaczek.pl/sledczy-przeszukali-pokoj-sprawcy-zamachu-w-krakowie-jeden-przedmiot-szczegolnie-zwrocil-ich-uwage/'],
-  ['terroryzm.pl – opracowanie (m.in. rekonstrukcja Onetu)','https://www.terroryzm.pl/atak-na-rynku-glownym-w-krakowie-7-listopada-2026.html'],
-  ['Onet – rekonstrukcja „Kluczowe cztery i pół minuty” (Instagram @onet_pl)','https://www.instagram.com/reel/Dfhnwp0sKvJ/'],
-  ['Polsat News – wojewoda o stanie poszkodowanych','https://www.polsatnews.pl/wiadomosc/2026-11-09/nowe-informacje-ze-szpitali-wiadomo-co-z-rannymi-policjantami/'],
-  ['Polsat News – zakończone sekcje','https://www.polsatnews.pl/wiadomosc/2026-11-09/sekcje-ofiar-ataku-w-krakowie-nowe-informacje-z-prokuratury/'],
-  ['TVN24 – wiec solidarności','https://tvn24.pl/krakow/krakow-wiec-solidarnosci-po-zamachu-st9329522'],
-  ['rp.pl – Marsz Ciszy','https://www.rp.pl/spoleczenstwo/art45466891-marsz-ciszy-w-krakowie-prezydent-i-premier-oddali-hold-ofiarom-sobotniego-zamachu'],
-  ['Polsat News – 10.11: sekcja sprawcy, 11 listopada','https://www.polsatnews.pl/wiadomosc/2026-11-10/krakow-pograzony-w-zalobie-kolejny-ruch-prokuratury-ws-zamachowca/'],
-  ['igryfino.pl – nowe fakty, 6 zatrzymań','https://www.igryfino.pl/artykul/57100,nowe-fakty-po-zamachu-w-krakowie-m-in-6-zatrzyman-po-fali-dezinformacji'],
-  ['TVP Kielce – rodzice i siostra sprawcy','https://kielce.tvp.pl/96367832/ostrowiec-swietokrzyski-nie-zyja-rodzice-i-siostra-sprawcy-ataku-w-krakowie'],
-  ['WP – co wiemy o rodzinie zamachowca','https://wiadomosci.wp.pl/trzy-ciala-w-mieszkaniu-co-wiemy-o-rodzinie-zamachowca-z-krakowa-7348739801532864a'],
-  ['Radio ESKA Kraków – jak zginęła rodzina','https://krakow.eska.pl/wiadomo-jak-zginela-rodzina-zamachowca-z-ostrowca-swietokrzyskiego-ciala-lezaly-w-lozkach-aa-Ciyp-piwT-4yEH.html'],
-  ['Magiczny Kraków – komunikat miasta','https://krakow.pl/aktualnosci/345151,29,komunikat,strzelanina_w_centrum_krakowa__sa_zabici_i_ranni.html'],
+  ['ofic','Magiczny Kraków – komunikat miasta','https://krakow.pl/aktualnosci/345151,29,komunikat,strzelanina_w_centrum_krakowa__sa_zabici_i_ranni.html'],
+  ['ofic','Małopolska Policja na X (@policja_mpl) — komunikaty na bieżąco','https://x.com/policja_mpl'],
+  ['ofic','Komenda Główna Policji na X (@PolskaPolicja)','https://x.com/PolskaPolicja'],
+  ['ofic','Prokuratura Krajowa — komunikaty','https://www.gov.pl/web/prokuratura-krajowa'],
+  ['ofic','Prokuratura Krajowa na X (@PK_GOV_PL)','https://x.com/PK_GOV_PL'],
+  ['ofic','MSWiA na X (@MSWiA_GOV_PL)','https://x.com/MSWiA_GOV_PL'],
+  ['ofic','Urząd Miasta Krakowa — aktualności','https://www.krakow.pl/aktualnosci'],
+  ['rek','terroryzm.pl – opracowanie (m.in. rekonstrukcja Onetu)','https://www.terroryzm.pl/atak-na-rynku-glownym-w-krakowie-7-listopada-2026.html'],
+  ['rek','Onet – rekonstrukcja „Kluczowe cztery i pół minuty” (Instagram @onet_pl)','https://www.instagram.com/reel/Dfhnwp0sKvJ/'],
+  ['fakt','Demagog: „Zamachowiec walczył na Ukrainie? Naszywka tego nie potwierdza”','https://demagog.org.pl/fake_news/zamachowiec-z-krakowa-walczyl-na-ukrainie-naszywka-tego-nie-potwierdza/'],
+  ['fakt','Demagog: „Napastnik nie zapowiadał ataku — nagranie wygenerowano przy użyciu AI”','https://demagog.org.pl/fake_news/napastnik-nie-zapowiadal-ataku-w-krakowie-nagranie-wygenerowano-przy-uzyciu-ai/'],
+  ['fakt','Demagog: „Kim jest mężczyzna obok zamachowca? To nie działacz żadnej partii”','https://demagog.org.pl/fake_news/kim-jest-mezczyzna-obok-zamachowca-to-nie-dzialacz-zadnej-partii/'],
+  ['fakt','Demagog na X: przegląd fałszywych informacji po ataku','https://x.com/DemagogPL/status/2119522687827562881'],
+  ['fakt','rp.pl: „Zrobię coś złego” to nie nagranie sprawcy (AI)','https://www.rp.pl/spoleczenstwo/art45469071-zrobie-cos-zlego-to-nie-nagranie-sprawcy-zamachu-z-krakowa'],
+  ['fakt','CyberDefence24: AI tworzy fałszywą rzeczywistość po zamachu','https://cyberdefence24.pl/cyberbezpieczenstwo/dezinformacja/zamach-w-krakowie-ai-tworzy-falszywa-rzeczywistosc'],
+  ['fakt','Konkret24 (TVN24) — weryfikacja informacji','https://konkret24.tvn24.pl/'],
+  ['pl','TVN24 – relacja na żywo','https://tvn24.pl/krakow/krakow-strzelanina-na-rynku-st9327846'],
+  ['pl','TVN24 – śledztwo, motyw terrorystyczny','https://tvn24.pl/krakow/krakow-sledztwo-w-sprawie-ataku-w-krakowie-wstepne-ustalenia-wskazuja-na-motyw-terrorystyczny-st9328556'],
+  ['pl','Zero.pl – najnowsze','https://zero.pl/najnowsze'],
+  ['pl','Zero.pl – policja o sprawcy','https://zero.pl/news/policja-przekazala-informacje-o-sprawcy-strzelaniny-w-krakowie-mial-caly-arsenal'],
+  ['pl','Onet – relacja (wskazana przez autora strony)','https://wiadomosci.onet.pl/krakow/strzelanina-w-krakowie-najnowsze-informacje-relacja/p16e8gh'],
+  ['pl','Rzeczpospolita – wszystko, co wiemy','https://www.rp.pl/przestepczosc/art45459311-strzelanina-w-krakowie-wszystko-co-wiemy-na-te-chwile'],
+  ['pl','Rzeczpospolita – śledztwo Prokuratury Krajowej','https://www.rp.pl/prawo-karne/art45460211-prokuratura-wszczela-sledztwo-ws-zamachu-w-krakowie'],
+  ['pl','Interia – nowe informacje o napastniku','https://wydarzenia.interia.pl/kraj/news-strzelanina-w-krakowie-nowe-informacje-o-napastniku,nId,23570599'],
+  ['pl','Polsat News – policja nie szuka drugiego sprawcy','https://www.polsatnews.pl/wiadomosc/2026-11-07/policja-sprawcow-strzelaniny-w-krakowie-bylo-dwoch/'],
+  ['pl','RMF24 – komunikat „23 sekundy”','https://www.rmf24.pl/regiony/krakow/news-komunikat-policji-po-strzelaninie-w-krakowie-23-sekundy-po-z,nIdn,1025273'],
+  ['pl','TVP Kraków','https://krakow.tvp.pl/96358338/strzelanina-w-krakowie-szesc-osob-nie-zyje-kilkanascie-rannych'],
+  ['pl','Rynek Zdrowia – stan rannych, pomoc lekarzy','https://rynekzdrowia.pl/Polska-i-swiat/Atak-w-Krakowie-Jeden-policjant-wybudzony-drugi-w-spiaczce-Dwaj-lekarze-pomagali-rannym-przed-przyjazdem-karetek,291013,15.html'],
+  ['pl','Rzeczpospolita – ranni policjanci przeżyli noc','https://www.rp.pl/przestepczosc/art45460071-ranni-policjanci-przezyli-noc-jeden-wybudzony-drugi-w-spiaczce-nowe-informacje-z-krakowa'],
+  ['pl','TVN24 – kim są policjanci','https://tvn24.pl/krakow/krakow-jakub-kulik-i-artur-moranski-kim-sa-policjanci-ktorzy-zatrzymali-napastnika-w-krakowie-st9329019'],
+  ['pl','Interia – stan rannych','https://wydarzenia.interia.pl/malopolskie/news-po-strzelaninie-walczyli-o-zycie-najnowsze-informacje-o-stan,nId,23570663'],
+  ['pl','Zero.pl – policjant wybudzony','https://zero.pl/news/dobre-wiadomosci-ze-szpitali-po-zamachu-w-krakowie-policjant-wybudzony-ze-spiaczki'],
+  ['pl','WP – koniec oględzin, Rynek otwarty','https://wiadomosci.wp.pl/koniec-policyjnych-ogledzin-w-krakowie-rynek-glowny-otwarty-7348872495008192a'],
+  ['pl','Super Express – kwalifikacja czynów, min. Żurek','https://www.se.pl/krakow/zarzuty-za-krwawa-tragedie-w-krakowie-i-zabojstwo-trzech-osob-w-ostrowcu-michalowi-o-grozi-mu-dozywocie-aa-PR9j-nrAQ-z2Qz.html'],
+  ['pl','TVP Info – sprawca nie zostawił listu','https://www.tvp.info/96373812/zamach-w-krakowie-sledczy-ujawnili-wazny-szczegol-o-sprawcy-nowe-fakty-o-sprawcy-zamachu-w-krakowie-nie-zostawil-sladu'],
+  ['pl','Dziennik.pl – msza w Kolegiacie św. Anny','https://wiadomosci.dziennik.pl/wydarzenia/artykuly/11342219,msza-sw-za-ofiary-tragedii-w-krakowie-zmiana-miejsca-uroczystosci-z-kard-rysiem.html'],
+  ['pl','RMF24 – prezydent Krakowa','https://www.rmf24.pl/regiony/krakow/news-lukasz-gibala-po-ataku-w-krakowie-nie-mozemy-dac-sie-pokonac,nIdn,1025315'],
+  ['pl','rp.pl – nie żyje zamachowiec','https://www.rp.pl/przestepczosc/art45463021-nie-zyje-zamachowiec-z-krakowa'],
+  ['pl','WP – policja o śmierci sprawcy','https://wiadomosci.wp.pl/zamachowie-z-krakowa-nie-zyje-policja-informuje-7349055875480000a'],
+  ['pl','WP – relacja na żywo 9.11','https://wiadomosci.wp.pl/pierwsi-swiadkowie-przesluchani-sledczy-o-zabezpieczonych-dowodach-relacja-na-zywo-7348861264566752l'],
+  ['pl','Radio Kraków – Kraków po tragedii','https://radiokrakow.pl/wiadomosci/krakow/strzaly-na-rynku-glownym-w-krakowie/187431'],
+  ['pl','Interia – drugi policjant wybudzony','https://wydarzenia.interia.pl/malopolskie/news-drugi-z-rannych-policjantow-wybudzony-ze-spiaczki-prokurator,nId,23570745'],
+  ['pl','SE – relacja na żywo','https://www.se.pl/krakow/dramat-w-krakowie-strzaly-na-rynku-glownym-sa-doniesienia-o-rannych-aa-j9KR-i4b6-47km.html'],
+  ['pl','RMF24 – Mroczek o dostępie do broni','https://www.rmf24.pl/regiony/krakow/news-pytania-o-zmiany-w-dostepie-do-broni-po-tragedii-w-krakowie-,nIdn,1025395'],
+  ['pl','Radio ESKA – czasy reakcji służb, zabezpieczenia Rynku','https://krakow.eska.pl/w-szesc-minut-sluzby-byly-na-rynku-po-masakrze-w-krakowie-szykuja-zmiany-nie-oddamy-krakowa-przestepcom-aa-zCLh-vWUA-3uYh.html'],
+  ['pl','Interia – działania prokuratury, wiec, księga','https://wydarzenia.interia.pl/kraj/news-nowy-ruch-prokuratury-po-zamachu-w-krakowie-chodzi-o-ofiary,nId,23570865'],
+  ['pl','Super Express – prokuratura po śmierci sprawcy','https://www.se.pl/krakow/sprawca-masakry-w-krakowie-nie-zyje-prokuratura-ujawnia-co-wydarzy-sie-teraz-aa-JW54-i2Pv-fFLZ.html'],
+  ['pl','Radio ESKA – prokuratura: liczba strzałów, broń','https://krakow.eska.pl/nawet-kilkaset-strzalow-na-rynku-w-krakowie-prokuratura-ujawnia-przerazajace-szczegoly-aa-FuPN-Bghk-38rx.html'],
+  ['pl','TVN24 – najważniejsze fakty (godziny wg policji)','https://tvn24.pl/polska/krakow-strzelanina-na-rynku-glownym-najwazniejsze-fakty-st9329303'],
+  ['pl','Kozaczek – komunikaty o stanie policjantów','https://www.kozaczek.pl/jest-nowy-komunikat-w-sprawie-rannych-policjantow-w-zamachu-w-krakowie-wiadomo-w-jakim-sa-stanie/'],
+  ['pl','Super Express – relacja na żywo 9.11','https://www.se.pl/krakow/zamach-w-krakowie-relacja-na-zywo-tylko-u-nas-znamy-pierwsze-slowa-policjanta-po-wybudzeniu-ze-spiaczki-aa-j9KR-i4b6-47km.html'],
+  ['pl','Radio ESKA – relacja na żywo 9.11','https://krakow.eska.pl/modlimy-sie-za-tego-dzielnego-policjanta-zamach-w-krakowie-6-osob-nie-zyje-kilkanascie-rannych-relacja-na-zywo-aa-jYYr-ga4K-A6nz.html'],
+  ['pl','rp.pl – Kierwiński o pierwszych hipotezach','https://www.rp.pl/przestepczosc/art45462471-radykalne-poglady-i-skrajna-ideologia-kierwinski-wyjasnia-slowa-o-zamachowcu'],
+  ['pl','Kozaczek – PK o pokoju sprawcy','https://www.kozaczek.pl/sledczy-przeszukali-pokoj-sprawcy-zamachu-w-krakowie-jeden-przedmiot-szczegolnie-zwrocil-ich-uwage/'],
+  ['pl','Polsat News – wojewoda o stanie poszkodowanych','https://www.polsatnews.pl/wiadomosc/2026-11-09/nowe-informacje-ze-szpitali-wiadomo-co-z-rannymi-policjantami/'],
+  ['pl','Polsat News – zakończone sekcje','https://www.polsatnews.pl/wiadomosc/2026-11-09/sekcje-ofiar-ataku-w-krakowie-nowe-informacje-z-prokuratury/'],
+  ['pl','TVN24 – wiec solidarności','https://tvn24.pl/krakow/krakow-wiec-solidarnosci-po-zamachu-st9329522'],
+  ['pl','rp.pl – Marsz Ciszy','https://www.rp.pl/spoleczenstwo/art45466891-marsz-ciszy-w-krakowie-prezydent-i-premier-oddali-hold-ofiarom-sobotniego-zamachu'],
+  ['pl','Polsat News – 10.11: sekcja sprawcy, 11 listopada','https://www.polsatnews.pl/wiadomosc/2026-11-10/krakow-pograzony-w-zalobie-kolejny-ruch-prokuratury-ws-zamachowca/'],
+  ['pl','igryfino.pl – nowe fakty, 6 zatrzymań','https://www.igryfino.pl/artykul/57100,nowe-fakty-po-zamachu-w-krakowie-m-in-6-zatrzyman-po-fali-dezinformacji'],
+  ['pl','TVP Kielce – rodzice i siostra sprawcy','https://kielce.tvp.pl/96367832/ostrowiec-swietokrzyski-nie-zyja-rodzice-i-siostra-sprawcy-ataku-w-krakowie'],
+  ['pl','WP – co wiemy o rodzinie zamachowca','https://wiadomosci.wp.pl/trzy-ciala-w-mieszkaniu-co-wiemy-o-rodzinie-zamachowca-z-krakowa-7348739801532864a'],
+  ['pl','Radio ESKA Kraków – jak zginęła rodzina','https://krakow.eska.pl/wiadomo-jak-zginela-rodzina-zamachowca-z-ostrowca-swietokrzyskiego-ciala-lezaly-w-lozkach-aa-Ciyp-piwT-4yEH.html'],
+  ['pl','GazetaPrawna: śledztwo w sprawie Krakowa i Ostrowca','https://www.gazetaprawna.pl/wiadomosci/kraj/artykuly/11342699,sledztwo-w-sprawie-zamachu-w-krakowie-i-zabojstw-w-ostrowcu-swietokrzy.html'],
+  ['pl','TVN24: przeprowadzono sekcje zwłok dziewięciu osób','https://tvn24.pl/krakow/krakow-atak-na-rynku-w-krakowie-przeprowadzono-sekcje-zwlok-dziewieciu-osob-st9330698'],
+  ['pl','Kronika Tygodnia: nowe ustalenia i sześć zatrzymań','https://www.kronikatygodnia.pl/artykul/56499,zamach-w-krakowie-nowe-ustalenia-i-szesc-zatrzyman'],
+  ['swiat','CNN: Poland stunned as suspect kills 6 in Kraków mass shooting','https://www.cnn.com/2026/11/07/europe/krakow-shooting-poland-killed-intl'],
+  ['swiat','PBS NewsHour (AP): Gunman opens fire in Krakow, killing 6','https://www.pbs.org/newshour/world/gunman-opens-fire-in-polish-city-of-krakow-killing-6-people-and-injuring-15'],
+  ['swiat','US News (Reuters): Six people killed by Polish gunman in Krakow','https://www.usnews.com/news/world/articles/2026-11-07/two-killed-at-least-10-injured-in-shooting-in-polish-city-of-krakow-tvn24-reports'],
+  ['ency','Wikipedia (EN): 2026 Kraków shooting — opracowanie zbiorcze, sprawdzaj z innymi źródłami','https://en.wikipedia.org/wiki/2026_Krak%C3%B3w_shooting'],
 ];
-document.getElementById('sources').innerHTML = SRC.map(s=>`<li><a href="${s[1]}" target="_blank" rel="noopener">${s[0]}</a></li>`).join('');
+const SRCCAT={ofic:['Oficjalne','Komunikaty policji, prokuratury, urzędów — najwyższa wiarygodność'],rek:['Rekonstrukcje','Analizy przebiegu na podstawie nagrań i relacji'],fakt:['Fact-checking','Weryfikacja fałszywych informacji krążących w sieci'],pl:['Media polskie','Relacje i artykuły redakcji'],swiat:['Media zagraniczne','Jak o ataku piszą media na świecie'],ency:['Opracowania','Zbiorcze opracowania — mogą zawierać nieaktualne dane']};
+let srcF='all';
+function renderSrc(){
+  const q=(document.getElementById('srcq').value||'').toLowerCase();
+  const rows=SRC.filter(x=>(srcF==='all'||x[0]===srcF)&&(!q||(x[1]+' '+x[2]).toLowerCase().includes(q)));
+  let html='', last=null;
+  rows.forEach(([c,t,u])=>{
+    if(c!==last){html+=`<li class="srchead"><b>${SRCCAT[c][0]}</b> <span>${SRCCAT[c][1]}</span></li>`;last=c;}
+    let host=''; try{host=new URL(u).hostname.replace(/^www\./,'');}catch(e){}
+    html+=`<li class="srcitem"><span class="tag ${c==='ofic'?'o':c==='fakt'?'d':'m'}">${SRCCAT[c][0]}</span> <a href="${u}" target="_blank" rel="noopener">${t}</a> <small>${host}</small></li>`;
+  });
+  document.getElementById('sources').innerHTML=html||'<li>Brak wyników</li>';
+  document.getElementById('srccount').textContent=`${rows.length} z ${SRC.length} źródeł`;
+}
+const sf=document.getElementById('srcfilters');
+sf.innerHTML=`<button data-c="all" aria-pressed="true">Wszystkie (${SRC.length})</button>`+Object.keys(SRCCAT).map(c=>`<button data-c="${c}" aria-pressed="false">${SRCCAT[c][0]} (${SRC.filter(x=>x[0]===c).length})</button>`).join('');
+sf.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{sf.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');srcF=b.dataset.c;renderSrc();}));
+document.getElementById('srcq').addEventListener('input',renderSrc);
+renderSrc();
 </script>
 <button class="totop" id="totop" type="button" aria-label="Wróć na górę">↑</button>
 <div class="toast" id="toast" role="status"></div>

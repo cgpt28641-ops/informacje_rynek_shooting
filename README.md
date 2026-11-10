@@ -19,3 +19,7 @@ Przy każdej aktualizacji zmień w `index.html`:
 - sekcję „Szybkie odpowiedzi” (`#faq`) i streszczenie po angielsku (`#english`), jeśli zmieniły się kluczowe fakty.
 
 Otwarta strona sama sprawdza co 3 min, czy `LAST_UPDATE` się zmienił, i pokazuje przycisk „Są nowe informacje — odśwież”.
+
+## Źródła i rozbieżności
+- `SRC` w `index.html`: `[kategoria, tytuł, URL]`, kategorie: `ofic` (oficjalne), `rek` (rekonstrukcje), `fakt` (fact-checking), `pl` (media polskie), `swiat` (media zagraniczne), `ency` (opracowania).
+- Sekcja `#rozbieznosci` — tabela miejsc, w których źródła się różnią, i przyjętej wersji.
