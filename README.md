@@ -24,4 +24,4 @@ Otwarta strona sama sprawdza co 3 min, czy `LAST_UPDATE` się zmienił, i pokazu
 - `SRC` w `index.html`: `[kategoria, tytuł, URL]`, kategorie: `ofic` (oficjalne), `rek` (rekonstrukcje), `fakt` (fact-checking), `pl` (media polskie), `swiat` (media zagraniczne), `ency` (opracowania).
 - Sekcja `#rozbieznosci` — tabela miejsc, w których źródła się różnią, i przyjętej wersji.
 
-**Zasada ramki „Najnowsze”:** tylko nowe fakty o wydarzeniach (ze źródłem) — nigdy informacje o zmianach na stronie.
+**Zasada ramki „Najnowsze”:** tylko nowe fakty o wydarzeniach (ze źródłem) — nigdy informacje o zmianach na stronie. Max 4 punkty, najnowsze na górze (nowe `<li>` zaraz po `<ul>`, najstarsze usuwać z dołu).
