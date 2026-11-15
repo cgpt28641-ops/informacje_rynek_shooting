@@ -153,7 +153,7 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
 <body>
 <div class="upbar" role="status">
   <div class="wrap">
-    <span><span class="dot"></span>Ostatnia aktualizacja: <b id="lastUpdate">nd. 15.11, 16:00</b></span>
+    <span><span class="dot"></span>Ostatnia aktualizacja: <b id="lastUpdate">nd. 15.11, 18:00</b></span>
     <span class="ago" id="ago"></span>
     <span class="ago every">· co ok. 2 godz.</span>
     <button class="sharebtn" id="share" type="button">Udostępnij</button>
@@ -181,16 +181,16 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
     <span class="mourning">Żałoba narodowa 8–9 listopada 2026 · żałoba w Krakowie zakończyła się o północy 11/12 listopada</span>
     <h1>Atak na Rynku Głównym w Krakowie — co wiadomo na pewno</h1>
     <div class="whatsnew" id="whatsnew">
-      <h3>Najnowsze — nd. 15.11, 16:00</h3>
+      <h3>Najnowsze — nd. 15.11, 18:00</h3>
       <ul>
+        <li><b>Policja o funkcjonariuszach wysłanych 7.11 do Warszawy:</b> do stolicy pojechało 141 policjantów Oddziału Prewencji Policji w Krakowie (ponad 500 etatów, jednostka niepodległa KMP); w mieście służbę pełniło 128 policjantów prewencji KMP oraz policjanci operacyjni KMP i KWP. „Ani jeden policjant KMP nie został delegowany do Warszawy” — Małopolska Policja w odpowiedzi na słowa T. Sakiewicza (Republika), prosząc o niewprowadzanie w błąd.</li>
         <li><b>W szpitalach pozostaje 9 rannych.</b> W sobotę wieczorem ze Szpitala Uniwersyteckiego wypisano kolejną kobietę; pozostali ranni przebywają w 5 krakowskich szpitalach, ich stan jest stabilny i bez zmian (Małopolski Urząd Wojewódzki).</li>
         <li><b>„Requiem” w Bazylice Mariackiej.</b> W kościele, który tydzień temu dał schronienie uciekającym z Rynku, Capella Cracoviensis wykonała „Requiem” Mozarta dla ofiar ataku i rodziny sprawcy; przed bazyliką ustawiły się dwie kolejki. Wiceprezydent Jan Hoffman: „Nie pozwolimy, aby zło miało ostatni głos”. O 20:00 recital organowy Xavera Varnusa.</li>
         <li><b>Tydzień po ataku — pogrzeby i modlitwa.</b> W sobotę o 14:00 pochowano dwie kolejne ofiary (w Sędziszowie Małopolskim i Kraśniku); o 15:00 w Ostrowcu Św. bp Krzysztof Nitkiewicz przewodniczył nabożeństwu za ofiary z Krakowa i Ostrowca; w Bazylice Mariackiej tłumy na koncertach pamięci. Pogrzeb rodziców i siostry sprawcy — w poniedziałek w Waśniowie (WP potwierdziła w dwóch źródłach); o pochówku sprawcy prokuratura: „Jest to procedowane”, bez szczegółów.</li>
-        <li><b>Dorożki wróciły na Rynek</b> (sob. 11:00) — „wydarzenie ważne, budzi w nas emocje” (wiceprezes Stow. Dorożkarzy Krakowskich E. Nęcek). Troje rannych dorożkarzy wciąż jest w szpitalach i czekają ich kolejne operacje. Rzecznik wojewody (PAP): 10 rannych w 5 krakowskich szpitalach, stan stabilny.</li>
       </ul>
     </div>
     <p class="lead">Zebrane i sprawdzone informacje o ataku z soboty 7 listopada 2026 r. Każda informacja ma źródło i oznaczenie, czy pochodzi z oficjalnego komunikatu (policja, prokuratura, wojewoda, MSWiA), czy z ustaleń mediów. Osobno wypisane są informacje zdementowane.</p>
-    <p class="updated">Stan informacji na: niedziela 15 listopada 2026, 16:00 (czas polski)</p>
+    <p class="updated">Stan informacji na: niedziela 15 listopada 2026, 18:00 (czas polski)</p>
     <div class="stats">
       <div class="stat"><b>6</b><span>ofiar śmiertelnych w Krakowie (4 kobiety, 2 mężczyzn)</span></div>
       <div class="stat"><b>9</b><span>rannych w 5 krakowskich szpitalach (sob. 14.11), w tym 2 policjantów</span></div>
@@ -637,7 +637,7 @@ footer{margin:48px 0 32px;font-size:13px;color:var(--muted)}
 <script>
 /* ---------- OSTATNIA AKTUALIZACJA ---------- */
 // Przy każdej aktualizacji zmień LAST_UPDATE (czas polski, UTC+1 zimą).
-const LAST_UPDATE = '2026-11-15T16:00:00+01:00';
+const LAST_UPDATE = '2026-11-15T18:00:00+01:00';
 (function(){
   const d = new Date(LAST_UPDATE);
   const el = document.getElementById('ago');
@@ -1105,6 +1105,7 @@ const TL = [
   ['sb2','18:48','m','TVN24: na pogrzebie w Sędziszowie Małopolskim burmistrz B. Kmieć: „Ten ból jest bólem nas wszystkich”; w Kraśniku pochowano 55-letniego mężczyznę, który pracował w Krakowie.','TVN24'],
   ['sb2','~19:30','o','Urząd Wojewódzki: ze Szpitala Uniwersyteckiego wypisano kolejną kobietę; w 5 krakowskich szpitalach pozostaje 9 rannych, stan stabilny, bez zmian.','wojewoda (za Radiem Kraków, KR24, Polsat News)'],
   ['sb2','20:00','m','Drugi koncert pamięci w Bazylice Mariackiej — recital organowy Xavera Varnusa (inauguracja XXI Dni Muzyki Sakralnej im. św. Jana Pawła II).','WP Kultura, LoveKraków'],
+  ['nd2','~17:00','o','Małopolska Policja (X) odpowiada na tezę, że w dniu ataku policję wysłano do Warszawy: 7.11 do stolicy pojechało 141 funkcjonariuszy Oddziału Prewencji Policji w Krakowie (etat ponad 500; nie podlega KMP), a w mieście służbę pełniło 128 policjantów prewencji KMP plus policjanci operacyjni KMP i KWP. „Ani jeden policjant KMP nie został delegowany do Warszawy”.','Małopolska Policja (za PAP/rp.pl, Interią, TVP Info)'],
 ];
 const tlEl = document.getElementById('timeline');
 const label = {o:'oficjalne',m:'media',d:'dementi'};
@@ -1260,6 +1261,8 @@ const SRC = [
   ['media','WP Kultura — „Requiem ku czci ofiar tragedii w Krakowie. Zaplanowano dwa koncerty” (14.11)','https://kultura.wp.pl/requiem-ku-czci-ofiar-tragedii-w-krakowie-zaplanowano-dwa-koncerty-7350906885093408a'],
   ['media','TVN24 — pogrzeby ofiar w Kraśniku i Sędziszowie Małopolskim (14.11)','https://tvn24.pl/krakow/krasnik-sedziszow-malopolski-pogrzeby-ofiar-zamachu-w-krakowie-st9339450'],
   ['media','Radio Kraków — „Kolejna osoba opuściła szpital po zamachu w Krakowie. Dziewięcioro rannych nadal hospitalizowanych” (14.11)','https://radiokrakow.pl/wiadomosci/malopolska/kolejna-osoba-opuscila-szpital-po-zamachu-w-krakowie-dziewiecioro-rannych-nadal-hospitalizowanych/187741'],
+  ['media','rp.pl/PAP — „Policja odpowiada na słowa Sakiewicza. Chodzi o funkcjonariuszy wysłanych do Warszawy” (15.11)','https://www.rp.pl/przestepczosc/art45491111-policja-odpowiada-na-slowa-sakiewicza-chodzi-o-funkcjonariuszy-wyslanych-do-warszawy'],
+  ['media','Interia — Małopolska policja: „Prosimy o niewprowadzanie w błąd” (15.11)','https://wydarzenia.interia.pl/malopolskie/news-malopolska-policja-wydala-oswiadczenie-prosimy-o-niewprowadz,nId,23573717'],
   ['fakt','Demagog: „Zamachowiec walczył na Ukrainie? Naszywka tego nie potwierdza”','https://demagog.org.pl/fake_news/zamachowiec-z-krakowa-walczyl-na-ukrainie-naszywka-tego-nie-potwierdza/'],
   ['fakt','Demagog: „Napastnik nie zapowiadał ataku — nagranie wygenerowano przy użyciu AI”','https://demagog.org.pl/fake_news/napastnik-nie-zapowiadal-ataku-w-krakowie-nagranie-wygenerowano-przy-uzyciu-ai/'],
   ['fakt','Demagog: „Kim jest mężczyzna obok zamachowca? To nie działacz żadnej partii”','https://demagog.org.pl/fake_news/kim-jest-mezczyzna-obok-zamachowca-to-nie-dzialacz-zadnej-partii/'],
